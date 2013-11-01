@@ -1,0 +1,23 @@
+ls
+ls
+chmod a+x broken-link.sh 
+ls
+ls
+./client -u root -p
+ls
+./client -u root -p
+./client -u root -p
+./client -u root -p
+./client -u root -p
+./client -u root -p
+ls
+./2
+./2
+./2
+ls
+./extract-l a b 1
+ls
+./extract-l a b 1
+ls
+ls
+cat outfile 
