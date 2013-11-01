@@ -1,0 +1,40 @@
+;cedet main semantic
+;-------------------------------------------------------------------
+(add-to-list 'load-path "/usr/share/emacs/site-lisp/cedet/semantic")
+(require 'cedet)
+(require 'semantic-ia)
+(require 'semantic-gcc)
+(require 'semanticdb)
+(global-ede-mode 1)
+;(semantic-mode 1)
+(global-semanticdb-minor-mode 1)
+(global-set-key [f5] 'speedbar)
+
+(global-srecode-minor-mode 1)
+;(global-set-key [(control tab)] 'semantic-ia-complete-symbol-menu)
+
+(setq semanticdb-default-save-directory "~/.emacs.d/include")
+
+(semantic-load-enable-code-helpers)
+;(semantic-load-enable-minimum-features)
+;(semantic-load-enable-gaudy-code-helpers)
+;(semantic-load-enable-excessive-code-helpers)
+;(semantic-load-enable-semantic-debugging-helpers)
+
+(global-set-key [f7] 'semantic-ia-fast-jump)
+   
+;company
+;(add-to-list 'load-path "~/.emacs.d/company")
+;(autoload 'company-mode "company" nil t)
+;(setq company-idle-delay t)
+;
+;(add-hook 'c-mode-hook
+;	  (lambda ()
+;	    (company-mode)))
+;(add-hook 'c++-mode-hook
+;	  (lambda ()
+;	    (company-mode)))
+;
+;
+;
+(provide 'my-cedet-semantic)
