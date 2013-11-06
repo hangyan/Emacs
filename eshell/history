@@ -21,3 +21,7 @@ ls
 ls
 ls
 cat outfile 
+ls
+ls
+rm -rf epslatex.pg 
+ls

@@ -5,8 +5,9 @@
 (require 'auto-complete-config)
 (require 'auto-complete)
 (global-auto-complete-mode t)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/auto-complete/dict")
-;(ac-config-default)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/auto-complete/ac-dict")
+(ac-config-default)
+
 
 ;;----------file ac-comphist.dat----------------- 
 ;;when a word is offen used,arrange it to the top of the candidates.
@@ -15,8 +16,8 @@
 ;;----------TAB as trigger key-------------------
 ;;if want to set TAB as trigger key(Trigger key will be enabled 
 ;;after inserting characters. Otherwise it is dealt as an usual command) 
-;;(ac-set-trigger-key "TAB")
-;;(setq ac-auto-start nil)
+(ac-set-trigger-key "TAB")
+(setq ac-auto-start nil)
 ;;
 ;;
 
@@ -66,37 +67,8 @@
 		   /usr/lib/gcc/i686-pc-linux-gnu/4.8.0/include-fixed
 		   /usr/include/mysql
 		   /usr/include/mysql++
-		   /usr/include/usr/include/qt/QtCLucene
-			/usr/include/qt/QtConcurrent
-			/usr/include/qt/QtCore
-			/usr/include/qt/QtDBus
-			/usr/include/qt/QtDeclarative
-			/usr/include/qt/QtDesigner
-			/usr/include/qt/QtDesignerComponents
-			/usr/include/qt/QtGui
-			/usr/include/qt/QtHelp
-			/usr/include/qt/QtNetwork
-			/usr/include/qt/QtOpenGL
-			/usr/include/qt/QtPlatformSupport
-			/usr/include/qt/QtPrintSupport
-			/usr/include/qt/QtQml
-			/usr/include/qt/QtQmlDevTools
-			/usr/include/qt/QtQuick
-			/usr/include/qt/QtQuickParticles
-			/usr/include/qt/QtQuickTest
-			/usr/include/qt/QtScript
-			/usr/include/qt/QtScriptTools
-			/usr/include/qt/QtSql
-			/usr/include/qt/QtTest
-			/usr/include/qt/QtUiTools
-			/usr/include/qt/QtV8
-			/usr/include/qt/QtWebKit
-			/usr/include/qt/QtWebKitWidgets
-			/usr/include/qt/QtWidgets
-			/usr/include/qt/QtXml
-			/usr/include/qt/QtXmlPatterns
-			/usr/include/boost
-			/home/yuyan/loglib/Y_Loglib10/include
+		   /usr/include/boost
+		   /home/yuyan/loglib/Y_Loglib10/include
 		     "  
 		)))    
 

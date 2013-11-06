@@ -5,16 +5,6 @@
 
 
 
-;ecb --disable
-;------------------------------------------------------------------------------
-;(add-to-list 'load-path
-; 			 "~/.emacs.d/ecb-snap")
-;(require 'ecb-autoloads)
-;(global-set-key [f12] 'ecb-activate)
-;(global-set-key [C-f11] 'ecb-deactivate)
-;(setq ecb-tip-of-the-day nil)
-;(setq stack-trace-on-error nil)
-;(setq inhibit-startup-message t)
 
 
 ;sr-speedbar
@@ -68,9 +58,9 @@
 
 ;;tramp
 ;;for edit remote files
-(add-to-list 'load-path "~/.emacs.d/tramp/lisp")
-(add-to-list 'Info-default-directory-list "~/.emacs.d/tramp/info")
-(require 'tramp)
+;(add-to-list 'load-path "~/.emacs.d/tramp/lisp")
+;(add-to-list 'Info-default-directory-list "~/.emacs.d/tramp/info")
+;(require 'tramp)
 (setq tramp-default-method "ssh")
 
 
@@ -109,9 +99,35 @@
 (require 'project-buffer-mode)
 (autoload 'find-sln "sln-mode")
 
+
+(require 'package)
+(add-to-list 'package-archives
+	                  '("melpa" . "http://melpa.milkbox.net/packages/") t)
+
+
 ;gnuplot
-(require 'gnuplot-mode)
-(append '(("\\.\\(gp\\|gnuplot\\)$" . gnuplot-mode)) auto-mode-alist))
+;(require 'gnuplot-mode)
+;(append '(("\\.\\(gp\\|gnuplot\\)$" . gnuplot-mode)) auto-mode-alist)
+;---use melpa
+
+;ledger
+(add-to-list 'load-path
+	     (expand-file-name "~/.emacs.d/ledger"))
+(load "ledger-mode")
+(add-to-list 'auto-mode-alist '("\\.ledger$" . ledger-mode))
+
+
+;fcitx
+(global-set-key (kbd "C-SPC") nil)
+
+
+;predictive
+(add-to-list 'load-path "~/.emacs.d/predictive/")
+(add-to-list 'load-path "~/.emacs.d/predictive/latex/")
+(add-to-list 'load-path "~/.emacs.d/predictive/html/")
+(add-to-list 'load-path "~/.emacs.d/predictive/texinfo/")
+(require 'predictive)
+
 
 
 (provide 'utility)

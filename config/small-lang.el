@@ -40,15 +40,6 @@
 (load-file "~/.emacs.d/utility/asm86-mode.el")
 
 
-;java load cedet
-;(add-to-list 'load-path "~/.emacs.d/cedet/common")
-;(load-file "~/.emacs.d/cedet/common/cedet.el")
-;(add-to-list 'load-path "~/.emacs.d/jdee/lisp")
-;(require 'jde)
-;(defun screen-width nil -1)
-;(define-obsolete-function-alias 'make-local-hook 'ignore "21.1")
-
-
 ;ant
 (add-to-list 'auto-mode-alist '("\\.ant$" . ant-mode))
 

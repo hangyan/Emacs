@@ -115,6 +115,13 @@
 (setq indent-guide-char "|")
 
 
+;buffers
+(global-set-key (kbd "\C-x\C-b") 'buffer-menu-other-window)
+
+
+
+
+
 (set-frame-parameter nil 'alpha '(100 100))
 
 (provide 'my-gui)

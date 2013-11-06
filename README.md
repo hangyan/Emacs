@@ -35,7 +35,8 @@ Emacs
 * ede
 * cedet
 * emms
-
+* ibus-mode
+* ledger
 
 
 ###Gui###
