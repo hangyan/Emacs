@@ -1,0 +1,22 @@
+---
+abstract: 'Perl Development Environment in emacs'
+author:
+  - unknown
+build_requires: {}
+dynamic_config: 0
+generated_by: 'Module::Build version 0.3901, CPAN::Meta::Converter version 2.120630'
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Emacs-PDE
+provides:
+  Emacs::PDE:
+    file: lib/Emacs/PDE.pm
+    version: v0.2.16
+  Emacs::PDE::Util:
+    file: lib/Emacs/PDE/Util.pm
+    version: 0
+resources:
+  license: http://dev.perl.org/licenses/
+version: v0.2.16
