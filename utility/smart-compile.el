@@ -66,6 +66,7 @@
   ("\\.pl\\'"         . "perl -w %f")
   ("\\.gp\\'"	      . "gnuplot -p %f")
   ("\\.rb\\'"         . "ruby -cw %f")
+  ("\\.sh\\'"	      . "bash %f")
 )  "Alist of filename patterns vs corresponding format control strings.
 Each element looks like (REGEXP . STRING) or (MAJOR-MODE . STRING).
 Visiting a file whose name matches REGEXP specifies STRING as the
