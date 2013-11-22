@@ -1,24 +1,21 @@
-%%% TEMPLATE.tex.tpl --- (>>>POINT<<<)
+\documentclass[11pt]{article}
 
-%% Author: (>>>AUTHOR<<<)
-%% Version: $Id: (>>>FILE<<<),v 0.0 (>>>VC_DATE<<<) (>>>LOGIN_NAME<<<) Exp$
-
-
-\documentclass[12pt,draft,a4paper]{article}
-%%\usepackage[debugshow,final]{graphics}
-
-%%\revision$Header: (>>>DIR<<<)(>>>FILE<<<),v 0.0 (>>>VC_DATE<<<) (>>>LOGIN_NAME<<<) Exp$
+\usepackage{CJK}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{amsmath}
 
 \begin{document}
+\begin{CJK}{UTF8}{gbsn}
+\author{}
+\date{\today}
+\title{\textbf{}}
+\maketitle
+\tableofcontents
+\newpage
 
-
-%%%%##########################################################################
 
-\section{(>>>1<<<)}
-
-
-
-
-%%%%##########################################################################
-
+\end{CJK}
 \end{document}

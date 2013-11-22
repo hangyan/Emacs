@@ -114,22 +114,12 @@
 ;;;----------------------------------------------------------------------------
 
 
-
-;;;-----------------
-;;;  vs project  ;;;
-;;;----------------------------------------------------------------------------
-(require 'project-buffer-mode)
-(autoload 'find-sln "sln-mode")
-;;;----------------------------------------------------------------------------
-
-
-
 ;;;-------------
 ;;;  ledger  ;;;
 ;;;----------------------------------------------------------------------------
 (add-to-list 'load-path
 	     (expand-file-name "~/.emacs.d/ledger"))
-(load "ledger-mode")
+;(load "ledger-mode")
 (add-to-list 'auto-mode-alist '("\\.ledger$" . ledger-mode))
 ;;;----------------------------------------------------------------------------
 
@@ -150,7 +140,7 @@
 (add-to-list 'load-path "~/.emacs.d/predictive/latex/")
 (add-to-list 'load-path "~/.emacs.d/predictive/html/")
 (add-to-list 'load-path "~/.emacs.d/predictive/texinfo/")
-(require 'predictive)
+;(require 'predictive)
 ;;;----------------------------------------------------------------------------
 
 
@@ -182,6 +172,9 @@
 (require 'template)
 (template-initialize)
 ;;;----------------------------------------------------------------------------
+
+
+
 
 
 (provide 'utility)

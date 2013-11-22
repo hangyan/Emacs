@@ -3,7 +3,7 @@ Emacs
 
 ###Language###
 * asm
-* jdee
+* java
 * javacc
 * steve
 * ee
@@ -37,6 +37,8 @@ Emacs
 * emms
 * ibus-mode
 * ledger
+* templates
+* mutt
 
 
 ###Gui###

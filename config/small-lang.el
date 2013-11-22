@@ -81,6 +81,26 @@
 
 ;brainfuck
 (require 'bf)
+
+
+;pig
+(require 'pig-mode)
+
+
+;perl
+(add-to-list 'load-path "~/.emacs.d/pde/lisp")
+(load "pde-load")
+
+;;;java
+;(load-file "~/Soft/ajoke/etc/elisp/ajoke.el")
+
+(add-to-list 'load-path "~/.emacs.d/jdee-2.4.1/lisp")
+;(load "jde")
+(autoload 'jde-mode "jde" "JDE mode" t)
+  (setq auto-mode-alist
+        (append '(("\\.java\\'" . jde-mode)) auto-mode-alist))
+
+
 (provide 'small-lang)
 
 ;;
@@ -90,10 +110,5 @@
 ;;(setq auto-mode-alist
 ;;    (append '(("\\.java\\'" . jde-mode)) auto-mode-alist))
 
-;pig
-(require 'pig-mode)
 
 
-;perl
-(add-to-list 'load-path "~/.emacs.d/pde/lisp")
-(load "pde-load")
