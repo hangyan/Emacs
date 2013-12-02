@@ -6,15 +6,16 @@
 \usepackage{graphicx}
 \usepackage{textcomp}
 \usepackage{amsmath}
+\usepackage[hidelinks,CJKbookmarks,dvipdfm]{hyperref}
+
 
 \begin{document}
 \begin{CJK}{UTF8}{gbsn}
-\author{}
+\author{闫航}
 \date{\today}
 \title{\textbf{}}
 \maketitle
 \tableofcontents
-\newpage
 
 
 \end{CJK}

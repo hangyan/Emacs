@@ -1,12 +1,18 @@
-;auto-complete mode
-;
-;
+
+
+
+
+;;;--------------------
+;;;  auto-complete  ;;;
+;;;----------------------------------------------------------------------------
 (add-to-list 'load-path "~/.emacs.d/auto-complete")
 (require 'auto-complete-config)
 (require 'auto-complete)
 (global-auto-complete-mode t)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/auto-complete/ac-dict")
 (ac-config-default)
+;;;----------------------------------------------------------------------------
+
 
 
 ;;----------file ac-comphist.dat----------------- 
@@ -18,7 +24,6 @@
 ;;after inserting characters. Otherwise it is dealt as an usual command) 
 (ac-set-trigger-key "TAB")
 (setq ac-auto-start nil)
-;;
 ;;
 
 

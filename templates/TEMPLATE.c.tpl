@@ -1,7 +1,16 @@
 /* @(#)TEMPLATE.c.tpl
  */
 
-#include <config.h>
-#include "(>>>FILE_SANS<<<).h"
+#include <stdio.h>
 
-(>>>POINT<<<)
+
+
+
+int main(int argc,char* argv[])
+{
+    (>>>POINT<<<)
+
+}
+
+
+

@@ -1,12 +1,12 @@
 Emacs
 =====
 
-###Language###
+### language  support ###
+* c/c++
+* lisp
 * asm
 * java
-* javacc
 * steve
-* ee
 * php
 * python
 * xml
@@ -20,32 +20,36 @@ Emacs
 * pig
 * perl
 * latex
-* lisp
+* shell
 
-
-
-###Tools###
-* gnuplot
+### coding better ###
 * smart-compile
 * auto-complete
 * cedet
-* git
-* tramp
 * yasnippet
 * ede
 * cedet
-* emms
-* ibus-mode
-* ledger
 * templates
+* ecb
+* cmake
+
+###Tools###
+* gnuplot
+* git
+* tramp
 * mutt
 
+### enlightment ###
+* emms
 
-###Gui###
+### life ###
+* ledger
+
+### gui ###
 * sr-speedbar
 * indent-guide
 * right-margin
+* ibus-mode
 
-
-###Lib###
+### lib ###
 * qt

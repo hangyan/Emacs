@@ -60,8 +60,8 @@
 ;(require 'thumbs)
 
 ;show line number
-(require 'linum)
-(global-linum-mode t)
+;(require 'linum)
+;(global-linum-mode t)
 
 
 
