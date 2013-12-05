@@ -182,10 +182,14 @@
 (load-file "~/.emacs.d/ecb/ecb.el")
 (require 'ecb)
 
-(global-set-key [M-left] 'windmove-left)
-(global-set-key [M-right] 'windmove-right)
-(global-set-key [M-up] 'windmove-up)
-(global-set-key [M-down] 'windmove-down)
+
+
+(global-set-key (kbd "C-x <up>") 'windmove-up)
+(global-set-key (kbd "C-x <down>") 'windmove-down)
+(global-set-key (kbd "C-x <right>") 'windmove-right)
+(global-set-key (kbd "C-x <left>") 'windmove-left)
+
+
 (global-set-key [f12] 'ecb-activate)
 (global-set-key [C-f11] 'ecb-deactivate)
 ;;;----------------------------------------
@@ -204,9 +208,9 @@
 ;;;-----------------
 ;;;  cursor-chg  ;;;
 ;;;-----------------------------
-(require 'cursor-chg)            ; Load the library
-(toggle-cursor-type-when-idle 1) ; Turn on cursor change when Emacs is idle
-(change-cursor-mode 1)           ; Turn on change for overwrite, read-only, and input mode
+;(require 'cursor-chg)            ; Load the library
+;(toggle-cursor-type-when-idle 1) ; Turn on cursor change when Emacs is idle
+;(change-cursor-mode 1)           ; Turn on change for overwrite, read-only, and input mode
 ;;;-----------------------------
 
 
