@@ -21,6 +21,7 @@ Emacs
 * perl
 * latex
 * shell
+* haskell
 
 ### coding better ###
 * smart-compile
