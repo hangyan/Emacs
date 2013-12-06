@@ -1,12 +1,12 @@
 ;cedet main semantic
 ;-------------------------------------------------------------------
-(load-file "~/.emacs.d/cedet/cedet-devel-load.el")
+;(load-file "~/.emacs.d/cedet/cedet-devel-load.el")
 
 (global-ede-mode 1)
-(global-semanticdb-minor-mode 1)
+;(global-semanticdb-minor-mode 1)
 ;(global-set-key [f5] 'speedbar)
 
-(global-srecode-minor-mode 1)
+;(global-srecode-minor-mode 1)
 (global-semantic-highlight-func-mode 1)
 (global-semantic-idle-local-symbol-highlight-mode 1)
 ;(global-semantic-idle-scheduler-mode 1)

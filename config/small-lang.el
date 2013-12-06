@@ -101,6 +101,13 @@
         (append '(("\\.java\\'" . jde-mode)) auto-mode-alist))
 (load-file "~/.emacs.d/utility/jde-int.el") 
 
+
+;;haskell-mode
+(add-to-list 'load-path "~/.emacs.d/haskell-mode/")
+(require 'haskell-mode-autoloads)
+(add-to-list 'Info-default-directory-list "~/.emacs.d/haskell-mode/")
+
+
 (provide 'small-lang)
 
 ;;
