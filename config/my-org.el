@@ -16,8 +16,8 @@
                :base-directory "~/org/"
                :base-extension "org"
                :publishing-directory "~/public_html/"
-               :publishing-function org-html-publish-to-html
-               :exclude "PrivatePage.org"   ;; regexp
+               :publishing-function org-publish-org-to-html
+               :exclude "private.org"   ;; regexp
                :headline-levels 3
                :section-numbers nil
                :with-toc nil

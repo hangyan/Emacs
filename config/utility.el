@@ -133,18 +133,6 @@
 
 
 
-;;;-----------------
-;;;  predictive  ;;;
-;;;-------------------------------------------------------
-(add-to-list 'load-path "~/.emacs.d/predictive/")
-(add-to-list 'load-path "~/.emacs.d/predictive/latex/")
-(add-to-list 'load-path "~/.emacs.d/predictive/html/")
-(add-to-list 'load-path "~/.emacs.d/predictive/texinfo/")
-;(require 'predictive)
-;;;-------------------------------------------------------
-
-
-
 ;;;-----------
 ;;;  mutt  ;;;
 ;;;---------------------------------------------------
