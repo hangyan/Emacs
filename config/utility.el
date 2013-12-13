@@ -114,14 +114,6 @@
 ;;;---------------
 
 
-;;;-------------
-;;;  ledger  ;;;
-;;;---------------------------------------------------------
-(add-to-list 'load-path
-	     (expand-file-name "~/.emacs.d/ledger"))
-;(load "ledger-mode")
-(add-to-list 'auto-mode-alist '("\\.ledger$" . ledger-mode))
-;;;---------------------------------------------------------
 
 
 
