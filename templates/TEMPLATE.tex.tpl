@@ -7,7 +7,7 @@
 \usepackage{textcomp}
 \usepackage{amsmath}
 \usepackage[hidelinks,CJKbookmarks,dvipdfm]{hyperref}
-
+\AtBeginDvi{\special{pdf:tounicode GBK-EUC-UCS2}} 
 
 \begin{document}
 \begin{CJK}{UTF8}{gbsn}

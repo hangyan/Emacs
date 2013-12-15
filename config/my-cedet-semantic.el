@@ -6,7 +6,7 @@
 ;(global-semanticdb-minor-mode 1)
 ;(global-set-key [f5] 'speedbar)
 
-(global-srecode-minor-mode 1)
+;(global-srecode-minor-mode 1)
 (global-semantic-highlight-func-mode 1)
 (global-semantic-idle-local-symbol-highlight-mode 1)
 ;(global-semantic-idle-scheduler-mode 1)
@@ -22,7 +22,7 @@
 (setq semanticdb-default-save-directory "~/.emacs.d/include")
 
 (semantic-load-enable-code-helpers)
-;(semantic-load-enable-minimum-features)
+(semantic-load-enable-minimum-features)
 ;(semantic-load-enable-gaudy-code-helpers)
 ;(semantic-load-enable-excessive-code-helpers)
 ;(semantic-load-enable-semantic-debugging-helpers)

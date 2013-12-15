@@ -60,8 +60,9 @@
 ;(require 'thumbs)
 
 ;show line number
-(require 'linum)
-(global-linum-mode t)
+(when (display-graphic-p)
+     (require 'linum)
+     (global-linum-mode t))
 
 
 
@@ -70,20 +71,24 @@
 
 ;theme
 ;Note: will be overwrite by later settings
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+(when (display-graphic-p)
+    (add-to-list 'custom-theme-load-path "~/.emacs.d/utility/themes/")
+    (load-theme 'monokai t))
+
 ;(load-theme 'zenburn t)
 ;(load-theme 'Amelie)
 ;(load-theme 'tango-dark t)
 ;(load-theme 'monokai t)
-;(load "~/.emacs.d/themes/color-theme-molokai.el")
+;(load "~/.emacs.d/utility/themes/color-theme-molokai.el")
 ;(color-theme-molokai)
 ;(set-frame-parameter nil 'alpha '(100 50))
 
 
 ;in terminal
-(require 'lacarte)
-(global-set-key [?\e ?\M-x] 'lacarte-execute-command)
-(global-set-key [?\M-`] 'lacarte-execute-command)
+(when (is-in-terminal)
+    (require 'lacarte)
+    (global-set-key [?\e ?\M-x] 'lacarte-execute-command)
+    (global-set-key [?\M-`] 'lacarte-execute-command))
 
 
 ;abbrev file
