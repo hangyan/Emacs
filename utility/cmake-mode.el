@@ -34,7 +34,7 @@
 ;; cmake executable variable used to run cmake --help-command
 ;; on commands in cmake-mode
 ;;
-;; cmake-command-help Written by James Bigler 
+;; cmake-command-help Written by James Bigler
 ;;
 
 (defcustom cmake-mode-cmake-executable "cmake"
@@ -68,9 +68,9 @@ set the path with these commands:
                                        "\\|" "[ \t\r\n]"
                                        "\\)*"))
 (defconst cmake-regex-block-open
-  "^\\(IF\\|MACRO\\|FOREACH\\|ELSE\\|ELSEIF\\|WHILE\\|FUNCTION\\)$")
+  "^\\(if\\|macro\\|foreach\\|else\\|elseif\\|while\\|function\\)$")
 (defconst cmake-regex-block-close
-  "^[ \t]*\\(ENDIF\\|ENDFOREACH\\|ENDMACRO\\|ELSE\\|ELSEIF\\|ENDWHILE\\|ENDFUNCTION\\)[ \t]*(")
+  "^[ \t]*\\(endif\\|endforeach\\|endmacro\\|else\\|elseif\\|endwhile\\|endfunction\\)[ \t]*(")
 
 ;------------------------------------------------------------------------------
 
@@ -99,6 +99,7 @@ set the path with these commands:
     (setq region (buffer-substring-no-properties (point) point-start))
     (while (and (not (bobp))
                 (or (looking-at cmake-regex-blank)
+                    (cmake-line-starts-inside-string)
                     (not (and (string-match cmake-regex-indented region)
                               (= (length region) (match-end 0))))))
       (forward-line -1)
@@ -125,6 +126,7 @@ set the path with these commands:
           (beginning-of-line)
 
           (let ((point-start (point))
+                (case-fold-search t)  ;; case-insensitive
                 token)
 
             ; Search back for the last indented line.
@@ -190,11 +192,11 @@ the indentation.  Otherwise it retains the same position on the line"
   (setq save-point (point))
   (goto-char (point-min))
   (while (re-search-forward "^\\([ \t]*\\)\\(\\w+\\)\\([ \t]*(\\)" nil t)
-    (replace-match 
-     (concat 
-      (match-string 1) 
-      (downcase (match-string 2)) 
-      (match-string 3)) 
+    (replace-match
+     (concat
+      (match-string 1)
+      (downcase (match-string 2))
+      (match-string 3))
      t))
   (goto-char save-point)
   )

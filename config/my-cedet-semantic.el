@@ -6,10 +6,10 @@
 ;(global-semanticdb-minor-mode 1)
 ;(global-set-key [f5] 'speedbar)
 
-;(global-srecode-minor-mode 1)
+(global-srecode-minor-mode 1)
 (global-semantic-highlight-func-mode 1)
 (global-semantic-idle-local-symbol-highlight-mode 1)
-;(global-semantic-idle-scheduler-mode 1)
+(global-semantic-idle-scheduler-mode 1)
 ;(global-semantic-idle-completions-mode 1)
 
 (semantic-mode 1)

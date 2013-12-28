@@ -71,9 +71,10 @@
 
 ;theme
 ;Note: will be overwrite by later settings
-(when (display-graphic-p)
-    (add-to-list 'custom-theme-load-path "~/.emacs.d/utility/themes/")
-    (load-theme 'monokai t))
+;(when (display-graphic-p)
+;    (add-to-list 'custom-theme-load-path "~/.emacs.d/utility/themes/")
+;    (add-to-list 'custom-theme-load-path "~/.emacs.d/utility/themes/bubbleberry")
+;    (load-theme 'bubbleberry t))
 
 ;(load-theme 'zenburn t)
 ;(load-theme 'Amelie)
@@ -124,7 +125,15 @@
 (global-set-key (kbd "\C-x\C-b") 'buffer-menu-other-window)
 
 
+;buffer name show abs path
+(require 'uniquify)
 
+;; Disable loading of “default.el” at startup,
+;; ;; in Fedora all it does is fix window title which I rather configure differently
+(setq inhibit-default-init t)
+;;
+;; ;; SHOW FILE PATH IN FRAME TITLE
+(setq-default frame-title-format "%b (%f)")
 
 
 (set-frame-parameter nil 'alpha '(100 100))
