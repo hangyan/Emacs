@@ -4,7 +4,7 @@
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
 (add-to-list 'interpreter-mode-alist '("python" . python-mode))
 ;------------------------------------------------------------------------------
-;
+
 
 
 
@@ -14,9 +14,8 @@
 (autoload 'sgml-mode "psgml" "Major mode to edit SGML files." t)
 (autoload 'xml-mode "psgml" "Major mode to edit XML files." t)
 ;(setq auto-mode-alist (append '(("/*.\.xml$" . sgml-mode)) auto-mode-alist))
-;
-;
-;
+
+
 
 ;;php
 (autoload 'php-mode "php-mode.el" "Php mode." t)
@@ -28,33 +27,33 @@
 (setq auto-mode-alist (append '(("/*.\.jj[t]?$" . javacc-mode)) auto-mode-alist))
 
 ;The new language----EE
-(autoload 'ee-mode "ee-mode.el" "EE mode." t)
-(setq auto-mode-alist (append '(("/*.\.ee$" . ee-mode)) auto-mode-alist))
+;(autoload 'ee-mode "ee-mode.el" "EE mode." t)
+;(setq auto-mode-alist (append '(("/*.\.ee$" . ee-mode)) auto-mode-alist))
 
 ;steve
-(autoload 'steve-mode "steve-mode.el" "Steve mode." t)
-(setq auto-mode-alist (append '(("/*.\.tz$" . steve-mode)) auto-mode-alist))
+;(autoload 'steve-mode "steve-mode.el" "Steve mode." t)
+;(setq auto-mode-alist (append '(("/*.\.tz$" . steve-mode)) auto-mode-alist))
 
 
 ;asm
-(load-file "~/.emacs.d/utility/gas-mode.el")
-(require 'gas-mode)
-(load-file "~/.emacs.d/utility/asm86-mode.el")
+;(load-file "~/.emacs.d/utility/gas-mode.el")
+;(require 'gas-mode)
+;(load-file "~/.emacs.d/utility/asm86-mode.el")
 
 
 ;ant
-(add-to-list 'auto-mode-alist '("\\.ant$" . ant-mode))
+;(add-to-list 'auto-mode-alist '("\\.ant$" . ant-mode))
 
 
 
 ;antlr
-(autoload 'antlr-mode "antlr-mode" nil t)
-(setq auto-mode-alist (cons '("\\.g\\'" . antlr-mode) auto-mode-alist))
+;(autoload 'antlr-mode "antlr-mode" nil t)
+;(setq auto-mode-alist (cons '("\\.g\\'" . antlr-mode) auto-mode-alist))
 
 ;C#
-(autoload 'csharp-mode "csharp-mode" "Major mode for editing C# code." t)
-(setq auto-mode-alist
-    (append '(("\\.cs$" . csharp-mode)) auto-mode-alist))
+;(autoload 'csharp-mode "csharp-mode" "Major mode for editing C# code." t)
+;(setq auto-mode-alist
+;    (append '(("\\.cs$" . csharp-mode)) auto-mode-alist))
 
 
 
@@ -80,23 +79,23 @@
 
 
 ;brainfuck
-(require 'bf)
+;(require 'bf)
 
 
 ;pig
-(require 'pig-mode)
+;(require 'pig-mode)
 
 
 ;perl
-(add-to-list 'load-path "~/.emacs.d/pde/lisp")
-(load "pde-load")
+;(add-to-list 'load-path "~/.emacs.d/pde/lisp")
+;(load "pde-load")
 
 
 
 ;;haskell-mode
-(add-to-list 'load-path "~/.emacs.d/haskell-mode/")
-(require 'haskell-mode-autoloads)
-(add-to-list 'Info-default-directory-list "~/.emacs.d/haskell-mode/")
+;(add-to-list 'load-path "~/.emacs.d/haskell-mode/")
+;(require 'haskell-mode-autoloads)
+;(add-to-list 'Info-default-directory-list "~/.emacs.d/haskell-mode/")
 
 
 (provide 'small-lang)

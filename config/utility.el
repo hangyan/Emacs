@@ -32,8 +32,8 @@
 ;;;----------
 ;;;  git  ;;;
 ;;;---------------------------------------------
-(add-to-list 'load-path "~/.emacs.d/git-emacs")
-(require 'git-emacs)
+;(add-to-list 'load-path "~/.emacs.d/git-emacs")
+;(require 'git-emacs)
 ;;;---------------------------------------------
 
 

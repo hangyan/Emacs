@@ -35,12 +35,12 @@
 (add-hook 'semantic-init-hooks 'my-semantic-hook)
 
 
-(setq qt-base-dir "/usr/include/qt")
-(semantic-add-system-include qt-base-dir 'c++-mode)
-(add-to-list 'auto-mode-alist (cons qt-base-dir 'c++-mode))
-(add-to-list 'semantic-lex-c-preprocessor-symbol-file (concat qt-base-dir "/QtCore/qconfig.h"))
-(add-to-list 'semantic-lex-c-preprocessor-symbol-file (concat qt-base-dir "/QtCore/qconfig-dist.h"))
-(add-to-list 'semantic-lex-c-preprocessor-symbol-file (concat qt-base-dir "/QtCore/qglobal.h"))
+;(setq qt-base-dir "/usr/include/qt")
+;(semantic-add-system-include qt-base-dir 'c++-mode)
+;(add-to-list 'auto-mode-alist (cons qt-base-dir 'c++-mode))
+;(add-to-list 'semantic-lex-c-preprocessor-symbol-file (concat qt-base-dir "/QtCore/qconfig.h"))
+;(add-to-list 'semantic-lex-c-preprocessor-symbol-file (concat qt-base-dir "/QtCore/qconfig-dist.h"))
+;(add-to-list 'semantic-lex-c-preprocessor-symbol-file (concat qt-base-dir "/QtCore/qglobal.h"))
 
 (defun my-cedet-hook ()
     (local-set-key [(control tab)] 'semantic-ia-complete-symbol-menu)
