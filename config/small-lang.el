@@ -99,6 +99,10 @@
 (add-to-list 'Info-default-directory-list "~/.emacs.d/haskell-mode/")
 
 
+;;golang
+(add-to-list 'load-path "~/.emacs.d/go-mode/")
+(require 'go-mode)
+
 (provide 'small-lang)
 
 ;;

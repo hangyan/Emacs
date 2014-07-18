@@ -5,7 +5,7 @@ Emacs
 * c/c++
 * lisp
 * asm
-* java
+* java 
 * steve
 * php
 * python
@@ -22,6 +22,10 @@ Emacs
 * latex
 * shell
 * haskell
+* go
+* javacc
+* steve
+
 
 ### coding better ###
 * smart-compile
@@ -33,6 +37,7 @@ Emacs
 * templates
 * ecb
 * cmake
+* cscope
 
 ###Tools###
 * gnuplot
@@ -51,6 +56,7 @@ Emacs
 * indent-guide
 * right-margin
 * ibus-mode
+* ecb
 
 ### lib ###
 * qt
