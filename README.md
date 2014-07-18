@@ -2,9 +2,7 @@ Emacs
 =====
 
 This is my Emacs config files on Linux(branch:master) and Mac (branch:mac).
-The ".emacs" file is in [config]https://github.com/hangyan/Config,it only loads the config files in Emacs/Config/.
-
-
+The ".emacs" file is in [config](https://github.com/hangyan/Config),it only loads the config files in Emacs/Config/.
 
 ### language  support ###
 * c/c++
