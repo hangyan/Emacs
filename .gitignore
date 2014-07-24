@@ -1,1 +1,5 @@
 .git/
+include/
+semanticdb/
+ac-comphist.dat
+

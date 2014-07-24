@@ -119,6 +119,16 @@
 			              ("\\.topml$" . tuareg-mode))
 			                   auto-mode-alist))
 
+;;erlang
+(add-to-list 'load-path "~/.emacs.d/dash")
+(eval-after-load "dash" '(dash-enable-font-lock))
+(add-to-list 'load-path "~/.emacs.d/eproject")
+(add-to-list 'load-path "~/.emacs.d/s")
+(add-to-list 'load-path "~/.emacs.d/f")
+(add-to-list 'load-path "~/.emacs.d/edts")
+(setq edts-inhibit-package-check t)
+(require 'edts-start)
+
 
 
 
