@@ -102,8 +102,21 @@
 ;;golang
 (add-to-list 'load-path "~/.emacs.d/go-mode/")
 (require 'go-mode)
+(require 'go-autocomplete)
+(require 'auto-complete-config)
+(require 'go-eldoc) 
+(add-hook 'go-mode-hook 'go-eldoc-setup)
 
-(provide 'small-lang)
+(add-to-list 'load-path "~/.emacs.d/helm")
+(require 'helm-config)
+(global-set-key (kbd "C-c h") 'helm-mini)
+(helm-mode 1)
+
+(autoload 'helm-go-package "helm-go-package") 
+(eval-after-load 'go-mode
+		 '(substitute-key-definition 'go-import-add 'helm-go-package go-mode-map))
+
+
 
 
 ;;ocaml
@@ -131,6 +144,7 @@
 
 
 
+(provide 'small-lang)
 
 ;;
 ;;(add-to-list 'load-path "~/.emacs.d/jdee/lisp")
