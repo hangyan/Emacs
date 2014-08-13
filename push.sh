@@ -8,8 +8,8 @@
 push() {
 
     git add .
-    git commit -am $2
-    git push origin $1
+    git commit -am $1
+    git push origin $2
 }
 
 
@@ -27,7 +27,7 @@ main(){
         branch=$2
     fi
 
-    push $branch $comments
+    push $comments $branch 
     
 }
 
