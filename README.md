@@ -68,4 +68,4 @@ The ".emacs" file is in [config](https://github.com/hangyan/Config),it only load
 * qt
 
 ### utility ###
-* very large files
+* very large files mode
