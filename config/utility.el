@@ -134,9 +134,6 @@
 ; 2048
 ;(load-library '2048)
 
-; doubanfm
- (autoload 'douban-music "douban-music-mode" nil t)
-
 ; tpp
 (autoload 'tpp-mode "tpp-mode" "TPP mode." t)
 (add-to-list 'auto-mode-alist '("\\.tpp$" . tpp-mode))
