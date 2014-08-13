@@ -2,11 +2,11 @@
 (require 'cocci-grep)
 
 ; sr-speedbar  
-(require 'sr-speedbar)
-(global-set-key [f5] 'sr-speedbar-toggle)
-(setq sr-speedbar-right-side nil)
-(setq sr-speedbar-auto-refresh t)
-(setq sr-speedbar-skip-other-window-p t)
+;(require 'sr-speedbar)
+;(global-set-key [f5] 'sr-speedbar-toggle)
+;(setq sr-speedbar-right-side nil)
+;(setq sr-speedbar-auto-refresh t)
+;(setq sr-speedbar-skip-other-window-p t)
 
 ; yasnippet 
 (add-to-list 'load-path "~/.emacs.d/yasnippet/yasnippet")

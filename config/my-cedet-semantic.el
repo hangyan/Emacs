@@ -4,7 +4,6 @@
 ;(load-file "~/.emacs.d/cedet-1.1/common/cedet.el")
 (global-ede-mode 1)
 ;(global-semanticdb-minor-mode 1)
-;(global-set-key [f5] 'speedbar)
 
 (global-srecode-minor-mode 1)
 (global-semantic-highlight-func-mode 1)
