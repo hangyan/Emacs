@@ -16,6 +16,7 @@ push() {
 spawn git push origin $env(branch)
 expect "Username for 'https://github.com':"
 send "hangyan"
+expect eof
 EOF
 }
 
