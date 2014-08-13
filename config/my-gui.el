@@ -47,7 +47,7 @@
 (display-time-mode 1)
 (setq display-time-day-and-date t)
 (setq display-time-interval 10)
-(setq display-time-use-mail-icon t)
+;(setq display-time-use-mail-icon t)
 
 ;parentheses match
 (show-paren-mode t)
