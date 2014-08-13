@@ -2,7 +2,7 @@
 ;;some sets of the apprence
 
 ;set the window size
-(setq initial-frame-alist '((top . 0) (left . 250)(width . 110) (height . 40)))
+;(setq initial-frame-alist '((top . 0) (left . 250)(width . 110) (height . 40)))
 
 ;common copy-cut-paste
 (cua-mode t)
@@ -153,5 +153,21 @@
 (require 'smart-mode-line)
 (sml/setup)
 (sml/apply-theme 'dark)
+
+
+;multi cursors
+(require 'multiple-cursors)
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+
+;smex
+(require 'smex)
+(smex-initialize)
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+;; This is your old M-x.
+(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
 (provide 'my-gui)

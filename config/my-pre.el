@@ -33,7 +33,17 @@
   (message "Renamed to %s." new-name)))
 
 ; dash
-(add-to-list 'load-path "~/Emacs/dash")
+;(add-to-list 'load-path "~/Emacs/dash")
 (eval-after-load "dash" '(dash-enable-font-lock))
+
+;package manager
+(when (>= emacs-major-version 24)
+    (require 'package)
+      (package-initialize)
+        (add-to-list 'package-archives 
+         '("melpa" . "http://melpa.milkbox.net/packages/") t)
+  (add-to-list 'package-archives 
+         '("marmalade" . "http://marmalade-repo.org/packages/"))
+    )
 
 (provide 'my-pre)
