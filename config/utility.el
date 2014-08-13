@@ -148,6 +148,9 @@
 (setq tpp-command     "xterm -e tpp")
 (setq tpp-helpcommand "cat /usr/local/share/doc/tpp/README  | xless")
 
+; very large files
+(add-to-list 'load-path "~/.emacs.d/vlfi")
+(require 'vlf-integrate)
 
 
 (provide 'utility)

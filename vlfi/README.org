@@ -1,0 +1,179 @@
+* View Large Files
+
+Emacs minor mode that allows viewing, editing, searching and comparing
+large files in batches.  Batch size can be adjusted on the fly and
+bounds the memory that is to be used for operations on the file.  This
+way multiple large files (like terabytes or whatever) can be instantly
+and simultaneously accessed without swapping and degraded
+performance.
+
+This is development version of the GNU ELPA [[http://elpa.gnu.org/packages/vlf][VLF]] package.  Here's what
+it offers in a nutshell:
+
+- regular expression search on whole file (in constant memory
+  determined by current batch size)
+- chunk editing (save is immediate if size hasn't changed, done in
+  constant memory determined by current batch size otherwise)
+- [[http://www.emacswiki.org/emacs/OccurMode][Occur]] like indexing
+- options to jump to beginning, end or arbitrary file chunk
+- ability to jump/insert given number of batches at once
+- newly added content is acknowledged if file has changed size
+  meanwhile
+- automatic scrolling of batches
+- as it's a minor mode, font locking and functionality of the
+  respective major mode is also present
+- by batch [[http://www.emacswiki.org/emacs/EdiffMode][Ediff]] comparison
+- can be added as option to automatically open large files
+- smooth integration with [[http://www.emacswiki.org/emacs/HexlMode][hexl-mode]]
+- works with [[http://www.emacswiki.org/emacs/TrampMode][TRAMP]] so accessing network files is fine
+
+GNU Emacs 23 and 24 are supported.
+
+* Overview and tips
+
+M-x vlf PATH-TO-FILE
+
+** Unicode
+
+Emacs' Unicode support is leveraged so you'll not see bare bytes but
+characters decoded as if file is normally opened.  This holds for
+editing, search, indexing and comparison.
+
+** 32-bit GNU Emacs
+
+Regular Emacs integers are used, so if you use 32-bit Emacs without
+bignum support, *VLF* will not work with files over 512 MB (maximum
+integer value).
+
+** Memory control
+
+*vlf-batch-size* bounds the memory used for all operations.
+
+* Detail usage
+
+** Applicability
+
+To have *vlf* offered as choice when opening large files:
+
+#+BEGIN_EXAMPLE
+(require 'vlf-integrate)
+#+END_EXAMPLE
+
+You can control when *vlf-mode* is invoked or offered with the
+*vlf-application* customization option.  By default it will offer
+*VLF* when opening large files.  There are also options to never use
+it (you can still call *vlf* command explicitly); to use it without
+asking for large files or to invoke it on all files.  Here's example
+setup such that *vlf-mode* automatically launches for large files:
+
+#+BEGIN_EXAMPLE
+(custom-set-variables
+ '(vlf-application 'dont-ask))
+#+END_EXAMPLE
+
+*** Disable for specific mode
+
+To disable automatic usage of *VLF* for a major mode, add it to
+*vlf-forbidden-modes-list*.
+
+*** Disable for specific function
+
+To disable automatic usage of *VLF* for a function, for example named
+*func* defined in file *file.el*:
+
+#+BEGIN_EXAMPLE
+(vlf-disable-for-function func "file")
+#+END_EXAMPLE
+
+** Keymap
+
+All *VLF* operations are grouped under the *C-c C-v* prefix by
+default.  Here's example how to add another prefix (*C-x v*):
+
+#+BEGIN_EXAMPLE
+(eval-after-load "vlf"
+  '(define-key vlf-prefix-map "\C-xv" vlf-mode-map))
+#+END_EXAMPLE
+
+** Control batch size
+
+Use *M-x vlf-set-batch-size* to change batch size and update chunk
+immediately.
+
+*C-c C-v +* and *C-c C-v -* control current batch size by factors
+of 2.
+
+** Move around
+
+Scrolling automatically triggers move to previous or next chunk at the
+beginning or end respectively of the current one.
+
+*C-c C-v n* and *C-c C-v p* move batch by batch.  With positive
+prefix argument they move prefix number of batches.  With negative -
+append prefix number of batches.
+
+*C-c C-v SPC* displays batch starting from current point.
+
+*C-c C-v [* and *C-c C-v ]* take you to the beginning and end of file
+respectively.
+
+*C-c C-v j* jumps to given chunk.  To see where you are in file and
+how many chunks there are (using the current batch size), look at the
+parenthesized part of the buffer name, batch size is also indicated at
+the end.
+
+** Follow point
+
+Continuous chunk recenter around point in current buffer can be
+toggled with *C-c C-v f*.
+
+** Search whole file
+
+*C-c C-v s* and *C-c C-v r* search forward and backward respectively
+over the whole file.  This is done batch by batch so if you have
+really huge file - you'd better set somewhat bigger batch size
+beforehand.
+
+** Occur over whole file
+
+*C-c C-v o* builds index for given regular expression just like
+*M-x occur*.  It does so batch by batch over the whole file.  Note
+that even if you prematurely stop it with *C-g*, it will still show
+index of what's found so far.
+
+** Jump to line
+
+*C-c C-v l* jumps to given line in file.  This is done by searching
+from the beginning, so again the bigger current batch size, probably
+the quicker.  With negative argument, lines are counted from the end
+of file.
+
+** Edit and save
+
+If editing doesn't change size of the chunk, only this chunk is saved.
+Otherwise the remaining part of the file is adjusted batch by batch,
+so again you'd better have bigger current batch size.
+
+** By batch Ediff
+
+Use *M-x vlf-ediff-files* and *M-x vlf-ediff-buffers* to compare
+files/buffers batch by batch (batch size is queried in case of files
+or taken from the first buffer in case of buffers).  Moving after the
+last difference in current chunk searches for following one with
+difference.  The other way around if looking for difference before the
+first one.
+
+* Extending
+
+** Move hooks
+
+A couple of hooks are run whenever updating chunk:
+*vlf-before-chunk-update* and *vlf-after-chunk-update*.
+
+** Batch move hooks
+
+Some operations may trigger multiple chunk moves.  There are a couple
+of hooks that run in such cases: *vlf-before-batch-functions* and
+*vlf-after-batch-functions*.  They are passed one argument which
+specifies type of operation that runs.  Possible values are the
+symbols: *write*, *ediff*, *occur*, *search* and *goto-line*.
