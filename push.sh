@@ -9,7 +9,14 @@ push() {
 
     git add .
     git commit -am $1
-    git push origin $2
+
+    branch=$2 && export branch
+
+    expect <<'EOF'
+spwan "git push origin $env(branch)"
+expect "Username for 'https://github.com':"
+send "hangyan"
+EOF
 }
 
 
