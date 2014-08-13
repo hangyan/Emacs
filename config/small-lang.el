@@ -137,7 +137,9 @@
 (setq edts-inhibit-package-check t)
 (require 'edts-start)
 
-
+;; sql upcase.
+(add-hook 'sql-mode-hook 'sqlup-mode)
+(add-hook 'sql-interactive-mode-hook 'sqlup-mode)
 
 (provide 'small-lang)
 
