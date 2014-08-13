@@ -13,7 +13,7 @@ push() {
     branch=$2 && export branch
 
     expect <<'EOF'
-spwan "git push origin $env(branch)"
+spawn "git push origin $env(branch)"
 expect "Username for 'https://github.com':"
 send "hangyan"
 EOF
