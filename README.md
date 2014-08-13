@@ -6,9 +6,9 @@ The ".emacs" file is in [config](https://github.com/hangyan/Config),it only load
 
 ### language  support ###
 * c/c++
-* lisp
+* lisp (slime)
 * asm
-* java 
+* java (jdee)
 * steve
 * php
 * python
@@ -25,10 +25,11 @@ The ".emacs" file is in [config](https://github.com/hangyan/Config),it only load
 * latex
 * shell
 * haskell
-* go
+* golang
 * javacc
 * steve
 * ocaml
+* erlang
 
 ### coding better ###
 * smart-compile
@@ -56,10 +57,15 @@ The ".emacs" file is in [config](https://github.com/hangyan/Config),it only load
 
 ### gui ###
 * sr-speedbar
+* NeoTree
 * indent-guide
 * right-margin
 * ibus-mode
 * ecb
+* Recent Files
 
 ### lib ###
 * qt
+
+### utility ###
+* very large files
