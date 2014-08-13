@@ -51,6 +51,7 @@ The ".emacs" file is in [config](https://github.com/hangyan/Config),it only load
 
 ### enlightment ###
 * emms
+* douban.fm
 
 ### life ###
 * ledger
@@ -68,4 +69,4 @@ The ".emacs" file is in [config](https://github.com/hangyan/Config),it only load
 * qt
 
 ### utility ###
-* very large files mode
+* Very large files mode
