@@ -28,11 +28,6 @@
 
 
 ; tramp
-;for edit remote files
-;(add-to-list 'load-path "~/.emacs.d/tramp/lisp")
-;(add-to-list 'Info-default-directory-list "~/.emacs.d/tramp/info")
-;(require 'tramp)
-
 (setq tramp-default-method "ssh")
 
 
