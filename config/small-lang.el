@@ -1,5 +1,5 @@
 ;python
-(add-to-list 'load-path "~/.emacs.d/python-mode")
+(add-to-list 'load-path "~/Emacs/python-mode")
 (autoload 'python-mode "python-mode" "Python Mode." t)
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
 (add-to-list 'interpreter-mode-alist '("python" . python-mode))
@@ -10,7 +10,7 @@
 
 ;xml
 (add-to-list 'load-path "/usr/local/share/emacs/site-lisp")
-;(add-to-list 'load-path "~/.emacs.d/pgxml")
+;(add-to-list 'load-path "~/Emacs/pgxml")
 (autoload 'sgml-mode "psgml" "Major mode to edit SGML files." t)
 (autoload 'xml-mode "psgml" "Major mode to edit XML files." t)
 ;(setq auto-mode-alist (append '(("/*.\.xml$" . sgml-mode)) auto-mode-alist))
@@ -36,9 +36,9 @@
 
 
 ;asm
-;(load-file "~/.emacs.d/utility/gas-mode.el")
+;(load-file "~/Emacs/utility/gas-mode.el")
 ;(require 'gas-mode)
-;(load-file "~/.emacs.d/utility/asm86-mode.el")
+;(load-file "~/Emacs/utility/asm86-mode.el")
 
 
 ;ant
@@ -66,7 +66,7 @@
 
 
 ;js
-(add-to-list 'load-path "~/.emacs.d/elpa/js3-mode")
+(add-to-list 'load-path "~/Emacs/elpa/js3-mode")
 (autoload 'js3-mode "js3" nil  t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js3-mode))
 
@@ -81,19 +81,19 @@
 
 
 ;perl
-;(add-to-list 'load-path "~/.emacs.d/pde/lisp")
+;(add-to-list 'load-path "~/Emacs/pde/lisp")
 ;(load "pde-load")
 
 
 
 ;;haskell-mode
-;(add-to-list 'load-path "~/.emacs.d/haskell-mode/")
+;(add-to-list 'load-path "~/Emacs/haskell-mode/")
 ;(require 'haskell-mode-autoloads)
-;(add-to-list 'Info-default-directory-list "~/.emacs.d/haskell-mode/")
+;(add-to-list 'Info-default-directory-list "~/Emacs/haskell-mode/")
 
 
 ;;golang
-(add-to-list 'load-path "~/.emacs.d/go-mode/")
+(add-to-list 'load-path "~/Emacs/go-mode/")
 (require 'go-mode)
 (require 'go-autocomplete)
 (require 'auto-complete-config)
@@ -105,7 +105,7 @@
 
 
 ;;ocaml
-(add-to-list 'load-path "~/.emacs.d/tuareg")
+(add-to-list 'load-path "~/Emacs/tuareg")
 (autoload 'tuareg-mode "tuareg" "Major mode for editing Caml code" t)
 (autoload 'camldebug "camldebug" "Run the Caml debugger" t)
 (autoload 'tuareg-imenu-set-imenu "tuareg-imenu" 
@@ -118,10 +118,10 @@
 			                   auto-mode-alist))
 
 ;;erlang
-(add-to-list 'load-path "~/.emacs.d/eproject")
-(add-to-list 'load-path "~/.emacs.d/s")
-(add-to-list 'load-path "~/.emacs.d/f")
-(add-to-list 'load-path "~/.emacs.d/edts")
+(add-to-list 'load-path "~/Emacs/eproject")
+(add-to-list 'load-path "~/Emacs/s")
+(add-to-list 'load-path "~/Emacs/f")
+(add-to-list 'load-path "~/Emacs/edts")
 (setq edts-inhibit-package-check t)
 (if (executable-find "elc")
     (require 'edts-start))
@@ -133,7 +133,7 @@
 (provide 'small-lang)
 
 ;;
-;;(add-to-list 'load-path "~/.emacs.d/jdee/lisp")
+;;(add-to-list 'load-path "~/Emacs/jdee/lisp")
 ;;(load "jde")
 ;;(autoload 'jde-mode "jde" "JDE mode" t)
 ;;(setq auto-mode-alist

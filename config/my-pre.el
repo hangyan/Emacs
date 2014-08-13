@@ -33,7 +33,7 @@
   (message "Renamed to %s." new-name)))
 
 ; dash
-(add-to-list 'load-path "~/.emacs.d/dash")
+(add-to-list 'load-path "~/Emacs/dash")
 (eval-after-load "dash" '(dash-enable-font-lock))
 
 (provide 'my-pre)

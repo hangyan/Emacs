@@ -9,13 +9,13 @@
 ;(setq sr-speedbar-skip-other-window-p t)
 
 ; yasnippet 
-(add-to-list 'load-path "~/.emacs.d/yasnippet/yasnippet")
+(add-to-list 'load-path "~/Emacs/yasnippet/yasnippet")
 (require 'yasnippet)
 (yas/initialize)
-(yas/load-directory "~/.emacs.d/yasnippet/yasnippet/snippets")
+(yas/load-directory "~/Emacs/yasnippet/yasnippet/snippets")
 
 ; git
-(add-to-list 'load-path "~/.emacs.d/git-emacs")
+(add-to-list 'load-path "~/Emacs/git-emacs")
 (require 'git-emacs)
 
 ; gnuplot
@@ -77,16 +77,16 @@
 (add-to-list 'auto-mode-alist '("/mutt" . mail-mode))
 
 ; tiny-tools
-(add-to-list 'load-path "~/emacs.d/tiny-tools/lisp/tiny")
-(add-to-list 'load-path "~/emacs.d/tiny-tools/lisp/other")
+(add-to-list 'load-path "~Emacs/tiny-tools/lisp/tiny")
+(add-to-list 'load-path "~Emacs/tiny-tools/lisp/other")
 
 ; template  
 (require 'template)
 (template-initialize)
 
 ; ecb 
-(add-to-list 'load-path "~/.emacs.d/ecb/")
-(load-file "~/.emacs.d/ecb/ecb.el")
+(add-to-list 'load-path "~/Emacs/ecb/")
+(load-file "~/Emacs/ecb/ecb.el")
 (require 'ecb)
 
 
@@ -144,7 +144,7 @@
 (setq tpp-helpcommand "cat /usr/local/share/doc/tpp/README  | xless")
 
 ; very large files
-(add-to-list 'load-path "~/.emacs.d/vlfi")
+(add-to-list 'load-path "~/Emacs/vlfi")
 (require 'vlf-integrate)
 
 

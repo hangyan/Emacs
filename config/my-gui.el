@@ -72,15 +72,15 @@
 ;theme
 ;Note: will be overwrite by later settings
 (when (display-graphic-p)
-    (add-to-list 'custom-theme-load-path "~/.emacs.d/utility/themes/"))
-;    (add-to-list 'custom-theme-load-path "~/.emacs.d/utility/themes/bubbleberry")
+    (add-to-list 'custom-theme-load-path "~/Emacs/utility/themes/"))
+;    (add-to-list 'custom-theme-load-path "~/Emacs/utility/themes/bubbleberry")
 ;    (load-theme 'bubbleberry t))
 
 ;(load-theme 'zenburn t)
 ;(load-theme 'Amelie)
 ;(load-theme 'tango-dark t)
 (load-theme 'monokai t)
-;(load "~/.emacs.d/utility/themes/color-theme-molokai.el")
+;(load "~/Emacs/utility/themes/color-theme-molokai.el")
 ;(color-theme-molokai)
 ;(set-frame-parameter nil 'alpha '(100 50))
 
@@ -93,7 +93,7 @@
 
 
 ;abbrev file
-(setq abbrev-file-name "~/.emacs.d/abbrev_defs")
+(setq abbrev-file-name "~/Emacs/abbrev_defs")
 (setq save-abbrevs t)
 (quietly-read-abbrev-file)
 (setq default-abbrev-mode t)
@@ -149,7 +149,7 @@
 (global-set-key [f5] 'neotree-toggle)
 
 ; modeline
-(add-to-list 'load-path "~/.emacs.d/smart-mode-line")
+(add-to-list 'load-path "~/Emacs/smart-mode-line")
 (require 'smart-mode-line)
 (sml/setup)
 (sml/apply-theme 'dark)

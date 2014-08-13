@@ -5,11 +5,11 @@
 ;;;--------------------
 ;;;  auto-complete  ;;;
 ;;;----------------------------------------------------------------------------
-(add-to-list 'load-path "~/.emacs.d/auto-complete")
+(add-to-list 'load-path "~/Emacs/auto-complete")
 (require 'auto-complete-config)
 (require 'auto-complete)
 (global-auto-complete-mode t)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/auto-complete/ac-dict")
+(add-to-list 'ac-dictionary-directories "~/Emacs/auto-complete/ac-dict")
 (ac-config-default)
 ;;;----------------------------------------------------------------------------
 
