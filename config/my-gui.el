@@ -148,4 +148,10 @@
 (require 'neotree)
 (global-set-key [f5] 'neotree-toggle)
 
+; modeline
+(add-to-list 'load-path "~/.emacs.d/smart-mode-line")
+(require 'smart-mode-line)
+(sml/setup)
+(sml/apply-theme 'dark)
+
 (provide 'my-gui)

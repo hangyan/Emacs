@@ -102,14 +102,6 @@
 (require 'go-eldoc) 
 (add-hook 'go-mode-hook 'go-eldoc-setup)
 
-(add-to-list 'load-path "~/.emacs.d/helm")
-(require 'helm-config)
-(global-set-key (kbd "C-c h") 'helm-mini)
-(helm-mode 1)
-
-(autoload 'helm-go-package "helm-go-package") 
-(eval-after-load 'go-mode
-		 '(substitute-key-definition 'go-import-add 'helm-go-package go-mode-map))
 
 
 
@@ -128,8 +120,6 @@
 			                   auto-mode-alist))
 
 ;;erlang
-(add-to-list 'load-path "~/.emacs.d/dash")
-(eval-after-load "dash" '(dash-enable-font-lock))
 (add-to-list 'load-path "~/.emacs.d/eproject")
 (add-to-list 'load-path "~/.emacs.d/s")
 (add-to-list 'load-path "~/.emacs.d/f")
