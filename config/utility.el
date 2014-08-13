@@ -133,5 +133,9 @@
 (add-to-list 'load-path "~/Emacs/vlfi")
 (require 'vlf-integrate)
 
+; calendar
+(add-to-list 'load-path "~/Emacs/calfw")
+(require 'calfw)
+
 
 (provide 'utility)
