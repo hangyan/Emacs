@@ -50,11 +50,14 @@
 ;(autoload 'antlr-mode "antlr-mode" nil t)
 ;(setq auto-mode-alist (cons '("\\.g\\'" . antlr-mode) auto-mode-alist))
 
+<<<<<<< HEAD
 ;C#
 ;(autoload 'csharp-mode "csharp-mode" "Major mode for editing C# code." t)
 ;(setq auto-mode-alist
 ;    (append '(("\\.cs$" . csharp-mode)) auto-mode-alist))
 
+=======
+>>>>>>> bb81fb50ac01c3bd8387e7ef3e7cf96bfbbc343e
 
 
 ;markdown
@@ -97,6 +100,43 @@
 ;(require 'haskell-mode-autoloads)
 ;(add-to-list 'Info-default-directory-list "~/.emacs.d/haskell-mode/")
 
+
+;;golang
+(add-to-list 'load-path "~/.emacs.d/go-mode/")
+(require 'go-mode)
+(require 'go-autocomplete)
+(require 'auto-complete-config)
+(require 'go-eldoc) 
+(add-hook 'go-mode-hook 'go-eldoc-setup)
+
+
+
+
+
+;;ocaml
+(add-to-list 'load-path "~/.emacs.d/tuareg")
+(autoload 'tuareg-mode "tuareg" "Major mode for editing Caml code" t)
+(autoload 'camldebug "camldebug" "Run the Caml debugger" t)
+(autoload 'tuareg-imenu-set-imenu "tuareg-imenu" 
+	  "Configuration of imenu for tuareg" t)
+
+(add-hook 'tuareg-mode-hook 'tuareg-imenu-set-imenu)
+   (setq auto-mode-alist 
+	         (append '(("\\.ml[ily]?$" . tuareg-mode)
+			              ("\\.topml$" . tuareg-mode))
+			                   auto-mode-alist))
+
+;;erlang
+(add-to-list 'load-path "~/.emacs.d/eproject")
+(add-to-list 'load-path "~/.emacs.d/s")
+(add-to-list 'load-path "~/.emacs.d/f")
+(add-to-list 'load-path "~/.emacs.d/edts")
+(setq edts-inhibit-package-check t)
+(require 'edts-start)
+
+;; sql upcase.
+(add-hook 'sql-mode-hook 'sqlup-mode)
+(add-hook 'sql-interactive-mode-hook 'sqlup-mode)
 
 (provide 'small-lang)
 

@@ -47,7 +47,7 @@
 (display-time-mode 1)
 (setq display-time-day-and-date t)
 (setq display-time-interval 10)
-(setq display-time-use-mail-icon t)
+;(setq display-time-use-mail-icon t)
 
 ;parentheses match
 (show-paren-mode t)
@@ -137,5 +137,21 @@
 
 
 (set-frame-parameter nil 'alpha '(100 100))
+
+; recent files
+(require 'recentf)
+(recentf-mode 1)
+(setq recentf-max-menu-items 25)
+(global-set-key "\C-x\ \C-r" 'recentf-open-files)
+
+; neotree 
+(require 'neotree)
+(global-set-key [f5] 'neotree-toggle)
+
+; modeline
+(add-to-list 'load-path "~/.emacs.d/smart-mode-line")
+(require 'smart-mode-line)
+(sml/setup)
+(sml/apply-theme 'dark)
 
 (provide 'my-gui)

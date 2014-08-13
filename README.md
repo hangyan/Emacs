@@ -1,11 +1,14 @@
 Emacs
 =====
 
+This is my Emacs config files on Linux(branch:master) and Mac (branch:mac).
+The ".emacs" file is in [config](https://github.com/hangyan/Config),it only loads the config files in Emacs/Config/.
+
 ### language  support ###
 * c/c++
-* lisp
+* lisp (slime)
 * asm
-* java
+* java (jdee)
 * steve
 * php
 * python
@@ -22,6 +25,11 @@ Emacs
 * latex
 * shell
 * haskell
+* golang
+* javacc
+* steve
+* ocaml
+* erlang
 
 ### coding better ###
 * smart-compile
@@ -33,6 +41,7 @@ Emacs
 * templates
 * ecb
 * cmake
+* cscope
 
 ###Tools###
 * gnuplot
@@ -42,15 +51,22 @@ Emacs
 
 ### enlightment ###
 * emms
+* douban.fm
 
 ### life ###
 * ledger
 
 ### gui ###
 * sr-speedbar
+* NeoTree
 * indent-guide
 * right-margin
 * ibus-mode
+* ecb
+* Recent Files
 
 ### lib ###
 * qt
+
+### utility ###
+* Very large files mode
