@@ -71,15 +71,15 @@
 
 ;theme
 ;Note: will be overwrite by later settings
-;(when (display-graphic-p)
-;    (add-to-list 'custom-theme-load-path "~/.emacs.d/utility/themes/")
+(when (display-graphic-p)
+    (add-to-list 'custom-theme-load-path "~/.emacs.d/utility/themes/"))
 ;    (add-to-list 'custom-theme-load-path "~/.emacs.d/utility/themes/bubbleberry")
 ;    (load-theme 'bubbleberry t))
 
 ;(load-theme 'zenburn t)
 ;(load-theme 'Amelie)
 ;(load-theme 'tango-dark t)
-;(load-theme 'monokai t)
+(load-theme 'monokai t)
 ;(load "~/.emacs.d/utility/themes/color-theme-molokai.el")
 ;(color-theme-molokai)
 ;(set-frame-parameter nil 'alpha '(100 50))

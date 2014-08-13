@@ -14,20 +14,9 @@
 (yas/initialize)
 (yas/load-directory "~/.emacs.d/yasnippet/yasnippet/snippets")
 
-<<<<<<< HEAD
-
-;;;----------
-;;;  git  ;;;
-;;;---------------------------------------------
-;(add-to-list 'load-path "~/.emacs.d/git-emacs")
-;(require 'git-emacs)
-;;;---------------------------------------------
-
-=======
 ; git
 (add-to-list 'load-path "~/.emacs.d/git-emacs")
 (require 'git-emacs)
->>>>>>> bb81fb50ac01c3bd8387e7ef3e7cf96bfbbc343e
 
 ; gnuplot
 (autoload 'gnuplot-mode "gnuplot" "gnuplot major mode" t)

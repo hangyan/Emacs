@@ -50,15 +50,6 @@
 ;(autoload 'antlr-mode "antlr-mode" nil t)
 ;(setq auto-mode-alist (cons '("\\.g\\'" . antlr-mode) auto-mode-alist))
 
-<<<<<<< HEAD
-;C#
-;(autoload 'csharp-mode "csharp-mode" "Major mode for editing C# code." t)
-;(setq auto-mode-alist
-;    (append '(("\\.cs$" . csharp-mode)) auto-mode-alist))
-
-=======
->>>>>>> bb81fb50ac01c3bd8387e7ef3e7cf96bfbbc343e
-
 
 ;markdown
 (autoload 'markdown-mode "markdown-mode.el"
@@ -132,7 +123,8 @@
 (add-to-list 'load-path "~/.emacs.d/f")
 (add-to-list 'load-path "~/.emacs.d/edts")
 (setq edts-inhibit-package-check t)
-(require 'edts-start)
+(if (executable-find "elc")
+    (require 'edts-start))
 
 ;; sql upcase.
 (add-hook 'sql-mode-hook 'sqlup-mode)
