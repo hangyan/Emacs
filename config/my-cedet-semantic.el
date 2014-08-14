@@ -71,9 +71,18 @@
 
 ;scope
 ;load in c/c++ mode
+
+
+
 (add-hook 'c-mode-common-hook
 	    '(lambda ()
 	    (require 'xcscope)))
+
+
+(setq exec-path (append '("~/Emacs/bin") 
+                          exec-path))
+
+
 
 
 ;

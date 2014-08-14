@@ -25,3 +25,6 @@ ls
 ls
 rm -rf epslatex.pg 
 ls
+ls
+ls
+go build

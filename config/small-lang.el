@@ -105,8 +105,11 @@
 (require 'go-eldoc) 
 (add-hook 'go-mode-hook 'go-eldoc-setup)
 
+(if (eq system-type 'darwin)
+    (setenv "GOPATH" "/Users/yayu/Golang")
+  (setenv "GOPATH" "/home/yuyan/Golang"))
 
-(setenv "GOPATH" "~/Golang")
+
 (setq goflymake-path "~/Golang/src/github.com/dougm/goflymake")
 (if (file-exists-p goflymake-path)
     (progn 

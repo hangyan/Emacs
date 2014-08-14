@@ -175,7 +175,17 @@
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
 ; autopair
+;(electric-pair-mode)
 (require 'autopair)
-(autopair-global-mode)
+(autopair-global-mode 1)
+(setq autopair-autowrap t)
+
+
+
+; autoview
+(add-hook 'doc-view-mode-hook
+	    (lambda ()
+	          (linum-mode -1)
+		    ))
 
 (provide 'my-gui)
