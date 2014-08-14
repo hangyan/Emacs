@@ -6,7 +6,12 @@
 ;------------------------------------------------------------------------------
 
 
+;html5
+(add-to-list 'load-path "~/Emacs/html5")
+(eval-after-load "rng-loc"
+  '(add-to-list 'rng-schema-locating-files "~/Emacs/html5/schemas.xml"))
 
+(require 'whattf-dt)
 
 ;xml
 (add-to-list 'load-path "/usr/local/share/emacs/site-lisp")
@@ -36,19 +41,19 @@
 
 
 ;asm
-;(load-file "~/Emacs/utility/gas-mode.el")
-;(require 'gas-mode)
-;(load-file "~/Emacs/utility/asm86-mode.el")
+(load-file "~/Emacs/utility/gas-mode.el")
+(require 'gas-mode)
+(load-file "~/Emacs/utility/asm86-mode.el")
 
 
 ;ant
-;(add-to-list 'auto-mode-alist '("\\.ant$" . ant-mode))
+(add-to-list 'auto-mode-alist '("\\.ant$" . ant-mode))
 
 
 
 ;antlr
-;(autoload 'antlr-mode "antlr-mode" nil t)
-;(setq auto-mode-alist (cons '("\\.g\\'" . antlr-mode) auto-mode-alist))
+(autoload 'antlr-mode "antlr-mode" nil t)
+(setq auto-mode-alist (cons '("\\.g\\'" . antlr-mode) auto-mode-alist))
 
 
 ;markdown
@@ -73,23 +78,23 @@
 
 
 ;brainfuck
-;(require 'bf)
+(require 'bf)
 
 
 ;pig
-;(require 'pig-mode)
+(require 'pig-mode)
 
 
 ;perl
-;(add-to-list 'load-path "~/Emacs/pde/lisp")
-;(load "pde-load")
+(add-to-list 'load-path "~/Emacs/pde/lisp")
+(load "pde-load")
 
 
 
 ;;haskell-mode
-;(add-to-list 'load-path "~/Emacs/haskell-mode/")
-;(require 'haskell-mode-autoloads)
-;(add-to-list 'Info-default-directory-list "~/Emacs/haskell-mode/")
+(add-to-list 'load-path "~/Emacs/haskell-mode/")
+(require 'haskell-mode-autoloads)
+(add-to-list 'Info-default-directory-list "~/Emacs/haskell-mode/")
 
 
 ;;golang
@@ -99,6 +104,14 @@
 (require 'auto-complete-config)
 (require 'go-eldoc) 
 (add-hook 'go-mode-hook 'go-eldoc-setup)
+
+
+(setenv "GOPATH" "~/Golang")
+(setq goflymake-path "~/Golang/src/github.com/dougm/goflymake")
+(if (file-exists-p goflymake-path)
+    (progn 
+      (add-to-list 'load-path goflymake-path)
+      (require 'go-flymake)))
 
 
 
@@ -132,12 +145,6 @@
 
 (provide 'small-lang)
 
-;;
-;;(add-to-list 'load-path "~/Emacs/jdee/lisp")
-;;(load "jde")
-;;(autoload 'jde-mode "jde" "JDE mode" t)
-;;(setq auto-mode-alist
-;;    (append '(("\\.java\\'" . jde-mode)) auto-mode-alist))
 
 
 

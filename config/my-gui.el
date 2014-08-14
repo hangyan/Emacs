@@ -53,8 +53,16 @@
 (show-paren-mode t)
 (setq show-paren-style 'parentheses)
 
+(require 'highlight-parentheses)
 
-;open image
+(define-globalized-minor-mode global-highlight-parentheses-mode
+  highlight-parentheses-mode
+  (lambda ()
+    (highlight-parentheses-mode t)))
+(global-highlight-parentheses-mode t)
+
+
+;Open image
 (auto-image-file-mode)
 (setq w3m-default-display-inline-images t)
 ;(require 'thumbs)
@@ -74,12 +82,7 @@
 (when (display-graphic-p)
     (add-to-list 'custom-theme-load-path "~/Emacs/utility/themes/"))
 ;    (add-to-list 'custom-theme-load-path "~/Emacs/utility/themes/bubbleberry")
-;    (load-theme 'bubbleberry t))
 
-;(load-theme 'zenburn t)
-;(load-theme 'Amelie)
-;(load-theme 'tango-dark t)
-;(load-theme 'monokai t)
 (load-theme 'noctilux t)
 ;(load "~/Emacs/utility/themes/color-theme-molokai.el")
 ;(color-theme-molokai)
@@ -170,5 +173,9 @@
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 ;; This is your old M-x.
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+
+; autopair
+(require 'autopair)
+(autopair-global-mode)
 
 (provide 'my-gui)
