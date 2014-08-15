@@ -28,6 +28,9 @@
 ;scroll bar at right 
 (customize-set-variable 'scroll-bar-mode 'right)
 
+;cursor
+(smart-cursor-color-mode 1)
+
 (setq default-major-mode 'text-mode)
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 
@@ -174,18 +177,21 @@
 ;; This is your old M-x.
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
-; autopair
-;(electric-pair-mode)
-(require 'autopair)
-(autopair-global-mode 1)
-(setq autopair-autowrap t)
-
-
 
 ; autoview
 (add-hook 'doc-view-mode-hook
 	    (lambda ()
 	          (linum-mode -1)
 		    ))
+
+
+
+; autopair
+(setq skeleton-pair t)
+(global-set-key "(" 'skeleton-pair-insert-maybe)
+(global-set-key "[" 'skeleton-pair-insert-maybe)
+(global-set-key "{" 'skeleton-pair-insert-maybe)
+
+
 
 (provide 'my-gui)

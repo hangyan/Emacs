@@ -8,5 +8,8 @@
 ; doubanfm
 (autoload 'douban-music "douban-music-mode" nil t)
 
+; image
+(autoload 'thumbs "thumbs" "Preview images in a directory." t)
+
 
 (provide 'my-mime)

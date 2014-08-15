@@ -98,6 +98,14 @@
 
 
 ;;golang
+
+(if (eq system-type 'darwin)
+    (progn
+      (setenv "GOPATH" "/Users/yayu/Golang")
+      (setq exec-path (append '("/Users/yayu/Golang/bin") exec-path)))      
+  (setenv "GOPATH" "/home/yuyan/Golang"))
+
+
 (add-to-list 'load-path "~/Emacs/go-mode/")
 (require 'go-mode)
 (require 'go-autocomplete)
@@ -105,10 +113,8 @@
 (require 'go-eldoc) 
 (add-hook 'go-mode-hook 'go-eldoc-setup)
 
-(if (eq system-type 'darwin)
-    (setenv "GOPATH" "/Users/yayu/Golang")
-  (setenv "GOPATH" "/home/yuyan/Golang"))
 
+(require 'golint)
 
 (setq goflymake-path "~/Golang/src/github.com/dougm/goflymake")
 (if (file-exists-p goflymake-path)

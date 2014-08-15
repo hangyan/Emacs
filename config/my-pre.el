@@ -1,9 +1,8 @@
+;;; ----------------------------------------------------------------------------
 (defun is-in-terminal()
       (not (display-graphic-p)))
-      
-      
 
-      
+;;; ----------------------------------------------------------------------------
 (defun rename-file-and-buffer (new-name)
   "Renames both current buffer and file it's visiting to NEW-NAME."
   (interactive
@@ -30,23 +29,25 @@
         (save-buffer)
       ;; Clear buffer-modified flag caused by set-visited-file-name
       (set-buffer-modified-p nil))
-  (message "Renamed to %s." new-name)))
+	(message "Renamed to %s." new-name)))
 
+
+;;; ----------------------------------------------------------------------------
 ; dash
 ;(add-to-list 'load-path "~/Emacs/dash")
 (eval-after-load "dash" '(dash-enable-font-lock))
 
+;;; ----------------------------------------------------------------------------
 ;package manager
-(when (>= emacs-major-version 24)
-    (require 'package)
-      (package-initialize)
-        (add-to-list 'package-archives 
-         '("melpa" . "http://melpa.milkbox.net/packages/") t)
-  (add-to-list 'package-archives 
-         '("marmalade" . "http://marmalade-repo.org/packages/"))
-    )
+(require 'package)
+(add-to-list 'package-archives 
+             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(add-to-list 'package-archives 
+             '("marmalade" . "http://marmalade-repo.org/packages/"))
+(package-initialize)
 
 
+;;; ----------------------------------------------------------------------------
 ; for view large pdfs
 (defun my-find-file-check-make-large-file-read-only-hook ()
     "If a file is over a given size, make the buffer read only."
@@ -55,6 +56,7 @@
 	        (buffer-disable-undo)))
 
 (add-hook 'find-file-hooks 'my-find-file-check-make-large-file-read-only-hook)
+
 
 
 (provide 'my-pre)
