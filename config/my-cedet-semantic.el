@@ -82,10 +82,5 @@
 (setq exec-path (append '("~/Emacs/bin") 
                           exec-path))
 
-
-
-
-;
-;
 (provide 'my-cedet-semantic)
 

@@ -1,58 +1,76 @@
+;;; some sets of the apprence
 
-;;some sets of the apprence
-
-;set the window size
+;-------------------------------------------------------------------------------
+; set the window size / alpha
 ;(setq initial-frame-alist '((top . 0) (left . 250)(width . 110) (height . 40)))
-
-;common copy-cut-paste
+(set-frame-parameter nil 'alpha '(100 100))
+;-------------------------------------------------------------------------------
+; common copy-cut-paste
 (cua-mode t)
 (setq cua-auto-tabify-rectangles nil)
 (transient-mark-mode 1)
 (setq cua-keep-region-after-copy t)
-
-;remove the startup infor
+;-------------------------------------------------------------------------------
+; remove the startup infor
 (setq initial-scratch-message nil)
 (setq inhibit-splash-message t)
 (setq inhibit-startup-message t)
-
-;remove the tool bar
+;-------------------------------------------------------------------------------
+; tool-bar 
 (if window-system
     (tool-bar-mode 0))
+;-------------------------------------------------------------------------------
+; y-n replace yes-or-no
+(fset 'yes-or-no-p 'y-or-n-p)
+;-------------------------------------------------------------------------------
+; scroll bar 
 (if window-system
     (scroll-bar-mode 0))
-(setq-default cursor-type 'bar)
-
-;y-n replace yes-or-no
-(fset 'yes-or-no-p 'y-or-n-p)
-
-;scroll bar at right 
 (customize-set-variable 'scroll-bar-mode 'right)
-
-;cursor
+;-------------------------------------------------------------------------------
+; Cursor
+(setq-default cursor-type 'bar)
 (smart-cursor-color-mode 1)
 
+
+; Multi cursors
+(require 'multiple-cursors)
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+;-------------------------------------------------------------------------------
+; Major mode 
 (setq default-major-mode 'text-mode)
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
-
-;indent
-(setq-default indent-tabs-mode nil)
+;-------------------------------------------------------------------------------
+; Indent tab
 (setq-default tab-width 4)
 (setq indent-line-funtion 'insert-tab)
 
-;backup
-(setq auto-save-default nil)
-(setq-default make-backup-files nil)
-
-;end with newline 
 (setq require-final-newline t)
 
-;show time 
+(setq-default indent-tabs-mode t)
+(add-hook 'lisp-mode-hook '(lambda ()
+		    (local-set-key (kbd "RET") 'newline-and-indent)))
+
+(define-key global-map (kbd "RET") 'newline-and-indent)
+;-------------------------------------------------------------------------------
+; Backup
+(setq auto-save-default nil)
+(setq-default make-backup-files nil)
+;-------------------------------------------------------------------------------
+; Mode Line
 (display-time-mode 1)
 (setq display-time-day-and-date t)
 (setq display-time-interval 10)
-;(setq display-time-use-mail-icon t)
 
-;parentheses match
+(add-to-list 'load-path "~/Emacs/smart-mode-line")
+(require 'smart-mode-line)
+(sml/setup)
+(sml/apply-theme 'dark)
+;-------------------------------------------------------------------------------
+; Parentheses 
 (show-paren-mode t)
 (setq show-paren-style 'parentheses)
 
@@ -64,24 +82,18 @@
     (highlight-parentheses-mode t)))
 (global-highlight-parentheses-mode t)
 
-
-;Open image
-(auto-image-file-mode)
-(setq w3m-default-display-inline-images t)
-;(require 'thumbs)
-
-;show line number
+(add-to-list 'load-path "~/Emacs/smartparens")
+(require 'smartparens-config)
+(smartparens-global-mode 1)
+;-------------------------------------------------------------------------------
+; Line/column number
 (when (display-graphic-p)
      (require 'linum)
      (global-linum-mode t))
 
-
-
-
 (setq column-number-mode t)
-
-;theme
-;Note: will be overwrite by later settings
+;-------------------------------------------------------------------------------
+; Theme
 (when (display-graphic-p)
     (add-to-list 'custom-theme-load-path "~/Emacs/utility/themes/"))
 ;    (add-to-list 'custom-theme-load-path "~/Emacs/utility/themes/bubbleberry")
@@ -90,29 +102,14 @@
 ;(load "~/Emacs/utility/themes/color-theme-molokai.el")
 ;(color-theme-molokai)
 ;(set-frame-parameter nil 'alpha '(100 50))
-
-
-;in terminal
+;-------------------------------------------------------------------------------
+; Terminal settings
 (when (is-in-terminal)
     (require 'lacarte)
     (global-set-key [?\e ?\M-x] 'lacarte-execute-command)
     (global-set-key [?\M-`] 'lacarte-execute-command))
-
-
-;abbrev file
-(setq abbrev-file-name "~/Emacs/abbrev_defs")
-(setq save-abbrevs t)
-(quietly-read-abbrev-file)
-(setq default-abbrev-mode t)
-
-;indent
-(setq-default indent-tabs-mode t)
-(add-hook 'lisp-mode-hook '(lambda ()
-		    (local-set-key (kbd "RET") 'newline-and-indent)))
-
-(define-key global-map (kbd "RET") 'newline-and-indent)
-
-;right margin
+;-------------------------------------------------------------------------------
+; Right margin
 (require 'fill-column-indicator)
 (setq-default fci-rule-column 80)
 (setq fci-rule-color "blue")
@@ -120,73 +117,40 @@
 (setq fci-rule-width 1)
 (setq fci-rule-color "red")
 (add-hook 'after-change-major-mode-hook 'fci-mode)
-
-;indent guide
+;-------------------------------------------------------------------------------
+; Indent guide
 (require 'indent-guide)
 (indent-guide-global-mode)
 ;(set-face-background 'indent-guide-face "dimgray")
 (setq indent-guide-char "|")
-
-
-;buffers
+;-------------------------------------------------------------------------------
+; Buffers
 (global-set-key (kbd "\C-x\C-b") 'buffer-menu-other-window)
 
-
-;buffer name show abs path
 (require 'uniquify)
 
-;; Disable loading of “default.el” at startup,
-;; ;; in Fedora all it does is fix window title which I rather configure differently
 (setq inhibit-default-init t)
-;;
-;; ;; SHOW FILE PATH IN FRAME TITLE
+
 (setq-default frame-title-format "%b (%f)")
-
-
-(set-frame-parameter nil 'alpha '(100 100))
-
-; recent files
+;-------------------------------------------------------------------------------
+; Recent files
 (require 'recentf)
 (recentf-mode 1)
 (setq recentf-max-menu-items 25)
 (global-set-key "\C-x\ \C-r" 'recentf-open-files)
-
-; neotree 
+;-------------------------------------------------------------------------------
+; Neotree 
 (require 'neotree)
 (global-set-key [f5] 'neotree-toggle)
-
-; modeline
-(add-to-list 'load-path "~/Emacs/smart-mode-line")
-(require 'smart-mode-line)
-(sml/setup)
-(sml/apply-theme 'dark)
-
-
-;multi cursors
-(require 'multiple-cursors)
-(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
-
-;smex
+;-------------------------------------------------------------------------------
+; Smex
 (require 'smex)
 (smex-initialize)
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
-;; This is your old M-x.
+;;-- This is your old M-x.
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+;-------------------------------------------------------------------------------
 
-
-; autoview
-(add-hook 'doc-view-mode-hook
-	    (lambda ()
-	          (linum-mode -1)
-		    ))
-
-; parens
-(add-to-list 'load-path "~/Emacs/smartparens")
-(require 'smartparens-config)
-(smartparens-global-mode 1)
 
 (provide 'my-gui)

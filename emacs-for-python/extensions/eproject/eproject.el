@@ -24,7 +24,7 @@
 ;; User-configurable items:
 
 (defvar prj-keybindings '(
-  ([f5]         eproject-setup-toggle  always)
+  ([C-f6]         eproject-setup-toggle  always)
   ([M-right]    eproject-nextfile)
   ([M-left]     eproject-prevfile)
   ([C-f5]       eproject-dired)
