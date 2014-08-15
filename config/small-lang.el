@@ -1,9 +1,11 @@
 ;python
-(add-to-list 'load-path "~/Emacs/python-mode")
-(autoload 'python-mode "python-mode" "Python Mode." t)
-(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
-(add-to-list 'interpreter-mode-alist '("python" . python-mode))
-;------------------------------------------------------------------------------
+;(add-to-list 'load-path "~/Emacs/python-mode")
+;(autoload 'python-mode "python-mode" "Python Mode." t)
+;(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
+;(add-to-list 'interpreter-mode-alist '("python" . python-mode))
+(add-to-list 'load-path "~/Emacs/emacs-for-python")
+(load-file "~/Emacs/emacs-for-python/epy-init.el")
+;-------------------------------------------------------------------------------
 
 
 ;html5
@@ -12,49 +14,49 @@
   '(add-to-list 'rng-schema-locating-files "~/Emacs/html5/schemas.xml"))
 
 (require 'whattf-dt)
-
+;-------------------------------------------------------------------------------
 ;xml
 (add-to-list 'load-path "/usr/local/share/emacs/site-lisp")
 ;(add-to-list 'load-path "~/Emacs/pgxml")
 (autoload 'sgml-mode "psgml" "Major mode to edit SGML files." t)
 (autoload 'xml-mode "psgml" "Major mode to edit XML files." t)
 ;(setq auto-mode-alist (append '(("/*.\.xml$" . sgml-mode)) auto-mode-alist))
-
+;-------------------------------------------------------------------------------
 
 
 ;;php
 (autoload 'php-mode "php-mode.el" "Php mode." t)
 (setq auto-mode-alist (append '(("/*.\.php[345]?$" . php-mode)) auto-mode-alist))
-
+;-------------------------------------------------------------------------------
 
 ;javacc
 (autoload 'javacc-mode "javacc-mode.el" "JavaCC mode." t)
 (setq auto-mode-alist (append '(("/*.\.jj[t]?$" . javacc-mode)) auto-mode-alist))
-
+;-------------------------------------------------------------------------------
 ;The new language----EE
 ;(autoload 'ee-mode "ee-mode.el" "EE mode." t)
 ;(setq auto-mode-alist (append '(("/*.\.ee$" . ee-mode)) auto-mode-alist))
-
+;-------------------------------------------------------------------------------
 ;steve
 ;(autoload 'steve-mode "steve-mode.el" "Steve mode." t)
 ;(setq auto-mode-alist (append '(("/*.\.tz$" . steve-mode)) auto-mode-alist))
-
+;-------------------------------------------------------------------------------
 
 ;asm
 (load-file "~/Emacs/utility/gas-mode.el")
 (require 'gas-mode)
 (load-file "~/Emacs/utility/asm86-mode.el")
-
+;-------------------------------------------------------------------------------
 
 ;ant
 (add-to-list 'auto-mode-alist '("\\.ant$" . ant-mode))
 
-
+;-------------------------------------------------------------------------------
 
 ;antlr
 (autoload 'antlr-mode "antlr-mode" nil t)
 (setq auto-mode-alist (cons '("\\.g\\'" . antlr-mode) auto-mode-alist))
-
+;-------------------------------------------------------------------------------
 
 ;markdown
 (autoload 'markdown-mode "markdown-mode.el"
@@ -62,33 +64,33 @@
 (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
-
+;-------------------------------------------------------------------------------
 ;json avsc
 (autoload 'json-mode "json-mode.el"
 	  "Major mode for editing json/avsc files" t)
 (add-to-list 'auto-mode-alist '("\\.json\\'" . json-mode))
 (add-to-list 'auto-mode-alist '("\\.avsc\\'" . json-mode))
-
+;-------------------------------------------------------------------------------
 
 ;js
 (add-to-list 'load-path "~/Emacs/elpa/js3-mode")
 (autoload 'js3-mode "js3" nil  t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js3-mode))
-
+;-------------------------------------------------------------------------------
 
 
 ;brainfuck
 (require 'bf)
-
+;-------------------------------------------------------------------------------
 
 ;pig
 (require 'pig-mode)
-
+;-------------------------------------------------------------------------------
 
 ;perl
 (add-to-list 'load-path "~/Emacs/pde/lisp")
 (load "pde-load")
-
+;-------------------------------------------------------------------------------
 
 
 ;;haskell-mode
@@ -96,7 +98,7 @@
 (require 'haskell-mode-autoloads)
 (add-to-list 'Info-default-directory-list "~/Emacs/haskell-mode/")
 
-
+;-------------------------------------------------------------------------------
 ;;golang
 
 (if (eq system-type 'darwin)
@@ -122,7 +124,7 @@
       (add-to-list 'load-path goflymake-path)
       (require 'go-flymake)))
 
-
+;-------------------------------------------------------------------------------
 
 
 
@@ -138,7 +140,7 @@
 	         (append '(("\\.ml[ily]?$" . tuareg-mode)
 			              ("\\.topml$" . tuareg-mode))
 			                   auto-mode-alist))
-
+;-------------------------------------------------------------------------------
 ;;erlang
 (add-to-list 'load-path "~/Emacs/eproject")
 (add-to-list 'load-path "~/Emacs/s")
@@ -147,10 +149,11 @@
 (setq edts-inhibit-package-check t)
 (if (executable-find "elc")
     (require 'edts-start))
-
+;-------------------------------------------------------------------------------
 ;; sql upcase.
 (add-hook 'sql-mode-hook 'sqlup-mode)
 (add-hook 'sql-interactive-mode-hook 'sqlup-mode)
+;-------------------------------------------------------------------------------
 
 (provide 'small-lang)
 

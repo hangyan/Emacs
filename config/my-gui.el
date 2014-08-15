@@ -184,14 +184,9 @@
 	          (linum-mode -1)
 		    ))
 
-
-
-; autopair
-(setq skeleton-pair t)
-(global-set-key "(" 'skeleton-pair-insert-maybe)
-(global-set-key "[" 'skeleton-pair-insert-maybe)
-(global-set-key "{" 'skeleton-pair-insert-maybe)
-
-
+; parens
+(add-to-list 'load-path "~/Emacs/smartparens")
+(require 'smartparens-config)
+(smartparens-global-mode 1)
 
 (provide 'my-gui)
