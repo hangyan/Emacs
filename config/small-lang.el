@@ -157,6 +157,8 @@
       (add-to-list 'load-path goflymake-path)
       (require 'go-flymake)))
 
+(add-hook 'before-save-hook 'gofmt-before-save)
+
 ;-------------------------------------------------------------------------------
 
 
