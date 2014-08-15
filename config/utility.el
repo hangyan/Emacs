@@ -138,4 +138,13 @@
 (require 'calfw)
 
 
+;w3m
+(add-to-list 'load-path "~/Emacs/w3m")
+(add-to-list 'load-path "~/Emacs/APEL")
+(add-to-list 'load-path "~/Emacs/mit")
+(require 'w3m-load)
+
+
+
+
 (provide 'utility)

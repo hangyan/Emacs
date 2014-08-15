@@ -16,4 +16,8 @@
 ))
 
 
+(add-hook 'emacs-lisp-mode-hook
+          (lambda () (local-set-key  (kbd "C-c C-e")  #'eval-buffer)))
+
+
 (provide 'my-lisp)

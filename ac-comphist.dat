@@ -1,4 +1,10 @@
-((("printf " .
+((("browse-url-text-browser" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0])
+  ("browse-url" .
+   [0 0 0 0 0 0 0 0 0 1])
+  ("browse-url-browser-display" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("printf " .
    [0 0 0 0 0 0 1])
   ("exec-path" .
    [0 0 0 0 0 0 0 0 1])

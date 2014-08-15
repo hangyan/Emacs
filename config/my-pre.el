@@ -58,5 +58,18 @@
 (add-hook 'find-file-hooks 'my-find-file-check-make-large-file-read-only-hook)
 
 
+; urls
+(global-set-key "\C-c\C-z." 'browse-url-at-point)
+(global-set-key "\C-c\C-zb" 'browse-url-of-buffer)
+(global-set-key "\C-c\C-zr" 'browse-url-of-region)
+(global-set-key "\C-c\C-zu" 'browse-url)
+(global-set-key "\C-c\C-zv" 'browse-url-of-file)
+(add-hook 'dired-mode-hook
+		  (lambda ()
+            (local-set-key "\C-c\C-zf" 'browse-url-of-dired-file)))
+
+
+
+
 
 (provide 'my-pre)

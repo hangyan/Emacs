@@ -17,6 +17,8 @@
   '(
    ))
 
+(define-abbrev-table 'calendar-mode-abbrev-table '())
+
 (define-abbrev-table 'comint-mode-abbrev-table '())
 
 (define-abbrev-table 'completion-list-mode-abbrev-table '())
@@ -34,7 +36,11 @@ $window->signal_connect('delete_event' => sub { Gtk2->main_quit; });" pde-abbv-n
 GetOptions();" pde-abbv-no-blank 0)
    ))
 
+(define-abbrev-table 'dirtree-mode-abbrev-table '())
+
 (define-abbrev-table 'display-time-world-mode-abbrev-table '())
+
+(define-abbrev-table 'eieio-custom-mode-abbrev-table '())
 
 (define-abbrev-table 'emacs-lisp-byte-code-mode-abbrev-table '())
 
@@ -46,6 +52,10 @@ GetOptions();" pde-abbv-no-blank 0)
 
 (define-abbrev-table 'global-abbrev-table '())
 
+(define-abbrev-table 'go-mode-abbrev-table '())
+
+(define-abbrev-table 'golint-mode-abbrev-table '())
+
 (define-abbrev-table 'grep-mode-abbrev-table '())
 
 (define-abbrev-table 'help-mode-abbrev-table '())
@@ -53,6 +63,8 @@ GetOptions();" pde-abbv-no-blank 0)
 (define-abbrev-table 'idl-mode-abbrev-table '())
 
 (define-abbrev-table 'inferior-pig-mode-abbrev-table '())
+
+(define-abbrev-table 'inferior-python-mode-abbrev-table '())
 
 (define-abbrev-table 'java-mode-abbrev-table
   '(
@@ -69,6 +81,8 @@ GetOptions();" pde-abbv-no-blank 0)
 (define-abbrev-table 'jde-run-mode-abbrev-table '())
 
 (define-abbrev-table 'lisp-mode-abbrev-table '())
+
+(define-abbrev-table 'neotree-mode-abbrev-table '())
 
 (define-abbrev-table 'objc-mode-abbrev-table
   '(
@@ -90,6 +104,16 @@ GetOptions();" pde-abbv-no-blank 0)
 
 (define-abbrev-table 'prog-mode-abbrev-table '())
 
+(define-abbrev-table 'python-mode-abbrev-table
+  '(
+    ("class" "" python-skeleton-class 0)
+    ("def" "" python-skeleton-def 0)
+    ("for" "" python-skeleton-for 0)
+    ("if" "" python-skeleton-if 0)
+    ("try" "" python-skeleton-try 0)
+    ("while" "" python-skeleton-while 0)
+   ))
+
 (define-abbrev-table 'select-tags-table-mode-abbrev-table '())
 
 (define-abbrev-table 'sldb-mode-abbrev-table '())
@@ -108,9 +132,13 @@ GetOptions();" pde-abbv-no-blank 0)
 
 (define-abbrev-table 'speedbar-mode-abbrev-table '())
 
+(define-abbrev-table 'srecode-template-mode-abbrev-table '())
+
 (define-abbrev-table 'tabulated-list-mode-abbrev-table '())
 
 (define-abbrev-table 'text-mode-abbrev-table '())
+
+(define-abbrev-table 'tree-mode-abbrev-table '())
 
 (define-abbrev-table 'vc-git-log-edit-mode-abbrev-table '())
 
