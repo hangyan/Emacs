@@ -1,6 +1,5 @@
 
 (require 'my-pre)
-
 (add-to-list 'load-path (expand-lang-path "slime/"))  ; your SLIME directory
 (setq inferior-lisp-program "/usr/local/bin/clisp") ; your Lisp system
 (require 'slime-autoloads)
@@ -22,5 +21,7 @@
 (add-hook 'emacs-lisp-mode-hook
           (lambda () (local-set-key  (kbd "C-c C-e")  #'eval-buffer)))
 
+
+(require 'litable)
 
 (provide 'my-lisp)

@@ -1,9 +1,9 @@
 ;;; Settings need to be load first
 
 ; paths
-(setq meta-path "~/Emacs/meta/")
-(setq utility-path "~/Emacs/utility/")
-(setq lang-path "~/Emacs/languages/")
+(setq meta-path "~/Emacs/usr/")
+(setq utility-path "~/Emacs/opt/")
+(setq lang-path "~/Emacs/dev/")
 (setq gui-path "~/Emacs/gui/")
 
 (defun expand-gui-path (sub)
@@ -18,6 +18,7 @@
 (defun expand-utility-path (sub)
   (concat utility-path sub))
 
+(add-to-list 'load-path (expand-lang-path "misc"))
 
 
 ; ------------------------------------------------------------------------------
