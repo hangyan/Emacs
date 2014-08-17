@@ -1,5 +1,24 @@
 ;;; Settings need to be load first
 
+; paths
+(setq meta-path "~/Emacs/meta/")
+(setq utility-path "~/Emacs/utility/")
+(setq lang-path "~/Emacs/languages/")
+(setq gui-path "~/Emacs/gui/")
+
+(defun expand-gui-path (sub)
+  (concat gui-path sub))
+
+(defun expand-meta-path (sub)
+  (concat meta-path sub))
+
+(defun expand-lang-path (sub)
+  (concat lang-path sub))
+
+(defun expand-utility-path (sub)
+  (concat utility-path sub))
+
+
 
 ; ------------------------------------------------------------------------------
 ; terminal or gui

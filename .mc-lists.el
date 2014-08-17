@@ -3,9 +3,11 @@
 
 (setq mc/cmds-to-run-for-all
       '(
-		mark-whole-buffer
-		))
+        mark-whole-buffer
+        ))
 
 (setq mc/cmds-to-run-once
       '(
-		))
+        cua--prefix-override-handler
+        sp--cua-replace-region
+        ))

@@ -1,8 +1,7 @@
 .git/
-include/
-semanticdb/
-ac-comphist.dat
-auto-save-list
+data/include/
+data/ac-comphist.dat
+data/auto-save-list
 DouBanMusic
-url
+data/url
 push.sh

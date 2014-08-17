@@ -1,6 +1,10 @@
 ;------------------------------------------------------------------------------
 ;latex
 ;------------------------------------------------------------------------------
+(require 'my-pre)
+(add-to-list 'load-path (expand-lang-path "latex"))
+
+
 (load "auctex.el" nil t t)
 (load "preview-latex.el" nil t t)
 (setq TeX-PDF-mode t)

@@ -1,5 +1,8 @@
 ;emms
-(add-to-list 'load-path "~/Emacs/emms")
+
+(require 'my-pre)
+
+(add-to-list 'load-path (expand-utility-path "emms"))
 (require 'emms-setup)
 (emms-standard)
 (emms-default-players)
@@ -18,5 +21,4 @@
 	    (lambda ()
 	          (linum-mode -1)
 		    ))
-
 (provide 'my-mime)

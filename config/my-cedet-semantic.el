@@ -1,6 +1,8 @@
 ;cedet main semantic
+(add-to-list 'load-path (expand-meta-path "cedet"))
 ;-------------------------------------------------------------------
-(load-file "~/Emacs/cedet/cedet-devel-load.el")
+(load-file (expand-meta-path "cedet/cedet-devel-load.el"))
+(setq semanticdb-default-save-directory "~/Emacs/data/include")
 ;(load-file "~/Emacs/cedet-1.1/common/cedet.el")
 (global-ede-mode 1)
 ;(global-semanticdb-minor-mode 1)
@@ -18,7 +20,7 @@
 (require 'semantic/bovine/c)
 
 
-(setq semanticdb-default-save-directory "~/Emacs/include")
+
 
 (semantic-load-enable-code-helpers)
 (semantic-load-enable-minimum-features)

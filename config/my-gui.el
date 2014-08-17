@@ -1,15 +1,19 @@
 ;;; some sets of the apprence
 
+(require 'my-pre)
+(add-to-list 'load-path (expand-gui-path "misc"))
+
+
 ;-------------------------------------------------------------------------------
 ; set the window size / alpha
 ;(setq initial-frame-alist '((top . 0) (left . 250)(width . 110) (height . 40)))
 (set-frame-parameter nil 'alpha '(100 100))
 ;-------------------------------------------------------------------------------
 ; common copy-cut-paste
-(cua-mode t)
-(setq cua-auto-tabify-rectangles nil)
-(transient-mark-mode 1)
-(setq cua-keep-region-after-copy t)
+;(cua-mode t)
+;(setq cua-auto-tabify-rectangles nil)
+(transient-mark-mode t)
+;(setq cua-keep-region-after-copy t)
 ;-------------------------------------------------------------------------------
 ; remove the startup infor
 (setq initial-scratch-message nil)
@@ -31,14 +35,6 @@
 ; Cursor
 (setq-default cursor-type 'bar)
 (smart-cursor-color-mode 1)
-
-
-; Multi cursors
-(require 'multiple-cursors)
-(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 ;-------------------------------------------------------------------------------
 ; Major mode 
 (setq default-major-mode 'text-mode)
@@ -65,14 +61,15 @@
 (setq display-time-day-and-date t)
 (setq display-time-interval 10)
 
-(add-to-list 'load-path "~/Emacs/smart-mode-line")
+(add-to-list 'load-path (expand-gui-path "smart-mode-line"))
 (require 'smart-mode-line)
 (sml/setup)
 (sml/apply-theme 'dark)
 ;-------------------------------------------------------------------------------
 ; Parentheses 
+(require 'paren)
 (show-paren-mode t)
-(setq show-paren-style 'parentheses)
+(setq show-paren-style 'parenthesis)
 
 (require 'highlight-parentheses)
 
@@ -82,7 +79,7 @@
     (highlight-parentheses-mode t)))
 (global-highlight-parentheses-mode t)
 
-(add-to-list 'load-path "~/Emacs/smartparens")
+(add-to-list 'load-path (expand-gui-path "smartparens"))
 (require 'smartparens-config)
 (smartparens-global-mode 1)
 ;-------------------------------------------------------------------------------
@@ -95,7 +92,7 @@
 ;-------------------------------------------------------------------------------
 ; Theme
 (when (display-graphic-p)
-    (add-to-list 'custom-theme-load-path "~/Emacs/utility/themes/"))
+    (add-to-list 'custom-theme-load-path (expand-gui-path "themes/")))
 ;    (add-to-list 'custom-theme-load-path "~/Emacs/utility/themes/bubbleberry")
 
 (load-theme 'noctilux t)
@@ -128,6 +125,7 @@
 (global-set-key (kbd "\C-x\C-b") 'buffer-menu-other-window)
 
 (require 'uniquify)
+(setq uniquify-buffer-name-style 'reverse)
 
 (setq inhibit-default-init t)
 
@@ -143,6 +141,8 @@
 (require 'neotree)
 (global-set-key [f5] 'neotree-toggle)
 ;-------------------------------------------------------------------------------
+; Minimap
+;-------------------------------------------------------------------------------
 ; Smex
 (require 'smex)
 (smex-initialize)
@@ -150,6 +150,10 @@
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 ;;-- This is your old M-x.
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+;-------------------------------------------------------------------------------
+; Utilitys
+(setq enable-recursive-minibuffers t) ;; allow recursive editing in minibuffer
+(follow-mode t)                       ;; follow-mode allows easier editing of long files
 ;-------------------------------------------------------------------------------
 
 

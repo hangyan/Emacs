@@ -34,7 +34,7 @@
 (eval-when-compile
   (require 'cl))
 
-
+(require 'my-pre)
 
 (if (eq system-type 'darwin)
     (progn
@@ -43,7 +43,7 @@
   (setenv "GOPATH" "/home/yuyan/Golang"))
 
 
-(add-to-list 'load-path "~/Emacs/go-mode/")
+(add-to-list 'load-path (expand-lang-path "go-mode"))
 (require 'go-mode)
 (require 'go-autocomplete)
 (require 'auto-complete-config)
