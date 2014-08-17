@@ -1,6 +1,11 @@
 ;------------------------------------------------------------------------------
 ;C/C++
 ;------------------------------------------------------------------------------
+
+(require 'my-pre)
+(add-to-list 'load-path (expand-lang-path "cpp"))
+
+;-------------------------------------------------------------------------------
 (setq c-basic-offset 4)
 (require 'cc-mode)
 (setq gdb-many-windows t)
@@ -32,8 +37,15 @@
         (setq abbrev-mode t)
         )
 (add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
-
+;-------------------------------------------------------------------------------
+; disassembly c/c++ code at point
 (require 'disaster)
+; disater use objdump,on mac link gobjdump to objdump if not exists,
+; gobjdump from binutils.
 (define-key c-mode-base-map (kbd "C-c d") 'disaster)
-
+;-------------------------------------------------------------------------------
+; A Simple C++ Reference Viewer
+(require 'cppref)
+(setq cppref-doc-dir "~/Emacs/data/cpp-ref-doc")
+;-------------------------------------------------------------------------------
 (provide 'my-cpp)
