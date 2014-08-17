@@ -101,6 +101,7 @@
       date-to-time
       decf
       default-directory
+      defun
       directory-file-name
       directory-files
       dired-get-filename
@@ -123,7 +124,9 @@
       error-message-string
       executable-find
       expand-file-name
+      expand-gui-path
       expand-lang-path
+      expand-meta-path
       fboundp
       file-attributes
       file-directory-p
@@ -194,7 +197,9 @@
       listify-key-sequence
       listp
       litable-create-fake-cursor-at-point
+      litable-mode
       local-key-binding
+      local-set-key
       log
       looking-at
       looking-back

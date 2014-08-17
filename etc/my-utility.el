@@ -91,6 +91,10 @@
 ; disbale abbrev mode
 (setq-default abbrev-mode nil)
 ;-------------------------------------------------------------------------------
-
+(setq elfeed-feeds
+      '("http://www.ruanyifeng.com/blog/atom.xml"
+        "https://linuxtoy.org/feed"
+        "https://coolshell.cn/feed"))
+;-------------------------------------------------------------------------------
 
 (provide 'my-utility)

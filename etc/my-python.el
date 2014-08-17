@@ -33,7 +33,6 @@
 
 (eval-when-compile
   (require 'cl))
-
 (require 'my-pre)
 ;(add-to-list 'load-path "~/Emacs/python-mode")
 ;(autoload 'python-mode "python-mode" "Python Mode." t)

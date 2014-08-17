@@ -78,6 +78,10 @@
 (add-hook 'sql-mode-hook 'sqlup-mode)
 (add-hook 'sql-interactive-mode-hook 'sqlup-mode)
 ;-------------------------------------------------------------------------------
+; yaml
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+;-------------------------------------------------------------------------------
 
 (provide 'small-lang)
 

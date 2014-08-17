@@ -1,3 +1,4 @@
+
 ;;; some sets of the apprence
 
 (require 'my-pre)
@@ -154,6 +155,11 @@
 ; Utilitys
 (setq enable-recursive-minibuffers t) ;; allow recursive editing in minibuffer
 (follow-mode t)                       ;; follow-mode allows easier editing of long files
+;-------------------------------------------------------------------------------
+; windows manager
+(add-to-list 'load-path (expand-gui-path "emacs-window-manager"))
+(require 'e2wm)
+(global-set-key (kbd "M-+") 'e2wm:start-management)
 ;-------------------------------------------------------------------------------
 
 
