@@ -1,5 +1,5 @@
 ;------------------------------------------------------------------------------
-;latex
+; Latex ,On mac should change the latex engine.
 ;------------------------------------------------------------------------------
 (require 'my-pre)
 (add-to-list 'load-path (expand-lang-path "latex"))

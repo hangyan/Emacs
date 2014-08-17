@@ -491,10 +491,7 @@
 ;;     support by default.  Math support can be toggled later using
 ;;     the function `markdown-enable-math'."
 ;;
-;;   * `markdown-css-dir' - path to markdown themes CSS directory
-;;     (default: `""`).
-;;
-;;   * `markdown-css-theme' - name of markdown css theme to use
+;;   * `markdown-css-path' - CSS file to link to in XHTML output
 ;;     (default: `""`).
 ;;
 ;;   * `markdown-content-type' - when set to a nonempty string, an
@@ -685,7 +682,6 @@
 ;;   * Michael Dwyer <mdwyer@ehtech.in> for `gfm-mode' underscore regexp.
 ;;   * Chris Lott <chris@chrislott.org> for suggesting reference label
 ;;     completion.
-;;   * Gunnar Franke <Gunnar.Franke@gmx.de> for a completion bug report.
 
 ;;; Bugs:
 
@@ -711,7 +707,7 @@
 ;;   * 2011-08-12: [Version 1.8][]
 ;;   * 2011-08-15: [Version 1.8.1][]
 ;;   * 2013-01-25: [Version 1.9][]
-;;   * 2013-03-24: [Version 2.0][]
+;;   * 2013-03-18: [Version 2.0][]
 ;;
 ;; [Version 1.3]: http://jblevins.org/projects/markdown-mode/rev-1-3
 ;; [Version 1.5]: http://jblevins.org/projects/markdown-mode/rev-1-5
@@ -849,8 +845,8 @@ or \\[markdown-enable-math]."
   :type 'boolean
   :safe 'booleanp)
 
-(defcustom markdown-css-dir ""
-  "Path to markdown theme CSS directory"
+(defcustom markdown-css-path ""
+  "URL of CSS file to link to in the output XHTML."
   :group 'markdown
   :type 'string)
 
@@ -1873,7 +1869,7 @@ because `thing-at-point-looking-at' does not work reliably with
   "Match GFM quoted code blocks from point to LAST."
   (let (open lang body close all)
     (cond ((and (eq major-mode 'gfm-mode)
-                (search-forward-regexp "^\\(```\\)\\([^[:space:]]+[[:space:]]*\\)?$" last t))
+                (search-forward-regexp "^\\(```\\)\\(\\w+\\)?$" last t))
            (beginning-of-line)
            (setq open (list (match-beginning 1) (match-end 1))
                  lang (list (match-beginning 2) (match-end 2)))
@@ -3024,27 +3020,16 @@ Handle all elements of `markdown-complete-alist' in order."
 
 (defun markdown-complete-region (beg end)
   "Complete markup of objects in region from BEG to END.
-Handle all objects in `markdown-complete-alist', in order.  Each
-match is checked to ensure that a previous regexp does not also
-match."
+Handle all objects in `markdown-complete-alist', in
+order."
   (interactive "*r")
-  (let ((end-marker (set-marker (make-marker) end))
-        previous)
+  (let ((end-marker (set-marker (make-marker) end)))
     (dolist (element markdown-complete-alist)
       (let ((regexp (eval (car element)))
             (function (cdr element)))
         (goto-char beg)
         (while (re-search-forward regexp end-marker 'limit)
-          (when (match-string 0)
-            ;; Make sure this is not a match for any of the preceding regexps.
-            ;; This prevents mistaking an HR for a Setext subheading.
-            (let (match)
-              (save-match-data
-                (dolist (prev-regexp previous)
-                  (or match (setq match (looking-back prev-regexp)))))
-              (unless match
-                (save-excursion (funcall function))))))
-        (add-to-list 'previous regexp)))))
+          (save-excursion (funcall function)))))))
 
 (defun markdown-complete-buffer ()
   "Complete markup for all objects in the current buffer."
@@ -4181,24 +4166,16 @@ Standalone XHTML output is identified by an occurrence of
                (coding-system-get buffer-file-coding-system
                                   'mime-charset))
           "iso-8859-1"))))
-  (if (> (length (markdown-css-path)) 0)
+  (if (> (length markdown-css-path) 0)
       (insert "<link rel=\"stylesheet\" type=\"text/css\" media=\"all\" href=\""
-	      markdown-css-dir
-	      "markdown.css"
-	      "\"  />\n"
-	      "<link rel=\"stylesheet\" type=\"text/css\" media=\"all\" href=\""
-	      (markdown-css-path)
-	      "\"  />\n"))
+              markdown-css-path
+              "\"  />\n"))
   (when (> (length markdown-xhtml-header-content) 0)
     (insert markdown-xhtml-header-content))
-  (insert "</head>\n\n"
-          "<body>\n\n"
-	  "<div class=\"markdown "
-	  markdown-css-theme
-	  "\">\n\n")
+  (insert "\n</head>\n\n"
+          "<body>\n\n")
   (goto-char (point-max))
   (insert "\n"
-	  "</div>\n\n"
           "</body>\n"
           "</html>\n"))
 
@@ -4207,7 +4184,7 @@ Standalone XHTML output is identified by an occurrence of
 When OUTPUT-BUFFER-NAME is given, insert the output in the buffer with
 that name."
   (interactive)
-  (browse-url-of-buffer (markdown-standalone markdown-output-buffer-name)))
+  (browse-url-of-buffer (markdown markdown-output-buffer-name)))
 
 (defun markdown-export-file-name (&optional extension)
   "Attempt to generate a filename for Markdown output.
@@ -4499,13 +4476,6 @@ markers and footnote text."
 
 ;;; Miscellaneous =============================================================
 
-(defun markdown-css-path ()
-  "Generate complete markdown theme CSS path"
-  (concatenate 'string 
-	       (file-truename markdown-css-dir)
-	       markdown-css-theme
-	       ".css"))
-
 (defun markdown-compress-whitespace-string (str)
   "Compress whitespace in STR and return result.
 Leading and trailing whitespace is removed.  Sequences of multiple
@@ -4618,7 +4588,7 @@ if ARG is omitted or nil."
        'markdown-end-of-defun)
   ;; Paragraph filling
   (set (make-local-variable 'paragraph-start)
-       "\f\\|[ \t]*$\\|[ \t]*[*+-] \\|[ \t]*[0-9]+\\.[ \t]\\|[ \t]*: ")
+       "\f\\|[ \t]*$\\|[ \t]*[*+-] \\|[ \t]*[0-9]+\\.\\|[ \t]*: ")
   (set (make-local-variable 'paragraph-separate)
        "\\(?:[ \t\f]\\|.*  \\)*$")
   (set (make-local-variable 'adaptive-fill-first-line-regexp)
@@ -4659,9 +4629,7 @@ if ARG is omitted or nil."
   ;; do the initial link fontification
   (markdown-fontify-buffer-wiki-links))
 
-;;;###autoload(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
-;;;###autoload(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
-;;;###autoload(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
+;;(add-to-list 'auto-mode-alist '("\\.text$" . markdown-mode))
 
 
 ;;; GitHub Flavored Markdown Mode  ============================================
@@ -4671,7 +4639,7 @@ if ARG is omitted or nil."
    ;; GFM features to match first
    (list
     (cons 'markdown-match-gfm-code-blocks '((1 markdown-pre-face)
-                                            (2 markdown-language-keyword-face t t)
+                                            (2 markdown-language-keyword-face)
                                             (3 markdown-pre-face)
                                             (4 markdown-pre-face))))
    ;; Basic Markdown features (excluding possibly overridden ones)

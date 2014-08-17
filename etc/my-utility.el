@@ -91,10 +91,17 @@
 ; disbale abbrev mode
 (setq-default abbrev-mode nil)
 ;-------------------------------------------------------------------------------
+; feed
 (setq elfeed-feeds
       '("http://www.ruanyifeng.com/blog/atom.xml"
         "https://linuxtoy.org/feed"
         "https://coolshell.cn/feed"))
+;-------------------------------------------------------------------------------
+; imenu
+(setq imenu-auto-rescan t)
+(defun try-to-add-imenu ()
+  (condition-case nil (imenu-add-to-menubar "yourFancyName") (error nil)))
+ (add-hook 'font-lock-mode-hook 'try-to-add-imenu)
 ;-------------------------------------------------------------------------------
 
 (provide 'my-utility)

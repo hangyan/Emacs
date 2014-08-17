@@ -33,6 +33,9 @@
 (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+(setq markdown-css-dir "~/Emacs/data/markdown-css/")
+(setq markdown-css-theme "clearness")
 ;-------------------------------------------------------------------------------
 ;json avsc
 (autoload 'json-mode "json-mode.el"
@@ -81,6 +84,11 @@
 ; yaml
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+;-------------------------------------------------------------------------------
+; lua
+(autoload 'lua-mode "lua-mode" "Lua editing mode." t)
+(add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
+(add-to-list 'interpreter-mode-alist '("lua" . lua-mode))
 ;-------------------------------------------------------------------------------
 
 (provide 'small-lang)

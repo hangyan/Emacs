@@ -33,5 +33,7 @@
         )
 (add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
 
+(require 'disaster)
+(define-key c-mode-base-map (kbd "C-c d") 'disaster)
 
 (provide 'my-cpp)
