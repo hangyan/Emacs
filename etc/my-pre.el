@@ -19,6 +19,7 @@
   (concat utility-path sub))
 
 (add-to-list 'load-path (expand-lang-path "misc"))
+(add-to-list 'load-path (expand-utility-path "misc"))
 
 
 ; ------------------------------------------------------------------------------
@@ -91,5 +92,11 @@
   (condition-case nil (imenu-add-to-menubar "Imenu") (error nil)))
  (add-hook 'font-lock-mode-hook 'try-to-add-imenu)
 ; ------------------------------------------------------------------------------
-
+; async process
+(add-to-list 'load-path (expand-utility-path "async"))
+(require 'async)
+;-------------------------------------------------------------------------------
+; async eval
+(require 'async-eval)
+;-------------------------------------------------------------------------------
 (provide 'my-pre)

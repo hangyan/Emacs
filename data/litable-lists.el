@@ -127,6 +127,7 @@
       expand-gui-path
       expand-lang-path
       expand-meta-path
+      expand-utility-path
       fboundp
       file-attributes
       file-directory-p

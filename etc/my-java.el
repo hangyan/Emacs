@@ -52,22 +52,22 @@
 ;-------------------------------------------------------------------------------
 ; Javarun
 (require 'javarun)
-(add-hook 'java-mode-hook
+;-------------------------------------------------------------------------------
+; add maven jars,need unzip and mvn command.
+; TODO: user async lib to fetch jars.
+(add-to-list 'load-path (expand-lang-path "java/javadoc-lookup"))
+(require 'javadoc-lookup)
+(require 'maven-fetch)
+(javadoc-add-artifacts 
+ [org.apache.commons commons-math3 "3.0"]
+ [log4j log4j 1.2.17])
+
+(add-hook 'malabar-mode-hook
           (lambda ()
             (javarun-mode 1)))
-
+(add-hook 'malabar-mode-hook
+          (lambda () (local-set-key (kbd "C-h j") 'javadoc-lookup) ))
 ;-------------------------------------------------------------------------------
-; javadoc lookup
-(require 'javadoc-lookup)
-;-------------------------------------------------------------------------------
-; auto-complete-java
-; Need generated tag from CLASSPATH.output file is .java_base.tag
-(add-to-list 'load-path (expand-lang-path "java/auto-java-complete"))
-(require 'ajc-java-complete-config)
-(add-hook 'java-mode-hook 'ajc-java-complete-mode)
-(add-hook 'find-file-hook 'ajc-4-jsp-find-file-hook)
-
-
 
 (provide 'my-java)
 

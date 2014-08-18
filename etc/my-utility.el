@@ -1,7 +1,7 @@
 ;;; Some Utility stuff.
 
 (require 'my-pre)
-(add-to-list 'load-path (expand-utility-path "misc"))
+
 
 ; yasnippet
 (add-to-list 'load-path (expand-utility-path "yasnippet/yasnippet"))
