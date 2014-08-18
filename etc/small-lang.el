@@ -36,6 +36,7 @@
 
 (setq markdown-css-dir "~/Emacs/data/markdown-css/")
 (setq markdown-css-theme "clearness")
+
 ;-------------------------------------------------------------------------------
 ;json avsc
 (autoload 'json-mode "json-mode.el"

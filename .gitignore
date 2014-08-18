@@ -5,3 +5,11 @@ data/auto-save-list
 DouBanMusic
 data/url
 push.sh
+data/java/malabar-mode/target
+
+*.class
+java_base.tag
+java_base2.tag
+
+
+README.html

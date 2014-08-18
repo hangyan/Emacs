@@ -100,11 +100,7 @@
         "http://news.dbanotes.net/rss"
         "http://blog.jobbole.com/feed/"))
 ;-------------------------------------------------------------------------------
-; imenu
-(setq imenu-auto-rescan t)
-(defun try-to-add-imenu ()
-  (condition-case nil (imenu-add-to-menubar "Imenu") (error nil)))
- (add-hook 'font-lock-mode-hook 'try-to-add-imenu)
+
 ;-------------------------------------------------------------------------------
 
 (provide 'my-utility)

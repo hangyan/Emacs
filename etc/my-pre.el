@@ -85,6 +85,11 @@
 		  (lambda ()
             (local-set-key "\C-c\C-zf" 'browse-url-of-dired-file)))
 ; ------------------------------------------------------------------------------
-
+; imenu
+(setq imenu-auto-rescan t)
+(defun try-to-add-imenu ()
+  (condition-case nil (imenu-add-to-menubar "Imenu") (error nil)))
+ (add-hook 'font-lock-mode-hook 'try-to-add-imenu)
+; ------------------------------------------------------------------------------
 
 (provide 'my-pre)
