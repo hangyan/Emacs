@@ -95,12 +95,15 @@
 (setq elfeed-feeds
       '("http://www.ruanyifeng.com/blog/atom.xml"
         "https://linuxtoy.org/feed"
-        "https://coolshell.cn/feed"))
+        "https://coolshell.cn/feed"
+        "http://www.oschina.net/news/rss"
+        "http://news.dbanotes.net/rss"
+        "http://blog.jobbole.com/feed/"))
 ;-------------------------------------------------------------------------------
 ; imenu
 (setq imenu-auto-rescan t)
 (defun try-to-add-imenu ()
-  (condition-case nil (imenu-add-to-menubar "yourFancyName") (error nil)))
+  (condition-case nil (imenu-add-to-menubar "Imenu") (error nil)))
  (add-hook 'font-lock-mode-hook 'try-to-add-imenu)
 ;-------------------------------------------------------------------------------
 

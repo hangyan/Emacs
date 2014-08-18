@@ -9,6 +9,9 @@
 ; set the window size / alpha
 ;(setq initial-frame-alist '((top . 0) (left . 250)(width . 110) (height . 40)))
 (set-frame-parameter nil 'alpha '(100 100))
+;(custom-set-variables
+; '(initial-frame-alist (quote ((fullscreen . maximized)))))
+(require 'frame-cmds)
 ;-------------------------------------------------------------------------------
 ; common copy-cut-paste
 ;(cua-mode t)
@@ -161,6 +164,47 @@
 (require 'e2wm)
 (global-set-key (kbd "M-+") 'e2wm:start-management)
 ;-------------------------------------------------------------------------------
+; menu bar +
+ (eval-after-load "menu-bar" '(require 'menu-bar+))
+;-------------------------------------------------------------------------------
+; frame commands
 
+(require 'frame-cmds)
+; Don't know why var menu-bar-frames-menu should provide by menu-bar+.
+(define-key menu-bar-frames-menu [separator-frame-2] '("--"))
+(define-key menu-bar-frames-menu [toggle-max-frame-vertically]
+  '(menu-item "Toggle Max Frame Vertically" toggle-max-frame-vertically
+              :help "Maximize or restore the selected frame vertically"
+              :enable (frame-parameter nil 'restore-height)))
+(define-key menu-bar-frames-menu [toggle-max-frame-horizontally]
+  '(menu-item "Toggle Max Frame Horizontally" toggle-max-frame-horizontally
+              :help "Maximize or restore the selected frame horizontally"
+              :enable (frame-parameter nil 'restore-width)))
+(define-key menu-bar-frames-menu [toggle-max-frame]
+  '(menu-item "Toggle Max Frame" toggle-max-frame
+              :help "Maximize or restore the selected frame (in both directions)"
+              :enable (or (frame-parameter nil 'restore-width) (frame-parameter nil 'restore-height))))
+(define-key menu-bar-frames-menu [maximize-frame-vertically]
+  '(menu-item "Maximize Frame Vertically" maximize-frame-vertically
+              :help "Maximize the selected frame vertically"))
+(define-key menu-bar-frames-menu [maximize-frame-horizontally]
+  '(menu-item "Maximize Frame Horizontally" maximize-frame-horizontally
+              :help "Maximize the selected frame horizontally"))
+(define-key menu-bar-frames-menu [maximize-frame]
+  '(menu-item "Maximize Frame" maximize-frame
+              :help "Maximize the selected frame (in both directions)"))
+(define-key menu-bar-frames-menu [separator-frame-3] '("--"))
+(define-key menu-bar-frames-menu [iconify-everything]
+  '(menu-item "Iconify All Frames" iconify-everything
+              :help "Iconify all frames of session at once"))
+(define-key menu-bar-frames-menu [show-hide]
+  '(menu-item "Hide Frames / Show Buffers" show-hide
+              :help "Show, if only one frame visible; else hide."))
 
+(defvar menu-bar-doremi-menu (make-sparse-keymap "FrameCmds"))
+(define-key global-map [menu-bar doremi]
+  (cons "FrameCmds" menu-bar-doremi-menu))
+(define-key menu-bar-doremi-menu [doremi-font+]
+  '("Save Frame Configuration" . save-frame-config))
+;-------------------------------------------------------------------------------
 (provide 'my-gui)
