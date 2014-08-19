@@ -8,9 +8,12 @@ push.sh
 data/java/malabar-mode/target
 
 *.class
+*.bak
+
 java_base.tag
 java_base2.tag
 
 
 README.html
 data/java/javadoc-cache
+data/sound

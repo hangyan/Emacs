@@ -92,14 +92,39 @@
 (setq-default abbrev-mode nil)
 ;-------------------------------------------------------------------------------
 ; feed
+;(elfeed-load-opml "~/Emacs/data/rss.opml")
 (setq elfeed-feeds
-      '("http://www.ruanyifeng.com/blog/atom.xml"
-        "https://linuxtoy.org/feed"
-        "https://coolshell.cn/feed"
-        "http://www.oschina.net/news/rss"
-        "http://news.dbanotes.net/rss"
-        "http://blog.jobbole.com/feed/"))
+      '(
+        ("http://www.ruanyifeng.com/blog/atom.xml" blog)
+        ("https://linuxtoy.org/feed" linux)
+        ("https://coolshell.cn/feed" blog)
+        ("http://talesofcpp.fusionfenix.com/feed/" cpp)
+        ("http://blog.think-async.com/feeds/posts/default" cpp)
+        ("http://www.importnew.com/feed" java)
+        ("http://pansci.tw/feed" science)
+        ("http://www.commandlinefu.com/feed/threeup" linux)
+        ("http://www.zhihu.com/rss" read)
+        ("http://blog.sina.com.cn/rss/1286528122.xml" product)
+        ("http://blog.ecocn.org/feed" eco)
+        ("http://feed.feedsky.com/commentshk" read)
+        ("http://blog.sina.com.cn/rss/1286402547.xml" read)
+        ("http://onehd.herokuapp.com/" read)
+                
+      ))
+
 ;-------------------------------------------------------------------------------
+; sound
+
+(defvar writer-keyclick-noise "~/Emacs/data/sound/typewriter-key-1.wav")
+(defvar writer-marginbell-noise "~/Emacs/data/sound/typewriter-space-bar-1.wav")
+(defvar writer-linefeed-noise "~/Emacs/data/sound/typewriter-paper-1.wav")
+(defvar writer-margin-column 80)
+(defvar writer-play-command "afplay")
+
+(load-file (expand-utility-path "misc/writer-typewriter.el"))
+(writer-make-noise)
+
+
 
 ;-------------------------------------------------------------------------------
 

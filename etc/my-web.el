@@ -56,7 +56,7 @@
 ;html5
 (add-to-list 'load-path (expand-lang-path "html5"))
 (eval-after-load "rng-loc"
-  '(add-to-list 'rng-schema-locating-files (expand-web-path "html5/schemas.xml")))
+  '(add-to-list 'rng-schema-locating-files (expand-lang-path "html5/schemas.xml")))
 
 (require 'whattf-dt)
 ;-------------------------------------------------------------------------------

@@ -18,12 +18,10 @@
 ))
 
 
-(require 'litable)
+
 
 (defun my-emacs-lisp-mode-hook ()
-  (local-set-key  (kbd "C-c C-e")  #'eval-buffer)
-  (litable-mode)
-  (local-set-key (kbd "C-c C-l") #'litable-accept-as-pure)
+  (local-set-key  (kbd "C-c C-v")  #'eval-buffer)
   )
 (add-hook 'emacs-lisp-mode-hook 'my-emacs-lisp-mode-hook)
 

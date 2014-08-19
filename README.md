@@ -16,8 +16,9 @@ The ".emacs" file is in [config](https://github.com/hangyan/Config),it only load
   - litable : show function result on fly
 * asm
 * java
-  - jdee
-  - java doc
+  - javadoc lookup
+  - javarun
+  - malabar
 * steve
 * php
 * python
@@ -73,9 +74,6 @@ The ".emacs" file is in [config](https://github.com/hangyan/Config),it only load
 * emms
 * douban.fm
 
-### life ###
-* ledger
-
 ### gui ###
 * sr-speedbar
 * NeoTree
@@ -86,6 +84,7 @@ The ".emacs" file is in [config](https://github.com/hangyan/Config),it only load
 * Recent Files
 * menu-bar+
 * Frame-cmds
+* typewriter
 
 
 ### lib ###
