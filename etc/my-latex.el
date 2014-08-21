@@ -3,7 +3,7 @@
 ;------------------------------------------------------------------------------
 (require 'my-pre)
 (add-to-list 'load-path (expand-lang-path "latex"))
-
+(add-to-list 'load-path (expand-lang-path "latex/auctex"))
 
 (load "auctex.el" nil t t)
 (load "preview-latex.el" nil t t)
