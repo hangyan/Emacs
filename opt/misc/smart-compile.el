@@ -66,7 +66,7 @@
   ("\\.pl\\'"         . "perl -w %f")
   ("\\.gp\\'"	      . "gnuplot -p %f")
   ("\\.rb\\'"         . "ruby -cw %f")
-  ("\\.go\\'"         . "go clean && go build")
+  ("\\.go\\'"         . "go clean && go build %f")
   ("\\.sh\\'"	      . "bash %f")
 )  "Alist of filename patterns vs corresponding format control strings.
 Each element looks like (REGEXP . STRING) or (MAJOR-MODE . STRING).
