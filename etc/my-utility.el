@@ -101,14 +101,19 @@
         ("http://talesofcpp.fusionfenix.com/feed/" cpp)
         ("http://blog.think-async.com/feeds/posts/default" cpp)
         ("http://www.importnew.com/feed" java)
-        ("http://pansci.tw/feed" science)
         ("http://www.commandlinefu.com/feed/threeup" linux)
-        ("http://www.zhihu.com/rss" read)
         ("http://blog.sina.com.cn/rss/1286528122.xml" product)
         ("http://blog.ecocn.org/feed" eco)
         ("http://feed.feedsky.com/commentshk" read)
         ("http://blog.sina.com.cn/rss/1286402547.xml" read)
         ("http://onehd.herokuapp.com/" read)
+		("http://coolshell.cn/feed" blog)
+		("http://blog.jobbole.com/feed/" blog)
+		("http://feed.feedsky.com/yeeyan-select" read)
+		("http://9.douban.com/rss/culture" read)
+        ("http://9.douban.com/rss/technology" blog)
+        ("http://planet.lisp.org/rss20.xml" lisp)
+        ("http://www.ibm.com/developerworks/cn/views/rss/customrssatom.jsp?zone_type=SixZones&zone_by=Java&zone_by=Linux&content_type=select_zones&type_by=%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0&search_by=&day=1&month=01&year=2008&max_entries=10&feed_by=rss&ibm-submit=%E6%8F%90%E4%BA%A4" blog)
                 
       ))
 
@@ -122,7 +127,7 @@
 (defvar writer-play-command "afplay")
 
 (load-file (expand-utility-path "misc/writer-typewriter.el"))
-(writer-make-noise)
+;(writer-make-noise)
 
 
 

@@ -40,10 +40,6 @@
 (setq-default cursor-type 'bar)
 (smart-cursor-color-mode 1)
 ;-------------------------------------------------------------------------------
-; Major mode 
-(setq default-major-mode 'text-mode)
-(add-hook 'text-mode-hook 'turn-on-auto-fill)
-;-------------------------------------------------------------------------------
 ; Indent tab
 (setq-default tab-width 4)
 (setq indent-line-funtion 'insert-tab)
@@ -118,6 +114,7 @@
 (setq fci-rule-width 1)
 (setq fci-rule-color "red")
 (add-hook 'after-change-major-mode-hook 'fci-mode)
+
 ;-------------------------------------------------------------------------------
 ; Indent guide
 (require 'indent-guide)
@@ -201,10 +198,12 @@
   '(menu-item "Hide Frames / Show Buffers" show-hide
               :help "Show, if only one frame visible; else hide."))
 
-(defvar menu-bar-doremi-menu (make-sparse-keymap "FrameCmds"))
-(define-key global-map [menu-bar doremi]
-  (cons "FrameCmds" menu-bar-doremi-menu))
-(define-key menu-bar-doremi-menu [doremi-font+]
-  '("Save Frame Configuration" . save-frame-config))
+;-------------------------------------------------------------------------------
+; Major mode 
+(setq default-major-mode 'text-mode)
+(add-hook 'text-mode-hook
+  '(lambda()
+	 (turn-on-auto-fill)
+	 (set-fill-column 80)))
 ;-------------------------------------------------------------------------------
 (provide 'my-gui)
