@@ -129,6 +129,13 @@
 (load-file (expand-utility-path "misc/writer-typewriter.el"))
 ;(writer-make-noise)
 
+;-------------------------------------------------------------------------------
+; ztree-dir / ztree-diff
+;(require 'ztree-dir) ; No need because of NeoTree
+(require 'ztree-diff)
+;-------------------------------------------------------------------------------
+
+
 
 
 ;-------------------------------------------------------------------------------
