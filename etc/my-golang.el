@@ -36,6 +36,10 @@
 
 (require 'my-pre)
 
+
+(add-to-list 'load-path (expand-utility-path "deferred"))
+(add-to-list 'load-path (expand-utility-path "helm"))
+
 (if (eq system-type 'darwin)
     (progn
       (setenv "GOPATH" "/Users/yayu/Golang")
@@ -45,20 +49,26 @@
 ; NOTE: Don't use gocode from ubuntu.get it from github,and link
 ;       it to /usr/local/bin
 (add-to-list 'load-path (expand-lang-path "go-mode"))
-(require 'go-mode)
-(require 'go-autocomplete)
-(require 'auto-complete-config)
-(require 'go-eldoc) 
-(add-hook 'go-mode-hook 'go-eldoc-setup)
+(require 'go-mode-load)
+(defun my-go-mode-hook ()
+  (require 'go-autocomplete)
+  (require 'auto-complete-config)
+  (require 'go-eldoc)
+  (go-eldoc-setup)
+  (require 'golint)
+  ; go flymake
+  (setq goflymake-path "~/Golang/src/github.com/dougm/goflymake")
+  (if (file-exists-p goflymake-path)
+	  (progn 
+		(add-to-list 'load-path goflymake-path)
+		(require 'go-flymake)))
+  ; helm
+  (require 'helm-config)
+  (require 'helm-go-package)
+  )
 
 
-(require 'golint)
-
-(setq goflymake-path "~/Golang/src/github.com/dougm/goflymake")
-(if (file-exists-p goflymake-path)
-    (progn 
-      (add-to-list 'load-path goflymake-path)
-      (require 'go-flymake)))
+(add-hook 'go-mode-hook 'my-go-mode-hook)
 
 (add-hook 'before-save-hook 'gofmt-before-save)
 
@@ -67,8 +77,6 @@
 (add-hook 'go-mode-hook (lambda ()
                           (local-set-key (kbd "C-c i") 'go-goto-imports)))
 
-(require 'helm-config)
-(require 'helm-go-package)
 ;(setq helm-go-package-godoc-browse-url-function 'browse-url-text-emacs)
 (add-hook 'go-mode-hook (lambda ()
                           (local-set-key (kbd "C-c C-l") 'helm-go-package)))

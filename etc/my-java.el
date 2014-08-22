@@ -35,39 +35,16 @@
   (require 'cl))
 
 (require 'my-pre)
-
-(add-to-list 'load-path (expand-lang-path "java/javadoc-lookup"))
+(add-to-list 'load-path (expand-lang-path "java/fringe-helper"))
+(add-to-list 'load-path (expand-lang-path "java/malabar-mode"))
 ;-------------------------------------------------------------------------------
 ; malabar mode
 ; Note : 1. need javat-wy.el ,but my cedet not provide.download from others.
 ;        2. need groovy.
-(setq semantic-default-submodes '(global-semantic-idle-scheduler-mode
-                                  global-semanticdb-minor-mode
-                                  global-semantic-idle-summary-mode
-                                  global-semantic-mru-bookmark-mode))
-(semantic-mode 1)
-(require 'malabar-mode)
+(autoload 'malabar-mode "malabar-mode.el" "Java Dev." t)
+;(require 'malabar-mode)
 (setq malabar-groovy-lib-dir "~/Emacs/data/java/jar/")
 (add-to-list 'auto-mode-alist '("\\.java\\'" . malabar-mode))
-;-------------------------------------------------------------------------------
-; Javarun
-(require 'javarun)
-;-------------------------------------------------------------------------------
-; add maven jars,need unzip and mvn command.
-;   TODO: user async lib to fetch jars.
-;   NOTE: Need `mvn` command
-(add-to-list 'load-path (expand-lang-path "java/javadoc-lookup"))
-(add-hook 'malabar-mode-hook
-	  (lambda ()
-	    (require 'javadoc-lookup)
-	    (require 'maven-fetch)
-	    (javadoc-add-artifacts 
-		[org.apache.commons commons-math3 "3.0"]
-		[log4j log4j 1.2.17])
-            (javarun-mode 1)))
-
-(add-hook 'malabar-mode-hook
-          (lambda () (local-set-key (kbd "C-h j") 'javadoc-lookup) ))
 ;-------------------------------------------------------------------------------
 
 (provide 'my-java)

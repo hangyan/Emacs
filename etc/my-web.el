@@ -38,6 +38,7 @@
 
 
 (add-to-list 'load-path (expand-lang-path "web-mode"))
+(add-to-list 'load-path (expand-lang-path "rainbow-mode"))
 ;-------------------------------------------------------------------------------
 ;xml
 (add-to-list 'load-path "/usr/local/share/emacs/site-lisp")
@@ -58,17 +59,8 @@
 (eval-after-load "rng-loc"
   '(add-to-list 'rng-schema-locating-files (expand-lang-path "html5/schemas.xml")))
 
-(require 'whattf-dt)
-;-------------------------------------------------------------------------------
-; css
-(require 'rainbow-mode)
-(dolist (hook '(css-mode-hook
-             html-mode-hook))
-  (add-hook hook (lambda () (rainbow-mode t))))
+;(require 'whattf-dt)
 
-;(setq auto-mode-alist
-;      (append '(("\\.css$" . css-mode))
-;              auto-mode-alist))
 ;-------------------------------------------------------------------------------
 ; web-mode
 (require 'web-mode)
@@ -85,8 +77,15 @@
 (setq web-mode-enable-auto-pairing t)
 (setq web-mode-enable-css-colorization t)
 (setq web-mode-enable-current-element-highlight t)
-
-
+;-------------------------------------------------------------------------------
+; rainbow
+(dolist (hook '(css-mode-hook
+             html-mode-hook
+			 web-mode-hook))
+  (add-hook hook (lambda ()
+				   (require 'rainbow-mode)
+				   (rainbow-mode t))))
+;-------------------------------------------------------------------------------
 
 (provide 'my-web)
 ;;; my-web.el ends here

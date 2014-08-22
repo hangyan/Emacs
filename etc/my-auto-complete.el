@@ -85,17 +85,15 @@
   (add-hook 'css-mode-hook 'ac-css-mode-setup)    
   (add-hook 'auto-complete-mode-hook 'ac-common-setup)    
   (global-auto-complete-mode t))
-;;ac-source-gtags    
-(my-ac-config)
 ;-------------------------------------------------------------------------------
-;; clang source ,yasnippet source for c-mode.
+;; clang source ,yasnippet source,c headers for c-mode.
+(add-to-list 'load-path (expand-lang-path "cpp/ac-c-headers"))
 (defun my-ac-cc-mode-setup ()    
-    (setq ac-sources (append '(ac-source-clang ac-source-yasnippet) ac-sources)))    
+  (my-ac-config)
+  (require 'auto-complete-c-headers)
+  (add-to-list 'ac-sources 'ac-source-c-headers)
+  (setq ac-sources (append '(ac-source-clang ac-source-yasnippet) ac-sources)))    
 (add-hook 'c-mode-common-hook 'my-ac-cc-mode-setup)    
-;-------------------------------------------------------------------------------
-;; ac source for c/c++ header files
-(require 'auto-complete-c-headers)
-(add-to-list 'ac-sources 'ac-source-c-headers)
 ;-------------------------------------------------------------------------------
 (provide 'my-auto-complete)
 

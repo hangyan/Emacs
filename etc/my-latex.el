@@ -4,9 +4,16 @@
 (require 'my-pre)
 (add-to-list 'load-path (expand-lang-path "latex"))
 (add-to-list 'load-path (expand-lang-path "latex/auctex"))
+(add-to-list 'load-path (expand-lang-path "latex/ac-auctex"))
 
 (load "auctex.el" nil t t)
+(load "font-latex.el" nil t t)
+
+
+(require 'ac-math)
 (load "preview-latex.el" nil t t)
+(require 'auto-complete-auctex)
+
 (setq TeX-PDF-mode t)
 
 (setq TeX-auto-save t)
@@ -19,8 +26,12 @@
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
 (setq reftex-plug-into-AUCTeX t)
 
+(add-hook 'latex-mode-hook 'my-latex-mode-hook)
 
-(require 'ac-math)
+
+
+
+
 (add-to-list 'ac-modes 'latex-mode) 
 (defun ac-latex-mode-setup ()   
     (setq ac-sources
@@ -40,7 +51,6 @@
 		    "\\)}.*\n?")
 	          (0 'your-face append))))
 
-;auto-complete
-(require 'auto-complete-auctex)
+
 
 (provide 'my-latex)

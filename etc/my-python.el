@@ -34,28 +34,37 @@
 (eval-when-compile
   (require 'cl))
 (require 'my-pre)
-;(add-to-list 'load-path "~/Emacs/python-mode")
-;(autoload 'python-mode "python-mode" "Python Mode." t)
-;(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
-;(add-to-list 'interpreter-mode-alist '("python" . python-mode))
-(add-to-list 'load-path (expand-lang-path "emacs-for-python"))
-(load-file (expand-lang-path "emacs-for-python/epy-init.el"))
-; install 'pyflakes' via 'pip install --upgrade pyflakes'
-(epy-setup-checker "pyflakes %f")
-(global-hl-line-mode t)
-(require 'highlight-indentation)
-(add-hook 'python-mode-hook 'highlight-indentation)
 
+
+
+(add-to-list 'load-path (expand-lang-path "emacs-for-python"))
 ; pylookup -doc
 (setq pylookup-dir (expand-lang-path "pylookup"))
 (add-to-list 'load-path pylookup-dir)
 
-;; load pylookup when compile time
-(eval-when-compile (require 'pylookup))
 
-;; set executable file and db file
-(setq pylookup-program (concat pylookup-dir "/pylookup.py"))
-(setq pylookup-db-file (concat pylookup-dir "/pylookup.db"))
+(defun my-python-mode ()
+  (when (and (stringp buffer-file-name)
+             (string-match "\\.py\\'" buffer-file-name))
+	(load-file (expand-lang-path "emacs-for-python/epy-init.el"))	
+    ;install 'pyflakes' via 'pip install --upgrade pyflakes'
+	(epy-setup-checker "pyflakes %f")
+	(global-hl-line-mode t)
+	(require 'highlight-indentation)
+	(add-hook 'python-mode-hook 'highlight-indentation)
+	;; load pylookup when compile time
+	(eval-when-compile (require 'pylookup))
+	;; set executable file and db file
+	(setq pylookup-program (concat pylookup-dir "/pylookup.py"))
+	(setq pylookup-db-file (concat pylookup-dir "/pylookup.db"))
+	
+	
+	(add-hook 'python-mode-hook
+			  (lambda () (local-set-key  (kbd "C-c C-l")  #'pylookup-lookup-at-point)))
+  ))
+
+
+(add-hook 'find-file-hook 'my-python-mode)
 
 ;; set search option if you want
 ;; (setq pylookup-search-options '("--insensitive" "0" "--desc" "0"))
@@ -68,12 +77,6 @@
 
 (autoload 'pylookup-update "pylookup" 
   "Run pylookup-update and create the database at `pylookup-db-file'." t)
-
-
-
-(add-hook 'python-mode-hook
-          (lambda () (local-set-key  (kbd "C-c C-l")  #'pylookup-lookup-at-point)))
-
 
 
 (provide 'my-python)

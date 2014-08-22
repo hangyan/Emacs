@@ -57,6 +57,7 @@
 	(message "Renamed to %s." new-name)))
 ; ------------------------------------------------------------------------------
 ; dash lib
+(add-to-list 'load-path (expand-meta-path "dash"))
 (eval-after-load "dash" '(dash-enable-font-lock))
 ; ------------------------------------------------------------------------------
 ; package manager
@@ -65,7 +66,7 @@
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (add-to-list 'package-archives 
              '("marmalade" . "http://marmalade-repo.org/packages/"))
-(package-initialize)
+;(package-initialize) ; 0.1 sec
 ; ------------------------------------------------------------------------------
 ; for view large pdfs
 (defun my-find-file-check-make-large-file-read-only-hook ()
@@ -91,12 +92,5 @@
 (defun try-to-add-imenu ()
   (condition-case nil (imenu-add-to-menubar "Imenu") (error nil)))
  (add-hook 'font-lock-mode-hook 'try-to-add-imenu)
-; ------------------------------------------------------------------------------
-; async process
-(add-to-list 'load-path (expand-utility-path "async"))
-(require 'async)
-;-------------------------------------------------------------------------------
-; async eval
-(require 'async-eval)
 ;-------------------------------------------------------------------------------
 (provide 'my-pre)

@@ -3,8 +3,8 @@
 (add-to-list 'load-path (expand-lang-path "slime/"))  ; your SLIME directory
 (setq inferior-lisp-program "/usr/local/bin/clisp") ; your Lisp system
 (require 'slime-autoloads)
-(require 'slime)
-(slime-setup)
+;(require 'slime)
+;(slime-setup)
 
 
 (setq slime-lisp-implementations

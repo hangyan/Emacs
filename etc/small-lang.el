@@ -16,8 +16,17 @@
 ;(setq auto-mode-alist (append '(("/*.\.tz$" . steve-mode)) auto-mode-alist))
 ;-------------------------------------------------------------------------------
 ;asm
-(require 'gas-mode)
-(load-file (expand-lang-path "misc/asm86-mode.el"))
+; Note : Should use regex
+(defun my-asm-mode ()
+  (when (and (stringp buffer-file-name)
+             (or (string-match "\\.pl\\'" buffer-file-name)
+				 (string-match "\\.s\\'" buffer-file-name)
+				 (string-match "\\.S\\'" buffer-file-name)))
+
+	(require 'gas-mode)
+	(load-file (expand-lang-path "misc/asm86-mode.el"))
+	))
+(add-hook 'find-file-hook 'my-asm-mode)
 ;-------------------------------------------------------------------------------
 ;ant
 (add-to-list 'auto-mode-alist '("\\.ant$" . ant-mode))
@@ -45,11 +54,19 @@
 (add-to-list 'auto-mode-alist '("\\.avsc\\'" . json-mode))
 ;-------------------------------------------------------------------------------
 ;pig
-(require 'pig-mode)
+(autoload 'pig-mode "pig-mode.el"
+  "Major Mode for editing pig files" t)
+(add-to-list 'auto-mode-alist '("\\.pig\\'" . pig-mode))
 ;-------------------------------------------------------------------------------
 ;perl
 (add-to-list 'load-path (expand-lang-path "pde/lisp"))
-(load "pde-load")
+(defun my-perl-pde-mode ()
+  (when (and (stringp buffer-file-name)
+             (string-match "\\.pl\\'" buffer-file-name))
+	(load "pde-load")
+    ))
+
+(add-hook 'find-file-hook 'my-perl-pde-mode)
 ;-------------------------------------------------------------------------------
 ;haskell-mode
 ;Note: need `make` first
@@ -76,15 +93,17 @@
 (add-to-list 'load-path (expand-lang-path "erlang/f"))
 (add-to-list 'load-path (expand-lang-path "erlang/edts"))
 (setq edts-inhibit-package-check t)
+
 (if (executable-find "elc")
-    (require 'edts-start))
+	(require 'edts-start))
 ;-------------------------------------------------------------------------------
 ; sql upcase.
 (add-hook 'sql-mode-hook 'sqlup-mode)
 (add-hook 'sql-interactive-mode-hook 'sqlup-mode)
 ;-------------------------------------------------------------------------------
 ; yaml
-(require 'yaml-mode)
+(autoload 'yaml-mode "yaml-mode.el"
+	  "Major mode for editing yml files" t)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 ;-------------------------------------------------------------------------------
 ; lua
