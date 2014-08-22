@@ -56,12 +56,6 @@
 (setq tpp-command     "xterm -e tpp")
 (setq tpp-helpcommand "cat /usr/local/share/doc/tpp/README  | xless")
 ;-------------------------------------------------------------------------------
-;w3m
-(add-to-list 'load-path (expand-utility-path "w3m"))
-(add-to-list 'load-path (expand-utility-path "APEL"))
-(add-to-list 'load-path (expand-utility-path "mit"))
-(require 'w3m-load)
-;-------------------------------------------------------------------------------
 ; disbale abbrev mode
 (setq-default abbrev-mode nil)
 ;-------------------------------------------------------------------------------
