@@ -1,4 +1,4 @@
-
+ 
 ;;; some sets of the apprence
 
 (require 'my-pre)
@@ -205,5 +205,14 @@
   '(lambda()
 	 (turn-on-auto-fill)
 	 (set-fill-column 80)))
+;-------------------------------------------------------------------------------
+; Font for linux
+(if (eq system-type 'gnu/linux)
+    (progn
+      (add-to-list 'default-frame-alist '(font .  "Droid Sans Mono-10" ))
+      (set-face-attribute 'default t :font  "Droid Sans Mono-10")
+      ))
+
+
 ;-------------------------------------------------------------------------------
 (provide 'my-gui)

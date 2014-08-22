@@ -8,9 +8,10 @@
 (add-to-list 'load-path (expand-meta-path "auto-complete"))
 (require 'auto-complete-config)
 (require 'auto-complete)
+(ac-config-default)
 (global-auto-complete-mode t)
 (add-to-list 'ac-dictionary-directories (expand-meta-path "auto-complete/ac-dict"))
-(ac-config-default)
+
 ;;;----------------------------------------------------------------------------
 
 
@@ -90,3 +91,4 @@
 ;;ac-source-gtags    
 (my-ac-config)    
 (provide 'my-auto-complete)
+
