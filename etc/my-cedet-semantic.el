@@ -70,12 +70,9 @@
 	(semantic-add-system-include dir 'c-mode))
       cedet-sys-include-dirs)
 
-
+;-------------------------------------------------------------------------------
 ;scope
 ;load in c/c++ mode
-
-
-
 (add-hook 'c-mode-common-hook
 	    '(lambda ()
 	    (require 'xcscope)))
@@ -83,6 +80,8 @@
 
 (setq exec-path (append '("~/Emacs/bin") 
                           exec-path))
+;-------------------------------------------------------------------------------
 
+;-------------------------------------------------------------------------------
 (provide 'my-cedet-semantic)
 

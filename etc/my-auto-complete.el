@@ -57,11 +57,12 @@
 (setq ac-auto-start nil)  
 (setq ac-quick-help-delay 0.5) 
 (define-key ac-mode-map  (kbd "M-/") 'auto-complete)
+;-------------------------------------------------------------------------------
 (defun my-ac-config ()    
-    (setq ac-clang-flags    
-	(mapcar(lambda (item)(concat "-I" item))    
-		(split-string    
-		"    
+  (setq ac-clang-flags    
+        (mapcar(lambda (item)(concat "-I" item))    
+               (split-string    
+                "    
 		   /usr/lib/gcc/i686-pc-linux-gnu/4.8.0/../../../../include/c++/4.8.0
 		   /usr/lib/gcc/i686-pc-linux-gnu/4.8.0/../../../../include/c++/4.8.0/i686-pc-linux-gnu
 		   /usr/lib/gcc/i686-pc-linux-gnu/4.8.0/../../../../include/c++/4.8.0/backward
@@ -76,19 +77,28 @@
 		   /usr/include/boost
 		   /home/yuyan/loglib/Y_Loglib10/include
 		     "  
-		)))    
+                )))    
 
   (setq-default ac-sources '(ac-source-abbrev ac-source-dictionary ac-source-words-in-same-mode-buffers))    
-    (add-hook 'emacs-lisp-mode-hook 'ac-emacs-lisp-mode-setup)    
-      ;(add-hook 'c-mode-common-hook 'ac-cc-mode-setup)    
-        (add-hook 'ruby-mode-hook 'ac-ruby-mode-setup)    
-	  (add-hook 'css-mode-hook 'ac-css-mode-setup)    
-	    (add-hook 'auto-complete-mode-hook 'ac-common-setup)    
-	      (global-auto-complete-mode t))    
+  (add-hook 'emacs-lisp-mode-hook 'ac-emacs-lisp-mode-setup)    
+  (add-hook 'ruby-mode-hook 'ac-ruby-mode-setup)    
+  (add-hook 'css-mode-hook 'ac-css-mode-setup)    
+  (add-hook 'auto-complete-mode-hook 'ac-common-setup)    
+  (global-auto-complete-mode t))
+;;ac-source-gtags    
+(my-ac-config)
+;-------------------------------------------------------------------------------
+;; clang source ,yasnippet source for c-mode.
 (defun my-ac-cc-mode-setup ()    
     (setq ac-sources (append '(ac-source-clang ac-source-yasnippet) ac-sources)))    
 (add-hook 'c-mode-common-hook 'my-ac-cc-mode-setup)    
-;;ac-source-gtags    
-(my-ac-config)    
+;-------------------------------------------------------------------------------
+;; ac source for c/c++ header files
+(require 'auto-complete-c-headers)
+(add-to-list 'ac-sources 'ac-source-c-headers)
+;-------------------------------------------------------------------------------
+;; auctex source
+(require 'auto-complete-auctex)
+;-------------------------------------------------------------------------------
 (provide 'my-auto-complete)
 
