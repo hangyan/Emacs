@@ -40,5 +40,7 @@
 		    "\\)}.*\n?")
 	          (0 'your-face append))))
 
+;auto-complete
+(require 'auto-complete-auctex)
 
 (provide 'my-latex)

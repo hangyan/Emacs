@@ -97,8 +97,5 @@
 (require 'auto-complete-c-headers)
 (add-to-list 'ac-sources 'ac-source-c-headers)
 ;-------------------------------------------------------------------------------
-;; auctex source
-(require 'auto-complete-auctex)
-;-------------------------------------------------------------------------------
 (provide 'my-auto-complete)
 
