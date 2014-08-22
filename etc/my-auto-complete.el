@@ -45,13 +45,8 @@
 
 ;;----------Source-------------------------------
 ;; list up sources with apropos "(M-x apropos RET ^ac-source-)"
-;;
-;;
-;;
-;;
-;;
-;;
-;;
+
+
 
 (require 'auto-complete-clang)
 (setq ac-auto-start nil)  

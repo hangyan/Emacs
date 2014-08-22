@@ -1,5 +1,9 @@
 ;;; Settings need to be load first
 
+; compile all el files
+(byte-recompile-directory (expand-file-name "~/Emacs") 0)
+
+
 ; paths
 (setq meta-path "~/Emacs/usr/")
 (setq utility-path "~/Emacs/opt/")
