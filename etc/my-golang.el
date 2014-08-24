@@ -46,29 +46,29 @@
       (setq exec-path (append '("/Users/yayu/Golang/bin") exec-path)))      
   (setenv "GOPATH" "/home/yuyan/Golang"))
 
+
+
+
 ; NOTE: Don't use gocode from ubuntu.get it from github,and link
 ;       it to /usr/local/bin
 (add-to-list 'load-path (expand-lang-path "go-mode"))
-(require 'go-mode-load)
-(defun my-go-mode-hook ()
-  (require 'go-autocomplete)
-  (require 'auto-complete-config)
-  (require 'go-eldoc)
-  (go-eldoc-setup)
-  (require 'golint)
+
+(require 'go-mode)
+(require 'go-autocomplete)
+(require 'auto-complete-config)
+
+(require 'go-eldoc)
+(go-eldoc-setup)
+
+(require 'golint)
+
   ; go flymake
-  (setq goflymake-path "~/Golang/src/github.com/dougm/goflymake")
-  (if (file-exists-p goflymake-path)
-	  (progn 
-		(add-to-list 'load-path goflymake-path)
-		(require 'go-flymake)))
-  ; helm
-  (require 'helm-config)
-  (require 'helm-go-package)
-  )
+(setq goflymake-path "~/Golang/src/github.com/dougm/goflymake")
+(if (file-exists-p goflymake-path)
+	(progn 
+	  (add-to-list 'load-path goflymake-path)
+	  (require 'go-flymake)))
 
-
-(add-hook 'go-mode-hook 'my-go-mode-hook)
 
 (add-hook 'before-save-hook 'gofmt-before-save)
 
@@ -76,19 +76,6 @@
                           (local-set-key (kbd "C-c C-r") 'go-remove-unused-imports)))
 (add-hook 'go-mode-hook (lambda ()
                           (local-set-key (kbd "C-c i") 'go-goto-imports)))
-
-;(setq helm-go-package-godoc-browse-url-function 'browse-url-text-emacs)
-(add-hook 'go-mode-hook (lambda ()
-                          (local-set-key (kbd "C-c C-l") 'helm-go-package)))
-
-;(autoload 'helm-go-package "helm-go-package")
-;(eval-after-load 'go-mode
-;  '(substitute-key-definition 'go-import-add 'helm-go-package go-mode-map))
-
-;(autoload 'helm-godoc "helm-godoc" nil t)
-;(define-key go-mode-map (kbd "C-c C-d") 'helm-godoc)
-
-
 
 
 (provide 'my-golang)

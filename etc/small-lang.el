@@ -19,7 +19,7 @@
 ; Note : Should use regex
 (defun my-asm-mode ()
   (when (and (stringp buffer-file-name)
-             (or (string-match "\\.pl\\'" buffer-file-name)
+             (or (string-match "\\.asm\\'" buffer-file-name)
 				 (string-match "\\.s\\'" buffer-file-name)
 				 (string-match "\\.S\\'" buffer-file-name)))
 
@@ -64,6 +64,7 @@
   (when (and (stringp buffer-file-name)
              (string-match "\\.pl\\'" buffer-file-name))
 	(load "pde-load")
+	(message "Load pde for perl...")
     ))
 
 (add-hook 'find-file-hook 'my-perl-pde-mode)
