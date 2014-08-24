@@ -117,13 +117,18 @@
 ; Neotree 
 (require 'neotree)
 (global-set-key [f5] 'neotree-toggle)
+
+;-------------------------------------------------------------------------------
+; window golden ratio
+;(require 'golden-ratio)
+;(golden-ratio-mode 1)
 ;-------------------------------------------------------------------------------
 ; Utilitys
 (setq enable-recursive-minibuffers t) ;; allow recursive editing in minibuffer
 (follow-mode t)                       ;; follow-mode allows easier editing of long files
 ;-------------------------------------------------------------------------------
 ; Major mode 
-(setq default-major-mode 'text-mode)
+(setq major-mode 'text-mode)
 (add-hook 'text-mode-hook
   '(lambda()
 	 (turn-on-auto-fill)
