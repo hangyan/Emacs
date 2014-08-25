@@ -89,6 +89,7 @@
 			                   auto-mode-alist))
 ;-------------------------------------------------------------------------------
 ;erlang
+; Note : erlang-base package provide `escript` when compile el files.''
 (add-to-list 'load-path (expand-lang-path "erlang/eproject"))
 (add-to-list 'load-path (expand-lang-path "erlang/s"))
 (add-to-list 'load-path (expand-lang-path "erlang/f"))

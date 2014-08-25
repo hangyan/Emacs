@@ -1,13 +1,6 @@
 ;;; Some Utility stuff.
 
 (require 'my-pre)
-
-; yasnippet
-(add-to-list 'load-path (expand-utility-path "yasnippet/yasnippet"))
-;(require 'yasnippet)
-;(yas/load-directory (expand-utility-path "yasnippet/yasnippet/snippets"))
-;(yas/initialize)
-
 ;-------------------------------------------------------------------------------
 ; tramp
 (setq tramp-default-method "ssh")

@@ -1,9 +1,7 @@
 ;;; Settings need to be load first
 
 ; compile all el files
-(byte-recompile-directory (expand-file-name "~/Emacs") 0)
-
-
+;(byte-recompile-directory (expand-file-name "~/Emacs") 0)
 ; paths
 (setq meta-path "~/Emacs/usr/")
 (setq utility-path "~/Emacs/opt/")
@@ -96,5 +94,19 @@
 (defun try-to-add-imenu ()
   (condition-case nil (imenu-add-to-menubar "Imenu") (error nil)))
  (add-hook 'font-lock-mode-hook 'try-to-add-imenu)
+;-------------------------------------------------------------------------------
+; global componets
+(add-to-list 'load-path (expand-meta-path "helm"))
+(add-to-list 'load-path (expand-meta-path "function-args"))
+(add-to-list 'load-path (expand-meta-path "company"))
+(add-to-list 'load-path (expand-meta-path "clean-aindent-mode")) 
+(add-to-list 'load-path (expand-meta-path "dtrt-indent"))
+(add-to-list 'load-path (expand-meta-path "ws-butler"))
+;-------------------------------------------------------------------------------
+; yasnippet
+(add-to-list 'load-path (expand-meta-path "yasnippet"))
+;(require 'yasnippet)
+;(yas/load-directory (expand-utility-path "yasnippet/yasnippet/snippets"))
+;(yas/initialize)
 ;-------------------------------------------------------------------------------
 (provide 'my-pre)
