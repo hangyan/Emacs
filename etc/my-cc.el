@@ -2,7 +2,7 @@
 (require 'my-pre)
 (add-to-list 'load-path "~/Emacs/etc/cpp")
 (add-to-list 'load-path (expand-lang-path "cpp/helm-gtags"))
-
+(add-to-list 'load-path (expand-lang-path "cpp/company-c-headers"))
 
 (require 'setup-helm)
 ; install global package on linux,use ggtags command to produce project tags.

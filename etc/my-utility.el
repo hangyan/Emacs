@@ -83,7 +83,11 @@
 (defvar writer-marginbell-noise "~/Emacs/data/sound/typewriter-space-bar-1.wav")
 (defvar writer-linefeed-noise "~/Emacs/data/sound/typewriter-paper-1.wav")
 (defvar writer-margin-column 80)
-(defvar writer-play-command "afplay")
+(setq play_command "afplay")
+(if (eq system-type 'gnu/linux)
+    (setq play_command "aplay"))
+(defvar writer-play-command play_command)
+
 ;(load-file (expand-utility-path "misc/writer-typewriter.el"))
 ;(writer-make-noise)
 ;-------------------------------------------------------------------------------

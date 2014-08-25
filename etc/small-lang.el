@@ -2,18 +2,10 @@
 
 (require 'my-pre)
 (add-to-list 'load-path (expand-lang-path "misc"))
-
+;-------------------------------------------------------------------------------
 ;javacc
 (autoload 'javacc-mode "javacc-mode.el" "JavaCC mode." t)
 (setq auto-mode-alist (append '(("/*.\.jj[t]?$" . javacc-mode)) auto-mode-alist))
-;-------------------------------------------------------------------------------
-;The new language----EE
-;(autoload 'ee-mode "ee-mode.el" "EE mode." t)
-;(setq auto-mode-alist (append '(("/*.\.ee$" . ee-mode)) auto-mode-alist))
-;-------------------------------------------------------------------------------
-;steve
-;(autoload 'steve-mode "steve-mode.el" "Steve mode." t)
-;(setq auto-mode-alist (append '(("/*.\.tz$" . steve-mode)) auto-mode-alist))
 ;-------------------------------------------------------------------------------
 ;asm
 ; Note : Should use regex

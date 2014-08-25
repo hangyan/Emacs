@@ -2,7 +2,9 @@
 ;;; some sets of the apprence
 
 (require 'my-pre)
+
 (add-to-list 'load-path (expand-gui-path "misc"))
+(add-to-list 'load-path (expand-gui-path "smartparens"))
 ;-------------------------------------------------------------------------------
 ; common copy-cut-paste
 ;(cua-mode t)
@@ -64,9 +66,9 @@
     (highlight-parentheses-mode t)))
 (global-highlight-parentheses-mode t)
 
-(add-to-list 'load-path (expand-gui-path "smartparens"))
-(require 'smartparens-config)
-(smartparens-global-mode 1)
+
+
+
 ;-------------------------------------------------------------------------------
 ; Line/column number
 (when (display-graphic-p)
@@ -116,8 +118,7 @@
 ;-------------------------------------------------------------------------------
 ; Neotree 
 (require 'neotree)
-(global-set-key [f5] 'neotree-toggle)
-
+(global-set-key [f4] 'neotree-toggle)
 ;-------------------------------------------------------------------------------
 ; window golden ratio
 ;(require 'golden-ratio)

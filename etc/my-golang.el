@@ -47,8 +47,6 @@
   (setenv "GOPATH" "/home/yuyan/Golang"))
 
 
-
-
 ; NOTE: Don't use gocode from ubuntu.get it from github,and link
 ;       it to /usr/local/bin
 (add-to-list 'load-path (expand-lang-path "go-mode"))
