@@ -105,7 +105,10 @@
 (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
 (add-to-list 'interpreter-mode-alist '("lua" . lua-mode))
 ;-------------------------------------------------------------------------------
-
+; dockfile
+(require 'dockerfile-mode)
+(add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
+;-------------------------------------------------------------------------------
 (provide 'small-lang)
 
 
