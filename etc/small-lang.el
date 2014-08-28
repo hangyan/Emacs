@@ -8,17 +8,8 @@
 (setq auto-mode-alist (append '(("/*.\.jj[t]?$" . javacc-mode)) auto-mode-alist))
 ;-------------------------------------------------------------------------------
 ;asm
-; Note : Should use regex
-(defun my-asm-mode ()
-  (when (and (stringp buffer-file-name)
-             (or (string-match "\\.asm\\'" buffer-file-name)
-				 (string-match "\\.s\\'" buffer-file-name)
-				 (string-match "\\.S\\'" buffer-file-name)))
-
-	(require 'gas-mode)
-	(load-file (expand-lang-path "misc/asm86-mode.el"))
-	))
-(add-hook 'find-file-hook 'my-asm-mode)
+(require 'gas-mode)
+(load-file (expand-lang-path "misc/asm86-mode.el"))
 ;-------------------------------------------------------------------------------
 ;ant
 (add-to-list 'auto-mode-alist '("\\.ant$" . ant-mode))
@@ -52,14 +43,7 @@
 ;-------------------------------------------------------------------------------
 ;perl
 (add-to-list 'load-path (expand-lang-path "pde/lisp"))
-(defun my-perl-pde-mode ()
-  (when (and (stringp buffer-file-name)
-             (string-match "\\.pl\\'" buffer-file-name))
-	(load "pde-load")
-	(message "Load pde for perl...")
-    ))
-
-(add-hook 'find-file-hook 'my-perl-pde-mode)
+(load "pde-load")
 ;-------------------------------------------------------------------------------
 ;haskell-mode
 ;Note: need `make` first
@@ -104,6 +88,14 @@
 (autoload 'lua-mode "lua-mode" "Lua editing mode." t)
 (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
 (add-to-list 'interpreter-mode-alist '("lua" . lua-mode))
+;-------------------------------------------------------------------------------
+; log files
+(autoload 'log4j-mode "log4j-mode" "Major mode for viewing log files." t)
+(add-to-list 'auto-mode-alist '("\\.log\\'" . log4j-mode))
+;-------------------------------------------------------------------------------
+; bash
+(require 'bash-completion)
+(bash-completion-setup)
 ;-------------------------------------------------------------------------------
 
 (provide 'small-lang)

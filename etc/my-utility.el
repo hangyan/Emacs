@@ -70,8 +70,7 @@
         ("http://onehd.herokuapp.com/" read)
 		("http://coolshell.cn/feed" blog)
 		("http://blog.jobbole.com/feed/" blog)
-		("http://feed.feedsky.com/yeeyan-select" read)
-		("http://9.douban.com/rss/culture" read)
+        ("http://feed.feedsky.com/yeeyan-select" read)
         ("http://9.douban.com/rss/technology" blog)
         ("http://planet.lisp.org/rss20.xml" lisp)
         ("http://www.ibm.com/developerworks/cn/views/rss/customrssatom.jsp?zone_type=SixZones&zone_by=Java&zone_by=Linux&content_type=select_zones&type_by=%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0&search_by=&day=1&month=01&year=2008&max_entries=10&feed_by=rss&ibm-submit=%E6%8F%90%E4%BA%A4" blog)
@@ -90,6 +89,10 @@
 
 ;(load-file (expand-utility-path "misc/writer-typewriter.el"))
 ;(writer-make-noise)
+;-------------------------------------------------------------------------------
+; shell-command
+(require 'shell-command)
+(shell-command-completion-mode)
 ;-------------------------------------------------------------------------------
 
 (provide 'my-utility)
