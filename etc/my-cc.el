@@ -16,9 +16,7 @@
 (define-key c-mode-map  [(tab)] 'moo-complete)
 (define-key c++-mode-map  [(tab)] 'moo-complete)
 
-;; company
-(require 'company)
-(add-hook 'after-init-hook 'global-company-mode)
+
 
 ;; company-c-headers
 (add-to-list 'company-backends 'company-c-headers)

@@ -10,9 +10,9 @@
 (load "font-latex.el" nil t t)
 
 
-(require 'ac-math)
+;(require 'ac-math)
 (load "preview-latex.el" nil t t)
-(require 'auto-complete-auctex)
+;(require 'auto-complete-auctex)
 
 (setq TeX-PDF-mode t)
 
@@ -32,7 +32,7 @@
 
 
 
-(add-to-list 'ac-modes 'latex-mode) 
+;(add-to-list 'ac-modes 'latex-mode) 
 (defun ac-latex-mode-setup ()   
     (setq ac-sources
 	       (append '(ac-source-math-unicode ac-source-math-latex ac-source-latex-commands)

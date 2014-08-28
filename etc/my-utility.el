@@ -110,11 +110,21 @@
 ; shell-command
 (require 'shell-command)
 (shell-command-completion-mode)
+;-------------------------------------------------------------------------------
 ; git gutter
 (require 'git-gutter)
 (global-git-gutter-mode +1)
 (git-gutter:linum-setup)
 ;-------------------------------------------------------------------------------
-
+; resetful api client
+(add-to-list 'load-path (expand-utility-path "restclient"))
+(require 'restclient)
+;-------------------------------------------------------------------------------
+;pocket
+(add-to-list 'load-path (expand-utility-path "web"))
+(require 'el-pocket)
+(el-pocket-load-auth)
+;(el-pocket-get)
+;-------------------------------------------------------------------------------
 (provide 'my-utility)
 

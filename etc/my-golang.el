@@ -38,35 +38,47 @@
 
 
 (add-to-list 'load-path (expand-utility-path "deferred"))
-(add-to-list 'load-path (expand-utility-path "helm"))
-
+;-------------------------------------------------------------------------------
 (if (eq system-type 'darwin)
     (progn
       (setenv "GOPATH" "/Users/yayu/Golang")
       (setq exec-path (append '("/Users/yayu/Golang/bin") exec-path)))      
   (setenv "GOPATH" "/home/yuyan/Golang"))
-
-
+;-------------------------------------------------------------------------------
 ; NOTE: Don't use gocode from ubuntu.get it from github,and link
 ;       it to /usr/local/bin
 (add-to-list 'load-path (expand-lang-path "go-mode"))
-
+(add-to-list 'load-path (expand-lang-path "company-go"))
+;-------------------------------------------------------------------------------
 (require 'go-mode)
-(require 'go-autocomplete)
-(require 'auto-complete-config)
+;-------------------------------------------------------------------------------
+;(require 'go-autocomplete)
+;(require 'auto-complete-config)
+;-------------------------------------------------------------------------------
+; company go
+(require 'company-go)
+(setq company-tooltip-limit 20)                      ; bigger popup window
+(setq company-idle-delay .3)                         ; decrease delay before autocompletion popup shows
+(setq company-echo-delay 0)                          ; remove annoying blinking
+(setq company-begin-commands '(self-insert-command)) ; start autocompletion only after typing
 
+
+(add-hook 'go-mode-hook (lambda ()
+                          (set (make-local-variable 'company-backends) '(company-go))
+                          (company-mode)))
+;-------------------------------------------------------------------------------
 (require 'go-eldoc)
 (go-eldoc-setup)
-
+;-------------------------------------------------------------------------------
 (require 'golint)
-
+;-------------------------------------------------------------------------------
   ; go flymake
 (setq goflymake-path "~/Golang/src/github.com/dougm/goflymake")
 (if (file-exists-p goflymake-path)
 	(progn 
 	  (add-to-list 'load-path goflymake-path)
 	  (require 'go-flymake)))
-
+;-------------------------------------------------------------------------------
 
 (add-hook 'before-save-hook 'gofmt-before-save)
 
@@ -74,7 +86,6 @@
                           (local-set-key (kbd "C-c C-r") 'go-remove-unused-imports)))
 (add-hook 'go-mode-hook (lambda ()
                           (local-set-key (kbd "C-c i") 'go-goto-imports)))
-
-
+;-------------------------------------------------------------------------------
 (provide 'my-golang)
 ;;; my-golang.el ends here

@@ -2443,23 +2443,17 @@ Returns a negative number if the tooltip should be displayed above point."
 (defun company-pseudo-tooltip-hide-temporarily ()
   (when (overlayp company-pseudo-tooltip-overlay)
     (overlay-put company-pseudo-tooltip-overlay 'line-prefix nil)
-    (overlay-put company-pseudo-tooltip-overlay 'display nil)
-    (overlay-put company-pseudo-tooltip-overlay 'after-string nil)))
+    (overlay-put company-pseudo-tooltip-overlay 'display nil)))
 
 (defun company-pseudo-tooltip-unhide ()
   (when company-pseudo-tooltip-overlay
-    (let* ((ov company-pseudo-tooltip-overlay)
-           (disp (overlay-get ov 'company-display)))
-      ;; Beat outline's folding overlays, at least.
-      (overlay-put ov 'priority 1)
-      ;; No (extra) prefix for the first line.
-      (overlay-put ov 'line-prefix "")
-      (if (/= (overlay-start ov) (overlay-end ov))
-          (overlay-put ov 'display disp)
-        ;; `display' is usually better (http://debbugs.gnu.org/18285),
-        ;; but it doesn't work when the overlay is empty.
-        (overlay-put ov 'after-string disp))
-      (overlay-put ov 'window (selected-window)))))
+    ;; Beat outline's folding overlays, at least.
+    (overlay-put company-pseudo-tooltip-overlay 'priority 1)
+    ;; No (extra) prefix for the first line.
+    (overlay-put company-pseudo-tooltip-overlay 'line-prefix "")
+    (overlay-put company-pseudo-tooltip-overlay 'display
+                 (overlay-get company-pseudo-tooltip-overlay 'company-display))
+    (overlay-put company-pseudo-tooltip-overlay 'window (selected-window))))
 
 (defun company-pseudo-tooltip-guard ()
   (list
