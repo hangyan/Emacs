@@ -14,7 +14,7 @@
 (require 'shell-toggle-patched)
 (autoload 'shell-toggle "shell-toggle" t)
 (autoload 'shell-toggle-cd "shell-toggle" t)
-(global-set-key [f3] 'shell-toggle)
+(global-set-key [f6] 'shell-toggle)
 (global-set-key [C-f1] 'shell-toggle-cd)
 ;-------------------------------------------------------------------------------
 ; template  
@@ -60,6 +60,7 @@
         ("https://linuxtoy.org/feed" linux) ;linuxtoy
         ("https://coolshell.cn/feed" blog) ;酷克
         ("http://talesofcpp.fusionfenix.com/feed/" cpp)
+        ("http://blog.think-async.com/feeds/posts/default" cpp)
         ("http://www.commandlinefu.com/feed/threeup" linux)
         ("http://blog.sina.com.cn/rss/1286528122.xml" product)
         ("http://feed.feedsky.com/commentshk" read)
@@ -120,6 +121,10 @@
 (add-to-list 'load-path (expand-utility-path "expand-region"))
 (require 'expand-region)
 (global-set-key (kbd "C-=") 'er/expand-region)
+; edit server
+(add-to-list 'load-path (expand-utility-path "edit-server"))
+(require 'edit-server)
+(edit-server-start)
 ;-------------------------------------------------------------------------------
 (provide 'my-utility)
 

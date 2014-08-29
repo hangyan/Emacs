@@ -50,6 +50,7 @@
 (add-to-list 'load-path (expand-lang-path "go-mode"))
 (add-to-list 'load-path (expand-lang-path "company-go"))
 ;-------------------------------------------------------------------------------
+; godef repo: github.com/chenjianlong/rog-go/exp/cmd/godef
 (require 'go-mode)
 ;-------------------------------------------------------------------------------
 ;(require 'go-autocomplete)
@@ -83,8 +84,8 @@
 (add-hook 'before-save-hook 'gofmt-before-save)
 
 (add-hook 'go-mode-hook (lambda ()
-                          (local-set-key (kbd "C-c C-r") 'go-remove-unused-imports)))
-(add-hook 'go-mode-hook (lambda ()
+                          (local-set-key (kbd "C-c C-s") 'godoc-at-point)
+                          (local-set-key (kbd "C-c C-r") 'go-remove-unused-imports)
                           (local-set-key (kbd "C-c i") 'go-goto-imports)))
 ;-------------------------------------------------------------------------------
 (provide 'my-golang)

@@ -43,7 +43,7 @@
 ;-------------------------------------------------------------------------------
 ;perl
 (add-to-list 'load-path (expand-lang-path "pde/lisp"))
-(load "pde-load")
+;(load "pde-load")
 ;-------------------------------------------------------------------------------
 ;haskell-mode
 ;Note: need `make` first
@@ -100,6 +100,10 @@
 ; dockfile
 (require 'dockerfile-mode)
 (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
+;-------------------------------------------------------------------------------
+; rust
+(add-to-list 'load-path (expand-lang-path "rust-mode"))
+(require 'rust-mode-autoloads)
 ;-------------------------------------------------------------------------------
 (provide 'small-lang)
 
