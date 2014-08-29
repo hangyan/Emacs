@@ -17,9 +17,10 @@
 (setq inhibit-splash-message t)
 (setq inhibit-startup-message t)
 ;-------------------------------------------------------------------------------
-; tool-bar 
+; tool-bar  menu-bar
 (if window-system
     (tool-bar-mode 0))
+(global-set-key [f3] 'menu-bar-open)
 ;-------------------------------------------------------------------------------
 ; y-n replace yes-or-no
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -119,6 +120,11 @@
 ; Neotree 
 (require 'neotree)
 (global-set-key [f4] 'neotree-toggle)
+;-------------------------------------------------------------------------------
+; Nav
+(add-to-list 'load-path (expand-gui-path "nav"))
+(require 'nav)
+(nav-disable-overeager-window-splitting)
 ;-------------------------------------------------------------------------------
 ; window golden ratio
 ;(require 'golden-ratio)
