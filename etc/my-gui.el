@@ -139,7 +139,11 @@
 (add-hook 'text-mode-hook
   '(lambda()
 	 (turn-on-auto-fill)
-	 (set-fill-column 80)))
+     (set-fill-column 80)))
+;-------------------------------------------------------------------------------
+; resize windows
+;(global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
+;(global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
 ;-------------------------------------------------------------------------------
 ; Font for linux
 (if (eq system-type 'gnu/linux)

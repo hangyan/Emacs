@@ -3,9 +3,10 @@
 (add-to-list 'load-path "~/Emacs/etc/cpp")
 (add-to-list 'load-path (expand-lang-path "cpp/helm-gtags"))
 (add-to-list 'load-path (expand-lang-path "cpp/company-c-headers"))
+(add-to-list 'load-path (expand-meta-path "ggtags"))
 
 (require 'setup-helm)
-; install global package on linux,use ggtags command to produce project tags.
+; install global package on linux,use gtags command to produce project tags.
 (require 'setup-helm-gtags)
 ;; (require 'setup-ggtags)
 (require 'setup-cedet)

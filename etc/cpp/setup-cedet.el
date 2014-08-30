@@ -12,4 +12,8 @@
 (require 'ede)
 (global-ede-mode)
 
+;; file jump
+(require 'semantic/ia)
+(global-set-key [f7] 'semantic-ia-fast-jump)
+
 (provide 'setup-cedet)

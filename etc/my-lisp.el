@@ -26,7 +26,6 @@
 (add-hook 'emacs-lisp-mode-hook 'my-emacs-lisp-mode-hook)
 
 
-
 (provide 'my-lisp)
 
 
