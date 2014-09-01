@@ -24,7 +24,21 @@
   (local-set-key  (kbd "C-c C-v")  #'eval-buffer)
   )
 (add-hook 'emacs-lisp-mode-hook 'my-emacs-lisp-mode-hook)
+;-------------------------------------------------------------------------------
+; racket
+(add-to-list 'load-path (expand-lang-path "racket"))
+(autoload 'racket-mode "racket-mode.el"
+  "Major mode for editing racket files" t)
+(add-to-list 'auto-mode-alist '("\\.rkt\\'" . racket-mode))
 
+(add-hook 'racket-mode-hook
+          '(lambda ()
+             (define-key racket-mode-map (kbd "C-c r") 'racket-run)))
+;-------------------------------------------------------------------------------
+; geiser
+(add-to-list 'load-path (expand-lang-path "geiser"))
+(load (expand-lang-path "geiser/elisp/geiser-load"))
+;-------------------------------------------------------------------------------
 
 (provide 'my-lisp)
 
