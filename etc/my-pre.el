@@ -138,7 +138,7 @@
 
 
 ;-------------------------------------------------------------------------------
-; flyspell,need install `'ispell` command
+; flyspell,need install `'ispell` command and aspell-en package
 (setq flyspell-issue-message-flag nil)
 (dolist (hook '(text-mode-hook lisp-mode-hook emacs-lisp-mode-hook))
   (add-hook hook (lambda () (flyspell-mode 1))))
