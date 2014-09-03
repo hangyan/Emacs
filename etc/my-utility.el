@@ -68,7 +68,6 @@
         ("http://feed.feedsky.com/yeeyan-select" read)
         ("http://9.douban.com/rss/technology" blog)
         ("http://wanimal.lofter.com/rss" lofter)
-        ("http://wytoday.lofter.com/rss" lofter)
         ("http://planet.lisp.org/rss20.xml" lisp)
         ("http://rss.kuqin.com/")
         ("http://feed.feedsky.com/leica" image) ;Leica中文摄影杂志
