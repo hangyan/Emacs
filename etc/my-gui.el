@@ -81,7 +81,9 @@
 ; Theme
 (when (display-graphic-p)
     (add-to-list 'custom-theme-load-path (expand-gui-path "themes/")))
-(load-theme 'noctilux t)
+;(load-theme 'noctilux t)
+(add-to-list 'custom-theme-load-path (expand-gui-path "themes/solarized"))
+;(load-theme 'solarized-light t)
 ;-------------------------------------------------------------------------------
 ; Terminal settings
 (when (is-in-terminal)
@@ -151,5 +153,9 @@
       (add-to-list 'default-frame-alist '(font .  "Droid Sans Mono-10" ))
       (set-face-attribute 'default t :font  "Droid Sans Mono-10")
       ))
+;-------------------------------------------------------------------------------
+; popup winow
+;(require 'popwin)
+;(popwin-mode 1)
 ;-------------------------------------------------------------------------------
 (provide 'my-gui)

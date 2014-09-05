@@ -4,8 +4,8 @@
 (add-to-list 'load-path (expand-lang-path "misc"))
 ;-------------------------------------------------------------------------------
 ;javacc
-(autoload 'javacc-mode "javacc-mode.el" "JavaCC mode." t)
-(setq auto-mode-alist (append '(("/*.\.jj[t]?$" . javacc-mode)) auto-mode-alist))
+;; (autoload 'javacc-mode "javacc-mode.el" "JavaCC mode." t)
+;; (setq auto-mode-alist (append '(("/*.\.jj[t]?$" . javacc-mode)) auto-mode-alist))
 ;-------------------------------------------------------------------------------
 ;asm
 (require 'gas-mode)
@@ -15,9 +15,9 @@
 (add-to-list 'auto-mode-alist '("\\.ant$" . ant-mode))
 ;-------------------------------------------------------------------------------
 ; gnuplot
-(autoload 'gnuplot-mode "gnuplot" "gnuplot major mode" t)
-(autoload 'gnuplot-make-buffer "gnuplot" "open a buffer in gnuplot mode" t)
-(setq auto-mode-alist (append '(("\\.gp$" . gnuplot-mode)) auto-mode-alist))
+;; (autoload 'gnuplot-mode "gnuplot" "gnuplot major mode" t)
+;; (autoload 'gnuplot-make-buffer "gnuplot" "open a buffer in gnuplot mode" t)
+;; (setq auto-mode-alist (append '(("\\.gp$" . gnuplot-mode)) auto-mode-alist))
 ;-------------------------------------------------------------------------------
 ;markdown
 (autoload 'markdown-mode "markdown-mode.el"
@@ -37,9 +37,9 @@
 (add-to-list 'auto-mode-alist '("\\.avsc\\'" . json-mode))
 ;-------------------------------------------------------------------------------
 ;pig
-(autoload 'pig-mode "pig-mode.el"
-  "Major Mode for editing pig files" t)
-(add-to-list 'auto-mode-alist '("\\.pig\\'" . pig-mode))
+;; (autoload 'pig-mode "pig-mode.el"
+;;   "Major Mode for editing pig files" t)
+;; (add-to-list 'auto-mode-alist '("\\.pig\\'" . pig-mode))
 ;-------------------------------------------------------------------------------
 ;perl
 (add-to-list 'load-path (expand-lang-path "pde/lisp"))
@@ -85,9 +85,9 @@
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 ;-------------------------------------------------------------------------------
 ; lua
-(autoload 'lua-mode "lua-mode" "Lua editing mode." t)
-(add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
-(add-to-list 'interpreter-mode-alist '("lua" . lua-mode))
+;; (autoload 'lua-mode "lua-mode" "Lua editing mode." t)
+;; (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
+;; (add-to-list 'interpreter-mode-alist '("lua" . lua-mode))
 ;-------------------------------------------------------------------------------
 ; log files
 (autoload 'log4j-mode "log4j-mode" "Major mode for viewing log files." t)

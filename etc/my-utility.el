@@ -44,10 +44,10 @@
             auto-mode-alist))
 ;-------------------------------------------------------------------------------
 ; tpp
-(autoload 'tpp-mode "tpp-mode" "TPP mode." t)
-(add-to-list 'auto-mode-alist '("\\.tpp$" . tpp-mode))
-(setq tpp-command     "xterm -e tpp")
-(setq tpp-helpcommand "cat /usr/local/share/doc/tpp/README  | xless")
+;; (autoload 'tpp-mode "tpp-mode" "TPP mode." t)
+;; (add-to-list 'auto-mode-alist '("\\.tpp$" . tpp-mode))
+;; (setq tpp-command     "xterm -e tpp")
+;; (setq tpp-helpcommand "cat /usr/local/share/doc/tpp/README  | xless")
 ;-------------------------------------------------------------------------------
 ; disbale abbrev mode
 (setq-default abbrev-mode nil)
@@ -90,8 +90,8 @@
 ;(writer-make-noise)
 ;-------------------------------------------------------------------------------
 ; shell-command
-(require 'shell-command)
-(shell-command-completion-mode)
+;(require 'shell-command)
+;(shell-command-completion-mode)
 ;-------------------------------------------------------------------------------
 ; git gutter
 (require 'git-gutter)
@@ -99,13 +99,13 @@
 (git-gutter:linum-setup)
 ;-------------------------------------------------------------------------------
 ; resetful api client
-(add-to-list 'load-path (expand-utility-path "restclient"))
-(require 'restclient)
+;(add-to-list 'load-path (expand-utility-path "restclient"))
+;(require 'restclient)
 ;-------------------------------------------------------------------------------
 ;pocket
 (add-to-list 'load-path (expand-utility-path "web"))
-(require 'el-pocket)
-(el-pocket-load-auth)
+;(require 'el-pocket)
+;(el-pocket-load-ACTH)
 ;(el-pocket-get)
 ;-------------------------------------------------------------------------------
 ;multi cursor
@@ -117,13 +117,16 @@
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 ;-------------------------------------------------------------------------------
 ; expand region
-(add-to-list 'load-path (expand-utility-path "expand-region"))
-(require 'expand-region)
-(global-set-key (kbd "C-=") 'er/expand-region)
+;(add-to-list 'load-path (expand-utility-path "expand-region"))
+;(require 'expand-region)
+;(global-set-key (kbd "C-=") 'er/expand-region)
 ; edit server
-(add-to-list 'load-path (expand-utility-path "edit-server"))
-(require 'edit-server)
-(edit-server-start)
+;(add-to-list 'load-path (expand-utility-path "edit-server"))
+;(require 'edit-server)
+;(edit-server-start)
+;-------------------------------------------------------------------------------
+; dirtree
+(require 'dirtree)
 ;-------------------------------------------------------------------------------
 (provide 'my-utility)
 
