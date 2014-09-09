@@ -81,7 +81,8 @@
 ; Theme
 (when (display-graphic-p)
     (add-to-list 'custom-theme-load-path (expand-gui-path "themes/")))
-;(load-theme 'noctilux t)
+(if (eq system-type 'darwin)
+    (load-theme 'noctilux t))
 (add-to-list 'custom-theme-load-path (expand-gui-path "themes/solarized"))
 ;(load-theme 'solarized-light t)
 ;-------------------------------------------------------------------------------
