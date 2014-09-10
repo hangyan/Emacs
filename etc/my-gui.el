@@ -82,7 +82,8 @@
 (when (display-graphic-p)
     (add-to-list 'custom-theme-load-path (expand-gui-path "themes/")))
 (if (eq system-type 'darwin)
-    (load-theme 'noctilux t))
+    (load-theme 'noctilux t)
+   (load-theme 'noctilux t))
 (add-to-list 'custom-theme-load-path (expand-gui-path "themes/solarized"))
 ;(load-theme 'solarized-light t)
 ;-------------------------------------------------------------------------------
@@ -158,5 +159,10 @@
 ; popup winow
 ;(require 'popwin)
 ;(popwin-mode 1)
+;-------------------------------------------------------------------------------
+; e2wm
+(add-to-list 'load-path (expand-gui-path "e2wm"))
+(require 'e2wm)
+(global-set-key (kbd "M-+") 'e2wm:start-management)
 ;-------------------------------------------------------------------------------
 (provide 'my-gui)
