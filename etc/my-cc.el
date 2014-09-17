@@ -1,6 +1,7 @@
 
 (require 'my-pre)
 (add-to-list 'load-path "~/Emacs/etc/cpp")
+(add-to-list 'load-path (expand-lang-path "cpp"))
 (add-to-list 'load-path (expand-lang-path "cpp/helm-gtags"))
 (add-to-list 'load-path (expand-lang-path "cpp/company-c-headers"))
 (add-to-list 'load-path (expand-meta-path "ggtags"))
@@ -12,16 +13,19 @@
 (require 'setup-cedet)
 
 ;; function-args
-(require 'function-args)
-(fa-config-default)
-(define-key c-mode-map  [(tab)] 'moo-complete)
-(define-key c++-mode-map  [(tab)] 'moo-complete)
+;(require 'function-args)
+;(fa-config-default)
+;(define-key c-mode-map  [(tab)] 'moo-complete)
+;(define-key c++-mode-map  [(tab)] 'moo-complete)
 
 
 
 ;; company-c-headers
 (add-to-list 'company-backends 'company-c-headers)
 (define-key c-mode-base-map (kbd "C-<tab>") 'company-c-headers)
+;(add-to-list 'company-c-headers-path-system
+;             "/usr/include/c++/4.9.1/"
+;             )
 
 ;; hs-minor-mode for folding source code
 (add-hook 'c-mode-common-hook 'hs-minor-mode)
@@ -38,7 +42,7 @@
 ;; “java”: The default style for java-mode (see below)
 ;; “user”: When you want to define your own style
 (setq
- c-default-style "linux" ;; set style to "linux"
+ c-default-style "k&r" ;; set style to "linux"
  )
 
 (global-set-key (kbd "RET") 'newline-and-indent)  ; automatically indent when press RET
@@ -75,8 +79,8 @@
 (add-hook 'prog-mode-hook 'clean-aindent-mode)
 
 ;; Package: dtrt-indent
-(require 'dtrt-indent)
-(dtrt-indent-mode 1)
+;(require 'dtrt-indent)
+;(dtrt-indent-mode 1)
 
 ;; Package: ws-butler
 (require 'ws-butler)
@@ -87,9 +91,35 @@
 (yas-global-mode 1)
 
 ;; Package: smartparens
-(require 'smartparens-config)
-(show-smartparens-global-mode +1)
-(smartparens-global-mode 1)
+;(require 'smartparens-config)
+;(show-smartparens-global-mode +1)
+;(smartparens-global-mode 1)
 
+(defun my-c-mode-common-hook()
+   (setq c-basic-offset 4)
+   (c-set-offset 'inline-open 0)
+   (c-set-offset 'friend '-)
+   (c-set-offset 'substatement-open 0)
+   )
+
+(add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
+
+; clang async
+
+
+(require 'auto-complete-clang-async)
+
+(defun ac-cc-mode-setup ()
+  (setq ac-clang-complete-executable "~/Emacs/bin/clang-complete")
+  (setq ac-sources '(ac-source-clang-async))
+  (ac-clang-launch-completion-process)
+)
+
+(defun my-ac-config ()
+  (add-hook 'c-mode-common-hook 'ac-cc-mode-setup)
+  (add-hook 'auto-complete-mode-hook 'ac-common-setup)
+  (global-auto-complete-mode t))
+
+(my-ac-config)
 
 (provide 'my-cc)
