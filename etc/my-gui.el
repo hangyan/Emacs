@@ -67,9 +67,6 @@
     (highlight-parentheses-mode t)))
 (global-highlight-parentheses-mode t)
 
-
-
-
 ;-------------------------------------------------------------------------------
 ; Line/column number
 (when (display-graphic-p)

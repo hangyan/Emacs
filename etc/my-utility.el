@@ -25,7 +25,8 @@
 (add-to-list 'load-path (expand-utility-path "ecb/"))
 ;(load-file (expand-utility-path "ecb/ecb.el"))
 ; `make` first 
-(require 'ecb-autoloads)
+(require 'ecb)
+;(require 'ecb-autoloads)
 (global-set-key (kbd "C-x <up>") 'windmove-up)
 (global-set-key (kbd "C-x <down>") 'windmove-down)
 (global-set-key (kbd "C-x <right>") 'windmove-right)

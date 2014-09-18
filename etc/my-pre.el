@@ -127,7 +127,7 @@
     (define-key global-map [(control f2)]  'cscope-set-initial-directory)
     (define-key global-map [(control f3)]  'cscope-index-files)
     (define-key global-map [(control f4)]  'cscope-find-this-symbol)
-    (define-key global-map [(control f5)]  'cscope-find-global-definition)
+    (define-key global-map [(control f5)]  'cscope-find-functions-calling-this-function)
     (define-key global-map [(control f7)]  'cscope-display-buffer)
     (define-key global-map [(control f8)] 'cscope-display-buffer-toggle)))
 
