@@ -78,11 +78,11 @@
 ; Theme
 (when (display-graphic-p)
     (add-to-list 'custom-theme-load-path (expand-gui-path "themes/")))
-(if (eq system-type 'darwin)
-    (load-theme 'noctilux t))
-;   (load-theme 'noctilux t))
 (add-to-list 'custom-theme-load-path (expand-gui-path "themes/solarized"))
-;(load-theme 'solarized-light t)
+(if (eq system-type 'darwin)
+    (load-theme 'noctilux t)
+  (load-theme 'ujelly t))
+;(load-theme 'solarized-dark t))
 ;-------------------------------------------------------------------------------
 ; Terminal settings
 (when (is-in-terminal)
@@ -146,12 +146,12 @@
 ;(global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
 ;(global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
 ;-------------------------------------------------------------------------------
-; Font for linux
-(if (eq system-type 'gnu/linux)
-    (progn
-      (add-to-list 'default-frame-alist '(font .  "Droid Sans Mono-10" ))
-      (set-face-attribute 'default t :font  "Droid Sans Mono-10")
-      ))
+; Font for linux ---> use .emacs sets
+;; (if (eq system-type 'gnu/linux)
+;;     (progn
+;;       (add-to-list 'default-frame-alist '(font .  "Droid Sans Mono-10" ))
+;;       (set-face-attribute 'default t :font  "Droid Sans Mono-10")
+;;       ))
 ;-------------------------------------------------------------------------------
 ; popup winow
 ;(require 'popwin)

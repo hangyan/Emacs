@@ -65,7 +65,7 @@
     (hl-paren-color-update)))
 
 (defcustom hl-paren-colors
-  '("goldenrod" "red" "black" "blue")
+  '("goldenrod" "red" "green" "blue")
   "List of colors for the highlighted parentheses.
 The list starts with the the inside parentheses and moves outwards."
   :type '(repeat color)
