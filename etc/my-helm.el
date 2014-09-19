@@ -64,4 +64,4 @@
 
 (helm-mode)
 
-(provide 'setup-helm)
+(provide 'my-helm)

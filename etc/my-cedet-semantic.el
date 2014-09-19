@@ -1,9 +1,8 @@
 ;cedet main semantic
 ;-------------------------------------------------------------------
-(defun my-cc-mode-hook ()
   (add-to-list 'load-path (expand-meta-path "cedet"))
   (load-file (expand-meta-path "cedet/cedet-devel-load.el"))
-  (setq semanticdb-default-save-directory "~/Emacs/data/include")
+  (setq semanticdb-default-save-directory "~/Emacs/data/smdb")
 
   (global-ede-mode 1)
 
@@ -22,8 +21,8 @@
   (semantic-load-enable-minimum-features)
 
 
-  (local-set-key [f7] 'semantic-ia-fast-jump)
-  (local-set-key [(control tab)] 'semantic-ia-complete-symbol-menu)
+  (global-set-key [f7] 'semantic-ia-fast-jump)
+  (global-set-key [(control tab)] 'semantic-ia-complete-symbol-menu)
   (local-set-key "\C-c?" 'semantic-ia-complete-symbol)
   (local-set-key "\C-c>" 'semantic-complete-analyze-inline)
   (local-set-key "\C-cp" 'semantic-analyze-proto-impl-toggle)
@@ -46,13 +45,6 @@
 	(semantic-add-system-include dir 'c-mode))
         cedet-sys-include-dirs)
   
-  )
 
-(add-hook 'c-mode-common-hook 'my-cc-mode-hook)
-
-;-------------------------------------------------------------------------------
-;-------------------------------------------------------------------------------
-
-;-------------------------------------------------------------------------------
 (provide 'my-cedet-semantic)
 
