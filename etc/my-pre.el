@@ -26,8 +26,14 @@
 
 ;-------------------------------------------------------------------------------
 ; redefine exist key
-(global-unset-key (kbd "C-x C-c"))
-(global-set-key (kbd "s-q") 'save-buffers-kill-terminal)
+(if (eq system-type 'gnu/linux)
+	(progn
+	  (global-unset-key (kbd "C-x C-c"))
+	  (global-set-key (kbd "s-q") 'save-buffers-kill-terminal)
+	  ))
+;-------------------------------------------------------------------------------
+; disable open large file promt
+(setq large-file-warning-threshold nil)
 ; ------------------------------------------------------------------------------
 ; terminal or gui
 (defun is-in-terminal()

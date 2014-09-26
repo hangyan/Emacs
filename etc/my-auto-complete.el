@@ -49,22 +49,29 @@
 ;-------------------------------------------------------------------------------
 ; clang async
 
+(if (eq system-type 'gnu/linux)
+	(progn
+	  (add-to-list 'load-path (expand-lang-path "cpp"))
+	  (require 'auto-complete-clang-async)
 
-(add-to-list 'load-path (expand-lang-path "cpp"))
-(require 'auto-complete-clang-async)
+	  (defun ac-cc-mode-setup ()
+		(if (eq system-type 'gnu/linux)
+			(setq ac-clang-complete-executable "~/Emacs/bin/clang-complete-linux")
+		  (setq ac-clang-complete-executable "~/Emacs/bin/clang-complete-mac")
+		  )
+		(setq ac-sources '(ac-source-clang-async))
+		(ac-clang-launch-completion-process)
+		)
 
-(defun ac-cc-mode-setup ()
-  (setq ac-clang-complete-executable "~/Emacs/bin/clang-complete")
-  (setq ac-sources '(ac-source-clang-async))
-  (ac-clang-launch-completion-process)
-)
+	  (defun my-ac-config ()
+		(add-hook 'c-mode-common-hook 'ac-cc-mode-setup)
+		(add-hook 'auto-complete-mode-hook 'ac-common-setup)
+		(global-auto-complete-mode t))
 
-(defun my-ac-config ()
-  (add-hook 'c-mode-common-hook 'ac-cc-mode-setup)
-  (add-hook 'auto-complete-mode-hook 'ac-common-setup)
-  (global-auto-complete-mode t))
+	  (my-ac-config)
+	  )
+  )
 
-(my-ac-config)
 
 ;-------------------------------------------------------------------------------
 (provide 'my-auto-complete)
