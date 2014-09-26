@@ -162,4 +162,9 @@
 (require 'e2wm)
 (global-set-key (kbd "M-+") 'e2wm:start-management)
 ;-------------------------------------------------------------------------------
+;tabbar
+(add-to-list 'load-path (expand-gui-path "tabbar"))
+(require 'tabbar)
+(tabbar-mode)
+;-------------------------------------------------------------------------------
 (provide 'my-gui)
