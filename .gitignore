@@ -21,3 +21,5 @@ java_base.tag
 *.class
 *.bak
 session.*
+data/eproject.lst
+data/srecode-map.el

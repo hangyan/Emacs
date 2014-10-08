@@ -52,7 +52,7 @@
 ;;    (require 'javadoc-help)
 ;;
 ;;  or add the autoloads for the public command functions.
-;;    (autoload 'javadoc-lookup       "javadoc-help" "Look up Java class in Javadoc."   t)
+;;    (autoload 'javadoc-look       "javadoc-help" "Look up Java class in Javadoc."   t)
 ;;    (autoload 'javadoc-help         "javadoc-help" "Open up the Javadoc-help menu."   t)
 ;;    (autoload 'javadoc-set-predefined-urls  "javadoc-help" "Set pre-defined urls."    t)
 ;;
@@ -62,7 +62,7 @@
 ;;  Assign the commands to some keys in your .emacs file.
 ;;
 ;;  Examples below assign a set of keys to the javadoc-help functions.
-;;    (global-set-key [(f1)]          'javadoc-lookup)  ; F1 to lookup
+;;    (global-set-key [(f1)]          'javadoc-look)  ; F1 to lookup
 ;;    (global-set-key [(shift f1)]    'javadoc-help)    ; Shift-F1 to bring up menu
 ;;
 ;;  Javadoc-help uses browse-url to launch the system web browser.  Make sure
@@ -84,7 +84,7 @@
 ;;  After adding the javadoc url, try the 'o' command key to open the main
 ;;  index page of the javadoc in the browser.
 ;;
-;;  To look up the javadoc for a class, invoke the javadoc-lookup (F1) command.
+;;  To look up the javadoc for a class, invoke the javadoc-look (F1) command.
 ;;  Type in the class name to look up.  The name near the cursor in the current
 ;;  buffer is automatically used as the initial input.  The search term can be
 ;;  a partial class name, a package name, or it can be a regex.  For example,
@@ -164,7 +164,7 @@
 
 ;;; User callable functions
 
-(defun javadoc-lookup ()
+(defun javadoc-look ()
   "Look up Java class in Javadoc."
   (interactive)
   (let* ((initial-search-term (thing-at-point 'java-identifier))
@@ -1112,7 +1112,7 @@ The following commands are available.
 ;;; Testing/debugging with C-xC-e
 (if nil
     (progn
-      (global-set-key [(f1)]        'javadoc-lookup)
+      (global-set-key [(f1)]        'javadoc-look)
       (global-set-key [(meta f1)]   'javadoc-help)
       (global-set-key [(shift f1)]  'javadoc-help)
       (global-set-key "\C-x\M-t"    'jdh-debug-test)
