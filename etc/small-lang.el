@@ -47,9 +47,11 @@
 ;-------------------------------------------------------------------------------
 ;haskell-mode
 ;Note: need `make` first
-(add-to-list 'load-path (expand-lang-path "haskell-mode/"))
-(require 'haskell-mode-autoloads)
-(add-to-list 'Info-default-directory-list (expand-lang-path "haskell-mode/"))
+(if (not (eq system-type 'windows-nt))
+    (progn
+	(add-to-list 'load-path (expand-lang-path "haskell-mode/"))
+	(require 'haskell-mode-autoloads)
+	(add-to-list 'Info-default-directory-list (expand-lang-path "haskell-mode/"))))
 ;-------------------------------------------------------------------------------
 ;ocaml
 (add-to-list 'load-path (expand-lang-path "tuareg"))
