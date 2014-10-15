@@ -23,7 +23,15 @@
 (add-to-list 'load-path (expand-lang-path "misc"))
 (add-to-list 'load-path (expand-utility-path "misc"))
 
-
+;-------------------------------------------------------------------------------
+;windows
+(if (eq system-type 'windows-nt)
+	(progn
+	  (setq explicit-shell-file-name "bash.exe") 
+	  ;; For subprocesses invoked via the shell 
+	  ;; (e.g., "shell -c command") 
+	  (setq shell-file-name explicit-shell-file-name) 
+	  ))
 ;-------------------------------------------------------------------------------
 ; redefine exist key
 ;; (if (eq system-type 'gnu/linux)
