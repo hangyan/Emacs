@@ -23,14 +23,22 @@
 (add-to-list 'load-path (expand-lang-path "misc"))
 (add-to-list 'load-path (expand-utility-path "misc"))
 
-
+;-------------------------------------------------------------------------------
+;windows
+(if (eq system-type 'windows-nt)
+	(progn
+	  (setq explicit-shell-file-name "bash.exe") 
+	  ;; For subprocesses invoked via the shell 
+	  ;; (e.g., "shell -c command") 
+	  (setq shell-file-name explicit-shell-file-name) 
+	  ))
 ;-------------------------------------------------------------------------------
 ; redefine exist key
-(if (eq system-type 'gnu/linux)
-	(progn
-	  (global-unset-key (kbd "C-x C-c"))
-	  (global-set-key (kbd "s-q") 'save-buffers-kill-terminal)
-	  ))
+;; (if (eq system-type 'gnu/linux)
+;; 	(progn
+;; 	  (global-unset-key (kbd "C-x C-c"))
+;; 	  (global-set-key (kbd "s-q") 'save-buffers-kill-terminal)
+;; 	  ))
 ;-------------------------------------------------------------------------------
 ; disable open large file promt
 (setq large-file-warning-threshold nil)
@@ -136,7 +144,7 @@
   (progn
     (define-key global-map [(control f2)]  'cscope-set-initial-directory)
     (define-key global-map [(control f3)]  'cscope-index-files)
-    (define-key global-map (kbd "C-x C-c")  'cscope-find-this-symbol)
+    (define-key global-map [(control f4)]  'cscope-find-this-symbol)
     (define-key global-map [(control f5)]  'cscope-find-functions-calling-this-function)
     (define-key global-map [(control f7)]  'cscope-display-buffer)
     (define-key global-map [(control f8)] 'cscope-display-buffer-toggle)))
