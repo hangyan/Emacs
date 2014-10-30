@@ -169,5 +169,8 @@
 ; helm
 ;(require 'setup-helm)
 ;-------------------------------------------------------------------------------
-
+; flymake
+(require 'flymake)
+(add-hook 'find-file-hook 'flymake-find-file-hook)
+;-------------------------------------------------------------------------------
 (provide 'my-pre)

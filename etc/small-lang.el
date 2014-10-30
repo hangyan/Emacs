@@ -105,6 +105,11 @@
 (add-to-list 'load-path (expand-lang-path "rust-mode"))
 (require 'rust-mode-autoloads)
 ;-------------------------------------------------------------------------------
+; R
+(add-to-list 'load-path (expand-lang-path "ess/lisp"))
+(load "ess-site")
+
+;-------------------------------------------------------------------------------
 (provide 'small-lang)
 
 

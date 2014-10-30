@@ -50,9 +50,27 @@
 (autoload 'php-mode "php-mode.el" "Php mode." t)
 (setq auto-mode-alist (append '(("/*.\.php[345]?$" . php-mode)) auto-mode-alist))
 ;-------------------------------------------------------------------------------
+; http server
+(add-to-list 'load-path (expand-lang-path "web-server"))
+(require 'simple-httpd)
+(setq httpd-root "~/Emacs/data/www")
+(httpd-start)
+;-------------------------------------------------------------------------------
 ;js
-(autoload 'js3-mode "js3" nil  t)
-(add-to-list 'auto-mode-alist '("\\.js$" . js3-mode))
+(add-to-list 'load-path (expand-lang-path "js2-mode"))
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(add-to-list 'interpreter-mode-alist '("node" . js2-mode))
+
+(add-to-list 'load-path (expand-lang-path "ac-js2"))
+(add-hook 'js2-mode-hook 'ac-js2-mode)
+(setq ac-js2-evaluate-calls t)
+;-------------------------------------------------------------------------------
+; skewer
+(add-to-list 'load-path (expand-lang-path "skewer-mode"))
+(require 'skewer-mode)
+(add-hook 'js2-mode-hook 'skewer-mode)
+(add-hook 'css-mode-hook 'skewer-css-mode)
+(add-hook 'html-mode-hook 'skewer-html-mode)
 ;-------------------------------------------------------------------------------
 ;html5
 (add-to-list 'load-path (expand-lang-path "html5"))
