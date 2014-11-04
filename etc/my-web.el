@@ -54,7 +54,7 @@
 (add-to-list 'load-path (expand-lang-path "web-server"))
 (require 'simple-httpd)
 (setq httpd-root "~/Emacs/data/www")
-(httpd-start)
+;(httpd-start)
 ;-------------------------------------------------------------------------------
 ;js
 (add-to-list 'load-path (expand-lang-path "js2-mode"))
