@@ -35,3 +35,6 @@ ls -l
 cd powerline-shell/
 ls
 cat powerline-shell.py | less
+ls
+./hanming 
+./hanming 

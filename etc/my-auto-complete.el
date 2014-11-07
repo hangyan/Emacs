@@ -10,18 +10,12 @@
 ;-------------------------------------------------------------------------------
 ; auto-complete
 (add-to-list 'load-path (expand-meta-path "auto-complete"))
-(require 'auto-complete-config)
 (require 'auto-complete)
+(require 'auto-complete-config)
 (ac-config-default)
 (global-auto-complete-mode t)
 (add-to-list 'ac-dictionary-directories (expand-meta-path "auto-complete/ac-dict"))
-
-
-;(ac-set-trigger-key "TAB")
-
-;(require 'auto-complete-clang)
-;(setq ac-auto-start nil)
-;(setq ac-quick-help-delay 0.5)
+(add-to-list 'ac-modes 'cmake-mode)
 (define-key ac-mode-map  (kbd "M-/") 'auto-complete)
 ;-------------------------------------------------------------------------------
 (defun my-ac-config ()

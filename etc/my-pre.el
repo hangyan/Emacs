@@ -123,9 +123,10 @@
 ;-------------------------------------------------------------------------------
 ; yasnippet
 (add-to-list 'load-path (expand-meta-path "yasnippet"))
-;(require 'yasnippet)
-;(yas/load-directory (expand-utility-path "yasnippet/yasnippet/snippets"))
+(require 'yasnippet)
+;(yas/load-directory (expand-meta-path "yasnippet/snippets"))
 ;(yas/initialize)
+
 ;-------------------------------------------------------------------------------
 ; cscope
 (require 'xcscope)
@@ -178,7 +179,7 @@
 ;(require 'setup-helm)
 ;-------------------------------------------------------------------------------
 ; flymake
-(require 'flymake)
-(add-hook 'find-file-hook 'flymake-find-file-hook)
+;(require 'flymake)
+;(add-hook 'find-file-hook 'flymake-find-file-hook)
 ;-------------------------------------------------------------------------------
 (provide 'my-pre)
