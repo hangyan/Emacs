@@ -38,3 +38,14 @@ cat powerline-shell.py | less
 ls
 ./hanming 
 ./hanming 
+ls
+mkdir build
+cd build/
+ll
+cmake ..
+ll
+ls -l
+make
+ls
+./Demo 
+./Demo 1 3 

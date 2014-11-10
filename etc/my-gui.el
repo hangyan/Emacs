@@ -52,7 +52,7 @@
 (add-to-list 'load-path (expand-gui-path "smart-mode-line"))
 (require 'smart-mode-line)
 (sml/setup)
-(sml/apply-theme 'light)
+(sml/apply-theme 'dark)
 ;-------------------------------------------------------------------------------
 ; Parentheses 
 (require 'paren)
@@ -79,9 +79,9 @@
 (when (display-graphic-p)
     (add-to-list 'custom-theme-load-path (expand-gui-path "themes/")))
 (add-to-list 'custom-theme-load-path (expand-gui-path "themes/solarized"))
-;; (if (eq system-type 'darwin)
-;;     (load-theme 'noctilux t)
-;;   (load-theme 'ujelly t))
+ (if (eq system-type 'darwin)
+     (load-theme 'noctilux t)
+   (load-theme 'ujelly t))
 ;(load-theme 'solarized-dark t))
 ;-------------------------------------------------------------------------------
 ; Terminal settings

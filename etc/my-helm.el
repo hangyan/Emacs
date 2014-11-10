@@ -45,7 +45,7 @@
                                         ; useful in helm-mini that lists buffers
  )
 
-(global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "M-x") 'execute-extended-command)
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 (global-set-key (kbd "C-x b") 'helm-mini)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)

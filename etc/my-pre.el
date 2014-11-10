@@ -124,9 +124,9 @@
 ; yasnippet
 (add-to-list 'load-path (expand-meta-path "yasnippet"))
 (require 'yasnippet)
-;(yas/load-directory (expand-meta-path "yasnippet/snippets"))
-;(yas/initialize)
-
+(defalias 'yas/get-snippet-tables 'yas--get-snippet-tables)
+(defalias 'yas/table-hash 'yas--table-hash)
+(yas-global-mode 1)
 ;-------------------------------------------------------------------------------
 ; cscope
 (require 'xcscope)
@@ -150,36 +150,5 @@
     (define-key global-map [(control f7)]  'cscope-display-buffer)
     (define-key global-map [(control f8)] 'cscope-display-buffer-toggle)))
 
-;; (define-key global-map [(control f3)]  'cscope-set-initial-directory)
-;; (define-key global-map [(control f4)]  'cscope-unset-initial-directory)
-;; (define-key global-map [(control f5)]  'cscope-find-this-symbol)
-;; (define-key global-map [(control f6)]  'cscope-find-global-definition)
-;; (define-key global-map [(control f7)]
-;;   'cscope-find-global-definition-no-prompting)
-;; (define-key global-map [(control f8)]  'cscope-pop-mark)
-;; (define-key global-map [(control f9)]  'cscope-next-symbol)
-;;  (define-key global-map [(control f10)] 'cscope-next-file)
-;;  (define-key global-map [(control f11)] 'cscope-prev-symbol)
-;;  (define-key global-map [(control f12)] 'cscope-prev-file)
-;; (define-key global-map [(meta f9)]  'cscope-display-buffer)
-;; (defin-ekey global-map [(meta f10)] 'cscope-display-buffer-toggle)
-
-
-;-------------------------------------------------------------------------------
-; flyspell,need install `'ispell` command and aspell-en package
-;(setq flyspell-issue-message-flag nil)
-;(dolist (hook '(text-mode-hook lisp-mode-hook emacs-lisp-mode-hook))
-;  (add-hook hook (lambda () (flyspell-mode 1))))
-
-;(dolist (hook '(c++-mode-hook c-mode-hook go-mode-hook))
-;  (add-hook hook (lambda () (flyspell-prog-mode)))
-;  )
-;-------------------------------------------------------------------------------
-; helm
-;(require 'setup-helm)
-;-------------------------------------------------------------------------------
-; flymake
-;(require 'flymake)
-;(add-hook 'find-file-hook 'flymake-find-file-hook)
 ;-------------------------------------------------------------------------------
 (provide 'my-pre)
