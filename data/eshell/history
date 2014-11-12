@@ -49,3 +49,11 @@ make
 ls
 ./Demo 
 ./Demo 1 3 
+ls
+rm -rf 5-1.r 
+ll
+ll
+alias
+ll
+ls
+gcc -std=c++11 rvalue-ref.cpp 

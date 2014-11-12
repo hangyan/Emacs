@@ -67,6 +67,11 @@
     (highlight-parentheses-mode t)))
 (global-highlight-parentheses-mode t)
 
+
+(require 'smartparens-config)
+(show-smartparens-global-mode t)
+(smartparens-global-mode 1)
+
 ;-------------------------------------------------------------------------------
 ; Line/column number
 (when (display-graphic-p)

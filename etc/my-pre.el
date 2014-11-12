@@ -124,6 +124,7 @@
 ; yasnippet
 (add-to-list 'load-path (expand-meta-path "yasnippet"))
 (require 'yasnippet)
+(setq yas-snippet-dirs '("~/Emacs/usr/yasnippet/snippets")) 
 (defalias 'yas/get-snippet-tables 'yas--get-snippet-tables)
 (defalias 'yas/table-hash 'yas--table-hash)
 (yas-global-mode 1)
