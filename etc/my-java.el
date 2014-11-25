@@ -43,16 +43,19 @@
 ; malabar mode
 ; Note : 1. need javat-wy.el ,but my cedet not provide.download from others.
 ;        2. need groovy.
-(autoload 'malabar-mode "malabar-mode.el" "Java Dev." t)
-;(require 'malabar-mode)
-(setq malabar-groovy-lib-dir "~/Emacs/data/java/jar/")
-(add-to-list 'auto-mode-alist '("\\.java\\'" . malabar-mode))
+;;  (autoload 'malabar-mode "malabar-mode.el" "Java Dev." t)
+;; ;; ;(require 'malabar-mode)
+;;  (setq malabar-groovy-lib-dir "~/Emacs/data/java/jar/")
+;;  (add-to-list 'auto-mode-alist '("\\.java\\'" . malabar-mode))
 ;-------------------------------------------------------------------------------
 ; auto complete
 (add-to-list 'load-path (expand-lang-path "java/auto-java-complete"))
 (require 'ajc-java-complete-config)
 (add-hook 'java-mode-hook 'ajc-java-complete-mode)
 (add-hook 'find-file-hook 'ajc-4-jsp-find-file-hook)
+(add-hook 'jde-mode-hook 'ajc-java-complete-mode)
+;; (add-hook 'malabar-mode 'ajc-java-complete-mode)
+ ;; (add-to-list 'ac-modes 'malabar-mode)
 ;-------------------------------------------------------------------------------
 ; javadoc
 (add-hook 'java-mode-hook
@@ -61,17 +64,17 @@
 			(global-set-key (kbd "C-h j") 'javadoc-lookup)))
 ;-------------------------------------------------------------------------------
 ; javadoc help
-(require 'javadoc-help)
-(add-hook 'java-mode-hook
-		  (lambda ()
-			(local-set-key (kbd "C-c C-j") 'javadoc-look)))
+;; (require 'javadoc-help)
+;; (add-hook 'java-mode-hook
+;; 		  (lambda ()
+;; 			(local-set-key (kbd "C-c C-j") 'javadoc-look)))
 ;-------------------------------------------------------------------------------
 ; jdee -> disable malabar
-(add-to-list 'load-path (expand-lang-path "java/jdee-2.4.1/lisp"))
-(load "jde")
-(add-hook 'java-mode-hook
-		  (lambda ()
-			(local-set-key [(control tab)] 'jde-complete)))
+ (add-to-list 'load-path (expand-lang-path "java/jdee-2.4.1/lisp"))
+ (load "jde")
+ (add-hook 'java-mode-hook
+ 		  (lambda ()
+ 			(local-set-key [(control tab)] 'jde-complete)))
 ;-------------------------------------------------------------------------------
 (provide 'my-java)
 

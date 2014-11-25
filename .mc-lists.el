@@ -3,12 +3,13 @@
 
 (setq mc/cmds-to-run-for-all
       '(
-        sp--cua-replace-region
-        suspend-frame
-        upcase-region
-        ))
+		sp--cua-replace-region
+		sp--self-insert-command
+		suspend-frame
+		upcase-region
+		))
 
 (setq mc/cmds-to-run-once
       '(
-        mac-mwheel-scroll
-        ))
+		mac-mwheel-scroll
+		))

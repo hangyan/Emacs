@@ -4,7 +4,7 @@
 
 
 (setq-default c-basic-offset 4)
-(setq-default tab-width 4 indent-tabs-mode t)
+(setq-default tab-width 4)
 (setq gdb-many-windows t)
 (global-set-key [f10] 'gdb)
 (c-set-offset 'inline-open 0)
@@ -12,11 +12,11 @@
 (c-set-offset 'substatement-open 0)
 
 
-;(c-toggle-auto-hungry-state 0)
+(c-toggle-auto-hungry-state 1)
 
 (define-key c-mode-base-map [(return)] 'newline-and-indent)
 (define-key c-mode-base-map [(control \')] 'hs-toggle-hiding)
-(define-key c-mode-base-map [(meta \')] 'c-indenet-command)
+(define-key c-mode-base-map [(meta \')] 'c-indent-command)
 (setq c-macro-shrink-window-flag t)
 (setq c-macro-preprocessor "cpp")
 (setq c-macro-cppflags " ")

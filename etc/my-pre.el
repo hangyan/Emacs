@@ -86,7 +86,7 @@
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (add-to-list 'package-archives 
              '("marmalade" . "http://marmalade-repo.org/packages/"))
-;(package-initialize) ; 0.1 sec
+(package-initialize) ; 0.1 sec
 ; ------------------------------------------------------------------------------
 ; for view large pdfs
 (defun my-find-file-check-make-large-file-read-only-hook ()
@@ -151,5 +151,8 @@
     (define-key global-map [(control f7)]  'cscope-display-buffer)
     (define-key global-map [(control f8)] 'cscope-display-buffer-toggle)))
 
-;-------------------------------------------------------------------------------
+;;;-----------------------------------------------------------------------------
+;; mark
+(define-key  global-map  "\C-xm"  'pop-to-mark-command)
+
 (provide 'my-pre)

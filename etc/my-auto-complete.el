@@ -11,6 +11,7 @@
 (global-auto-complete-mode t)
 (add-to-list 'ac-dictionary-directories (expand-meta-path "auto-complete/ac-dict"))
 (add-to-list 'ac-modes 'cmake-mode)
+(add-to-list 'ac-modes 'jde-mode)
 (define-key ac-mode-map  (kbd "M-/") 'auto-complete)
 
 
@@ -32,6 +33,11 @@
   (add-to-list 'ac-sources 'ac-source-c-headers))
 (add-hook 'c-mode-common-hook 'my-ac-cc-mode-setup)
 (add-hook 'c++-mode-hook 'my-ac-cc-mode-setup)
+;-------------------------------------------------------------------------------
+; ac-sources
+(add-to-list 'ac-sources 'ac-source-filename)
+(add-to-list 'ac-sources 'ac-source-files-in-current-dir)
+(add-to-list 'ac-sources 'ac-source-words-in-same-mode-buffers)
 ;-------------------------------------------------------------------------------
 
 (provide 'my-auto-complete)

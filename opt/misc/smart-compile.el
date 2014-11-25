@@ -68,6 +68,7 @@
   ("\\.rb\\'"         . "ruby -cw %f")
   ("\\.go\\'"         . "go clean && go build %f")
   ("\\.sh\\'"	      . "bash %f")
+  ("\\.scala\\'"      . "scala %f")
 )  "Alist of filename patterns vs corresponding format control strings.
 Each element looks like (REGEXP . STRING) or (MAJOR-MODE . STRING).
 Visiting a file whose name matches REGEXP specifies STRING as the
