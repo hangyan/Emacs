@@ -1,64 +1,128 @@
 ls
+ls -l $*
+eshell-read-aliases-list 
+ll
+ll
+ll
+ll
+ll
+ll
+ll
 ls
-chmod a+x broken-link.sh 
+ll
+ll
 ls
-ls
-./client -u root -p
-ls
-./client -u root -p
-./client -u root -p
-./client -u root -p
-./client -u root -p
-./client -u root -p
-ls
-./2
-./2
-./2
-ls
-./extract-l a b 1
-ls
-./extract-l a b 1
-ls
-ls
-cat outfile 
-ls
-ls
-rm -rf epslatex.pg 
-ls
-ls
-ls
-go build
-ls
-cd Project/
+ls -l
 ll
 ls -l
-cd powerline-shell/
+cd Code/rust/
 ls
-cat powerline-shell.py | less
+cd hello_world/
 ls
-./hanming 
-./hanming 
+cd ..
 ls
-mkdir build
-cd build/
+cargo
+cargo new gussing_game --bin
+ls
+cd gussing_game/
+ls
+tree
+open Cargo.toml 
+which open
+openo Cargo.toml 
+ls
+cd ..
+ls
+./target/gussing_game
+./target/gussing_game
+ls
+ls
+cd ..
+ls
+./target/gussing_game
+ls
+cd target/
+ls
+cd ..
+ls
+./target/gussing_game
+./target/gussing_game
+./target/gussing_game
+./target/gussing_game
+./target/gussing_game
+ls
+cd Code/
+ls
+ls
+ls
+cd rust/
+ls
+cargno new modules --bin
+cargo new modules --bin
+cd modules/
+ls
+tree
+ls
+openo src/main.rs 
+Cargols.toml  src
+ls
+./target/modules
+ls
+cd Code/
+ls
+cd rust/
+ls
+cd modules/
+ls
+./target/modules
+cd Library/
+ls
+ls
+cd
+cd Code/rust/
+ls
+cd modules/
+ls
+./target/modules
 ll
-cmake ..
-ll
-ls -l
-make
-ls
-./Demo 
-./Demo 1 3 
-ls
-rm -rf 5-1.r 
-ll
-ll
-alias
 ll
 ls
-gcc -std=c++11 rvalue-ref.cpp 
 ls
-scala Greetings.scala 
-ll
 ls
-mv 1-3.scheme 1-3.scm
+cd ..
+ls
+cd ..
+ls
+cargo new testing --bin
+cd testing/
+ls
+cargo ru
+cargo run
+ls
+mkdir tests
+ls
+cargo test
+cargo test
+cargo test
+cargo test
+cargo test
+cargo test
+ls
+cd ..
+ls
+cargo test
+cargo test
+cargo test
+ls
+./hello_world/
+./hell
+ls
+cd ..
+ls
+./hello
+ls
+./hello
+./hello
+./hello
+ls
+./hello

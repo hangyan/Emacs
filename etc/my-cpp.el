@@ -11,12 +11,14 @@
 (c-set-offset 'friend '-)
 (c-set-offset 'substatement-open 0)
 
+ (add-hook 'c-mode-common-hook '(lambda () (c-toggle-auto-state 1)))
 
-(c-toggle-auto-hungry-state 1)
 
-(define-key c-mode-base-map [(return)] 'newline-and-indent)
-(define-key c-mode-base-map [(control \')] 'hs-toggle-hiding)
-(define-key c-mode-base-map [(meta \')] 'c-indent-command)
+;(c-toggle-auto-hungry-state 1)
+
+;(define-key c-mode-base-map [(return)] 'newline-and-indent)
+;(define-key c-mode-base-map [(control \')] 'hs-toggle-hiding)
+;(define-key c-mode-base-map [(meta \')] 'c-indent-command)
 (setq c-macro-shrink-window-flag t)
 (setq c-macro-preprocessor "cpp")
 (setq c-macro-cppflags " ")
@@ -24,8 +26,9 @@
 (setq hs-minor-mode t)
 
 
-(require 'disaster)
-(define-key c-mode-base-map (kbd "C-c d") 'disaster)
+;(require 'disaster)
+;(define-key c-mode-base-map (kbd "C-c d") 'disaster)
+
 
 
 (defun astyle-this-buffer (pmin pmax)

@@ -124,15 +124,16 @@
 ; yasnippet
 (add-to-list 'load-path (expand-meta-path "yasnippet"))
 (require 'yasnippet)
-(setq yas-snippet-dirs '("~/Emacs/usr/yasnippet/snippets")) 
-(defalias 'yas/get-snippet-tables 'yas--get-snippet-tables)
-(defalias 'yas/table-hash 'yas--table-hash)
-(yas-global-mode 1)
+;(setq yas-snippet-dirs '("~/Emacs/usr/yasnippet/snippets")) 
+;(defalias 'yas/get-snippet-tables 'yas--get-snippet-tables)
+;(defalias 'yas/table-hash 'yas--table-hash)
+;(yas-global-mode 1)
 ;-------------------------------------------------------------------------------
 ; cscope
 (require 'xcscope)
 (setq exec-path (append '("~/Emacs/bin")
-                          exec-path))
+						exec-path))
+(add-to-list 'exec-path "~/Software/bin")
 
 (if (eq system-type 'darwin)
     (progn

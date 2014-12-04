@@ -19,9 +19,6 @@
 (global-set-key [f6] 'shell-toggle)
 (global-set-key [C-f1] 'shell-toggle-cd)
 ;;;-----------------------------------------------------------------------------
-;; template  
-(require 'template)
-(template-initialize)
 ;;;-----------------------------------------------------------------------------
 ;; ecb 
 (add-to-list 'load-path (expand-utility-path "ecb/"))
@@ -43,61 +40,8 @@
       (append '(("CMakeLists\\.txt\\'" . cmake-mode)
                 ("\\.cmake\\'" . cmake-mode))
             auto-mode-alist))
-;;;-----------------------------------------------------------------------------
-;; tpp
-;; (autoload 'tpp-mode "tpp-mode" "TPP mode." t)
-;; (add-to-list 'auto-mode-alist '("\\.tpp$" . tpp-mode))
-;; (setq tpp-command     "xterm -e tpp")
-;; (setq tpp-helpcommand "cat /usr/local/share/doc/tpp/README  | xless")
-;;;-----------------------------------------------------------------------------
 ;; disbale abbrev mode
 (setq-default abbrev-mode nil)
-;;;-----------------------------------------------------------------------------
-;; feed
-;;(elfeed-load-opml "~/Emacs/data/rss.opml")
-(setq elfeed-feeds
-      '(
-        ("https://linuxtoy.org/feed" linux) ;linuxtoy
-        ("https://coolshell.cn/feed" blog) ;酷克
-        ("http://talesofcpp.fusionfenix.com/feed/" cpp)
-        ("http://blog.think-async.com/feeds/posts/default" cpp)
-        ("http://www.commandlinefu.com/feed/threeup" linux)
-        ("http://blog.sina.com.cn/rss/1286528122.xml" product)
-        ("http://feed.feedsky.com/commentshk" read)
-        ("http://blog.sina.com.cn/rss/1286402547.xml" read)
-        ("http://feed.feedsky.com/yeeyan-select" read)
-        ("http://9.douban.com/rss/technology" blog)
-        ("http://wanimal.lofter.com/rss" lofter)
-        ("http://planet.lisp.org/rss20.xml" lisp)
-        ("http://rss.kuqin.com/")
-        ("http://book.zi5.me/feed" news)
-        ("http://feed.feedsky.com/leica" image) ;Leica中文摄影杂志
-		))
-;;;-----------------------------------------------------------------------------
-;; sound
-(defvar writer-keyclick-noise "~/Emacs/data/sound/typewriter-key-1.wav")
-(defvar writer-marginbell-noise "~/Emacs/data/sound/typewriter-space-bar-1.wav")
-(defvar writer-linefeed-noise "~/Emacs/data/sound/typewriter-paper-1.wav")
-(defvar writer-margin-column 80)
-(setq play_command "afplay")
-(if (eq system-type 'gnu/linux)
-    (setq play_command "aplay"))
-(defvar writer-play-command play_command)
-;;(load-file (expand-utility-path "misc/writer-typewriter.el"))
-;;(writer-make-noise)
-;;;-----------------------------------------------------------------------------
-;; shell-command
-;;(require 'shell-command)
-;;(shell-command-completion-mode)
-;;;-----------------------------------------------------------------------------
-;; git gutter
-(require 'git-gutter)
-(global-git-gutter-mode +1)
-(git-gutter:linum-setup)
-;;;-----------------------------------------------------------------------------
-;; resetful api client
-;;(add-to-list 'load-path (expand-utility-path "restclient"))
-;;(require 'restclient)
 ;;;-----------------------------------------------------------------------------
 ;;multi cursor
 (add-to-list 'load-path (expand-utility-path "multiple-cursors"))
@@ -114,25 +58,6 @@
     (global-set-key (kbd "M-≥") 'mc/mark-next-like-this)
     (global-set-key (kbd "M-≤") 'mc/mark-previous-like-this)
     (global-set-key (kbd "C-c M-≥") 'mc/mark-all-like-this)))
-;;;-----------------------------------------------------------------------------
-;; expand region
-;;(add-to-list 'load-path (expand-utility-path "expand-region"))
-;;(require 'expand-region)
-;;(global-set-key (kbd "C-=") 'er/expand-region)
-;; edit server
-;;(add-to-list 'load-path (expand-utility-path "edit-server"))
-;;(require 'edit-server)
-;;(edit-server-start)
-;;;-----------------------------------------------------------------------------
-;; dirtree
-(require 'dirtree)
-;;;-----------------------------------------------------------------------------
-;; ack
-(require 'ack-and-a-half)
-(defalias 'ack 'ack-and-a-half)
-(defalias 'ack-same 'ack-and-a-half-same)
-(defalias 'ack-find-file 'ack-and-a-half-find-file)
-(defalias 'ack-find-file-same 'ack-and-a-half-find-file-same)
 ;;;-----------------------------------------------------------------------------
 ;; indent
 ;; (global-aggressive-indent-mode 1)
