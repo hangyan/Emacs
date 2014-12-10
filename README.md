@@ -1,94 +1,90 @@
 Emacs
 =====
 
-This is my Emacs config files on Linux(branch:master) and Mac (branch:mac).
-The ".emacs" file is in [config](https://github.com/hangyan/Config),it only loads the config files in Emacs/Config/.
+This is my Emacs config files on Linux and Mac OSX.
+The "emacs" file is the main config file.
 
-### language support ###
-* c/c++
-  - auto-complete
-  - semanticdb
-  - cppref : read cpp document
-  - diaster : display assembly code under point. 
-* lisp
-  - slime
-  - slime auto complete
-  - litable : show function result on fly
+### bin ###
+binary files.now there is only "csope-indexer" for xscope.
+
+### data ###
+cache files,history files,index files.... i have set nearly all the
+extension's data dir to this.
+
+### dev ###
+various language support.
+
+* cpp
 * asm
-* java
-  - javadoc lookup
-  - javarun
-  - malabar
-* steve
-* php
-* python
-  - emacs-for-python
-  - pylookup
-* xml
-* html
-* css
- - rainbow mode
-* ant
-* antlr
 * markdown
-  - css suport
-* json/avsc
-* js
-* brainfuck
-* pig
+* json / avsc
 * perl
-  - pde
-* latex
-* shell
+* pig
 * haskell
-* golang
-  - godoc
-  - gofmt
-  - godef
-  - golint
-  - helm-go
-* javacc
+* elrang
+* sql
+* yaml
+* log Files
+* bash
+* Dockerfile
+* rust
+* R
+* golang ( godef,flymake,autocomplete)
+* xml
+* php
+* js 
+* html5
+* css
+* scala
+* python
+* lisp (slime,scheme,pairedit)
 * ocaml
-* erlang
 
-### Developing Tools ###
-* smart-compile
-* auto-complete
-* cedet
-* yasnippet
-* ede
-* cedet
-* templates
-* ecb
-* cmake
-* cscope
-* eproject
+    
 
-### Applications ###
-* gnuplot
-* git
-* tramp
-* mutt
+### elpa ###
+packages download from the official package  site.
 
-### enlightment ###
-* emms
-* douban.fm
+### etc ###
+this dir has been discarded. a separated version fo my main ".emacs" file.
 
 ### gui ###
-* sr-speedbar
-* NeoTree
+some setting about the UI.
+
+* smart-mode-line
+* paren
+* highlight-parentheses
+* smartparens
+* right margin
 * indent-guide
-* right-margin
-* ibus-mode
+* uniquify
+* recentf
+* NeoTree
+* multi cursor
+* popwin
+* kpm-list
+* dired+
+* emms
+
+
+### opt ###
+miscellany
+
+* smart-compile
+* shell toggle
 * ecb
-* Recent Files
-* menu-bar+
-* Frame-cmds
-* typewriter
+* elfeed (RSS)
+* hacknews
+* midnight
+* w3m
 
 
-### lib ###
-* qt
+### usr ###
+some global used packages.
 
-### utility ###
-* Very large files mode
+* yasnippet
+* xscope
+* auto-complete
+* helm
+
+
