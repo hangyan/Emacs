@@ -1,18 +1,5 @@
 .git/
-
-data/include/
-data/ac-comphist.dat
-data/auto-save-list
-data/smdb
-data/sound
-data/semanticdb
-data/eproject.lst
-data/url
-data/java/javadoc-cache
-data/java/malabar-mode/target
-data/eshell/history
-
-DouBanMusic/
+data/
 
 push.sh
 README.html
@@ -22,8 +9,5 @@ java_base.tag
 *.class
 *.bak
 session.*
-data/eproject.lst
-data/srecode-map.el
-data/emms
 
 *.elc
