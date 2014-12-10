@@ -1,17 +1,3 @@
-ls
-ls -l $*
-eshell-read-aliases-list 
-ll
-ll
-ll
-ll
-ll
-ll
-ll
-ls
-ll
-ll
-ls
 ls -l
 ll
 ls -l
@@ -126,3 +112,17 @@ ls
 ./hello
 ls
 ./hello
+ls
+go build github.com/hangyan/DrownedGod
+go build github.com/hangyan/DrownedGod
+go build github.com/hangyan/DrownedGod
+go build github.com/hangyan/DrownedGod
+ll
+ls
+ls
+./quine 
+quine > quine_out.c
+ls
+./quine > quine_out.c
+cc 
+cc -o quine_out quine_out.c

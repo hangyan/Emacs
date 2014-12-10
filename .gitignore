@@ -24,4 +24,6 @@ java_base.tag
 session.*
 data/eproject.lst
 data/srecode-map.el
+data/emms
+
 *.elc
