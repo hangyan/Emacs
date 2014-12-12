@@ -2,16 +2,26 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("hangyan"
- (filename . "~/Golang/src/github.com/hangyan/docker/")
- (front-context-string . ".dockerignore\n  ")
- (rear-context-string . "16 Dec  9 11:46 ")
- (position . 253))
-("github.com"
+(("github.com"
  (filename . "~/Golang/src/github.com/")
  (front-context-string . "\n  drwxr-xr-x   ")
  (rear-context-string . "8 Dec  4 11:30 .")
  (position . 133))
+("shipyard-hangyan"
+ (filename . "~/Golang/src/github.com/hangyan/shipyard/")
+ (front-context-string . ".docker\n  -rw-r-")
+ (rear-context-string . "36 Dec  9 17:02 ")
+ (position . 263))
+("hangyan"
+ (filename . "~/Golang/src/github.com/hangyan/docker/")
+ (front-context-string . ".dockerignore\n  ")
+ (rear-context-string . "16 Dec  9 11:46 ")
+ (position . 253))
+("emacs"
+ (filename . "~/Emacs/emacs")
+ (front-context-string . "\n(custom-set-var")
+ (rear-context-string)
+ (position . 1))
 ("DrownedGod"
  (filename . "~/Golang/src/github.com/hangyan/DrownedGod/")
  (front-context-string . ".gitignore\n  -rw")

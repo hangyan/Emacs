@@ -539,7 +539,7 @@
 ;;;-----------------------------------------------------------------------------
 ;; RSS
 (setq elfeed-feeds
-      '("http://programmer.csdn.net/rss_programmer.html"
+      '(
         "http://blog.docker.com/feed/"
 		"http://blog.codingnow.com/atom.xml"
 		"http://blog.jobbole.com/feed/"
@@ -589,6 +589,7 @@
 (add-hook 'tempbuf-mode-hook
 		  (lambda ()
 			(bk-kill-buffers "\\*[Hh]elm.*\\*")
+			(bk-kill-buffers "\\*markdown-output\\*")
 			(bk-kill-buffers "\\*cscope.*\\*")))
 ;;------------------------------------------------------------------------------
 ;; eshell
@@ -772,6 +773,7 @@
 ;; bash
 (require 'bash-completion)
 (bash-completion-setup)
+(add-to-list 'auto-mode-alist '("zshrc" . shell-script-mode))
 ;;-------------------------------------------------------------------------------
 ;; dockfile
 (require 'dockerfile-mode)
@@ -889,7 +891,7 @@
 ;(require 'whattf-dt)
 
 
-; web-mode
+										; web-mode
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
@@ -1243,36 +1245,38 @@
             (local-set-key "\C-c\C-zf" 'browse-url-of-dired-file)))
 
 ;;  cscope
-(if (eq system-type 'darwin)
-    (progn
-      (define-key global-map [(meta f2)]  'cscope-set-initial-directory)
-      (define-key global-map [(meta f3)]  'cscope-index-files)
-      (define-key global-map [(meta f4)]  'cscope-find-this-symbol)
-      (define-key global-map [(meta f5)]  'cscope-find-functions-calling-this-function)
-      (define-key global-map [(meta f7)]  'cscope-find-this-file)
-      (define-key global-map [(meta f8)] 'cscope-display-buffer-toggle)
-      )
-  (progn
-    (define-key global-map [(control f2)]  'cscope-set-initial-directory)
-    (define-key global-map [(control f3)]  'cscope-index-files)
-    (define-key global-map [(control f4)]  'cscope-find-this-symbol)
-    (define-key global-map [(control f5)]  'cscope-find-functions-calling-this-function)
-    (define-key global-map [(control f7)]  'cscope-display-buffer)
-    (define-key global-map [(control f8)] 'cscope-display-buffer-toggle)))
+ (if (eq system-type 'darwin)
+     (progn
+       (define-key global-map [(meta f2)]  'cscope-set-initial-directory)
+       (define-key global-map [(meta f3)]  'cscope-index-files)
+       (define-key global-map [(meta f4)]  'cscope-find-this-symbol)
+       (define-key global-map [(meta f5)]  'cscope-find-functions-calling-this-function)
+       (define-key global-map [(meta f7)]  'cscope-find-this-file)
+       (define-key global-map [(meta f8)] 'cscope-display-buffer-toggle)
+       )
+   (progn
+     (define-key global-map [(control f2)]  'cscope-set-initial-directory)
+     (define-key global-map [(control f3)]  'cscope-index-files)
+     (define-key global-map [(control f4)]  'cscope-find-this-symbol)
+     (define-key global-map [(control f5)]  'cscope-find-functions-calling-this-function)
+     (define-key global-map [(control f7)]  'cscope-display-buffer)
+     (define-key global-map [(control f8)] 'cscope-display-buffer-toggle)))
 
 
 ;; C-x freq use comands
 (define-key global-map "\C-xm" 'pop-to-mark-command)
 (define-key global-map "\C-xg" 'customize-group)
 (define-key global-map "\C-xp" 'package-install)
-
+;; smart-compile
+(global-set-key (kbd "C-x j") 'smart-compile)
+(define-key yas-minor-mode-map (kbd "C-x y") 'yas-expand)
 
 ;; ac and yas
 (define-key ac-mode-map  (kbd "M-/") 'auto-complete)
 
 (define-key yas-minor-mode-map (kbd "<tab>") nil)
 (define-key yas-minor-mode-map (kbd "TAB") nil)
-(define-key yas-minor-mode-map (kbd "C-c y e") 'yas-expand)
+
 
 (ac-set-trigger-key "TAB")
 (ac-set-trigger-key "<tab>")
@@ -1286,8 +1290,6 @@
 (global-set-key [f4] 'neotree-toggle)
 ;; shell 
 (global-set-key [f6] 'shell-toggle)
-;; smart-compile
-(global-set-key [f9] 'smart-compile)
 ;; gdb
 (global-set-key [f10] 'gdb)
 ;; ecb
