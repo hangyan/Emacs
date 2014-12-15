@@ -1,0 +1,12 @@
+# Emacs backup files
+*~
+\#*\#
+
+# Compiled Elisp
+*.elc
+/.cask/
+.dir-locals.el
+/.stackmode/
+/url/
+/sx.info
+/sx.texi
