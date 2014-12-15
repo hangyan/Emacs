@@ -33,6 +33,7 @@
  '(emms-source-file-default-directory "/Users/yayu/Music")
  '(eshell-directory-name "~/Emacs/data/eshell")
  '(fci-rule-color "#eee8d5")
+ '(global-hl-line-mode nil)
  '(global-srecode-minor-mode nil)
  '(helm-bookmark-show-location t)
  '(initial-frame-alist (quote ((fullscreen . maximized))))
@@ -671,6 +672,10 @@
        (format (concat "tell application \"Safari\" to make document with properties {URL:\"%s\"}\n"
                        "tell application \"Safari\" to activate") url))
     (start-process (concat "open " url) nil "open" url)))
+
+;; stack exchange
+;;(add-to-list 'load-path (expand-utility-path "sx"))
+;;(require 'sx-load)
 ;;------------------------------------------------------------------------------
 ;; indent
 ;; (global-aggressive-indent-mode 1)

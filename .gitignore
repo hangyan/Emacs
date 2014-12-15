@@ -11,3 +11,4 @@ java_base.tag
 session.*
 
 *.elc
+*.swp
