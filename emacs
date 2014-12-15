@@ -1,3 +1,5 @@
+(setq user-emacs-directory "~/Emacs")
+(add-to-list 'load-path "~/Emacs")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -297,6 +299,8 @@
   (lambda ()
     (highlight-parentheses-mode t)))
 (global-highlight-parentheses-mode t)
+
+(global-hl-line-mode t)
 ;;------------------------------------------------------------------------------
 ;; LIB : smartparens
 (require 'smartparens-config)
@@ -312,19 +316,20 @@
 (setq column-number-mode t)
 ;;------------------------------------------------------------------------------
 ;; UI : THEME
+;;(add-to-list 'custom-theme-load-path (expand-gui-path "themes/solarized"))
+;;(load-theme 'solarized-light t)
 (when (display-graphic-p)
-  (add-to-list 'custom-theme-load-path (expand-gui-path "themes/")))
-(add-to-list 'custom-theme-load-path (expand-gui-path "themes/solarized"))
-(if (eq system-type 'darwin)
+  (add-to-list 'custom-theme-load-path (expand-gui-path "themes/"))
+  (if (eq system-type 'darwin)
     (load-theme 'noctilux t)
-  (load-theme 'ujelly t))
-;;(load-theme 'solarized-dark t))
+  (load-theme 'ujelly t)))
 ;;------------------------------------------------------------------------------
 ;; UI :  Terminal settings
 (when (is-in-terminal)
   (require 'lacarte)
   (global-set-key [?\e ?\M-x] 'lacarte-execute-command)
-  (global-set-key [?\M-`] 'lacarte-execute-command))
+  (global-set-key [?\M-`] 'lacarte-execute-command)
+  (setq global-hl-line-mode nil))
 ;;------------------------------------------------------------------------------
 ;; UI : Right margin
 (require 'fill-column-indicator)
@@ -963,7 +968,6 @@
 (load-file (expand-lang-path "emacs-for-python/epy-init.el"))
  ;install 'pyflakes' via 'pip install --upgrade pyflakes'
 (epy-setup-checker "pyflakes %f")
-(global-hl-line-mode t)
 (require 'highlight-indentation)
 (add-hook 'python-mode-hook 'highlight-indentation)
 ;; load pylookup when compile time
