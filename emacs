@@ -19,7 +19,7 @@
  '(cua-enable-cua-keys nil)
  '(cua-mode t nil (cua-base))
  '(current-language-environment "Chinese-GBK")
- '(custom-safe-themes (quote ("3a727bdc09a7a141e58925258b6e873c65ccf393b2240c51553098ca93957723" "756597b162f1be60a12dbd52bab71d40d6a2845a3e3c2584c6573ee9c332a66e" "6a37be365d1d95fad2f4d185e51928c789ef7a4ccf17e7ca13ad63a8bf5b922f" "a81bc918eceaee124247648fc9682caddd713897d7fd1398856a5b61a592cb62" default)))
+ '(custom-safe-themes (quote ("b8714d3e17ae1b52e42ceb8ddeb41f49cd635cb38efc48ee05bf070c10a3268f" "3a727bdc09a7a141e58925258b6e873c65ccf393b2240c51553098ca93957723" "756597b162f1be60a12dbd52bab71d40d6a2845a3e3c2584c6573ee9c332a66e" "6a37be365d1d95fad2f4d185e51928c789ef7a4ccf17e7ca13ad63a8bf5b922f" "a81bc918eceaee124247648fc9682caddd713897d7fd1398856a5b61a592cb62" default)))
  '(delete-selection-mode nil)
  '(display-time-mode t)
  '(ecb-expand-methods-switch-off-auto-expand nil)
@@ -62,12 +62,12 @@
  '(show-paren-mode t)
  '(show-paren-style (quote mixed))
  '(show-smartparens-global-mode t)
+ '(sml/theme (quote powerline))
  '(sp-show-pair-delay 0)
  '(srecode-map-save-file "~/Emacs/data/srecode-map.el")
  '(tab-stop-list (quote (4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 72 76 80 84 88 92 96 100 104 108 112 116 120)))
  '(tempbuf-minimum-timeout 10)
  '(template-default-directories (quote ("~/Emacs/data/templates")))
- '(tool-bar-mode nil)
  '(url-configuration-directory "~/Emacs/data/url")
  '(url-cookie-file "~/Emacs/data/url/cookies")
  '(vc-follow-symlinks t)
@@ -283,8 +283,10 @@
 ;; LIB : smart-mode-line
 (add-to-list 'load-path (expand-gui-path "smart-mode-line"))
 (require 'smart-mode-line)
+(setq powerline-arrow-shape 'curve)
+(setq powerline-default-separator-dir '(right . left))
 (sml/setup)
-(sml/apply-theme 'dark)
+(sml/apply-theme 'powerline)
 
 ;; LIB : Parentheses 
 (require 'paren)
@@ -547,13 +549,9 @@
 (setq elfeed-feeds
       '(
         "http://blog.docker.com/feed/"
-		"http://blog.codingnow.com/atom.xml"
+		"http://nullprogram.com/feed/"
 		"http://blog.jobbole.com/feed/"
-		"http://jandan.net/feed"
-		"http://zhihurss.jd-app.com/dailyrss"
 		"http://www.tedunangst.com/flak/rss"
-		"http://www.huxiu.com/rss/0.xml"
-		"http://www.ifanr.com/feed"
 		"http://rss.aqee.net/"
 		"http://blog.sina.com.cn/rss/1286528122.xml"
 		"http://coolshell.cn/feed"))
@@ -567,7 +565,7 @@
 ;; (setq display-buffer-function 'popwin:display-buffer)
 (push '("^\*compilation.+\*$" :regexp t) popwin:special-display-config)
 (push '("^\*[Hh]elm.+\*$" :regexp t) popwin:special-display-config)
-
+(push '("^\*cscope\*$" :regexp t) popwin:special-display-config)
 ;; midnight
 (require 'midnight)
 ;;------------------------------------------------------------------------------
@@ -721,6 +719,11 @@
 (setq markdown-css-dir "~/Emacs/data/markdown-css/")
 (setq markdown-css-theme "clearness")
 
+;;-------------------------------------------------------------------------------
+;; yaml
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+(add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode))
 ;;-------------------------------------------------------------------------------
 ;;json avsc
 (autoload 'json-mode "json-mode.el"
@@ -1000,6 +1003,11 @@
 (autoload 'pylookup-update "pylookup" 
   "Run pylookup-update and create the database at `pylookup-db-file'." t)
 
+(remove-hook 'before-save-hook 'rope-before-save-actions)
+(remove-hook 'after-save-hook 'rope-after-save-actions)
+(remove-hook 'kill-emacs-hook 'rope-exiting-actions)
+
+
 ;;==============================================================================
 
 
@@ -1254,22 +1262,22 @@
             (local-set-key "\C-c\C-zf" 'browse-url-of-dired-file)))
 
 ;;  cscope
- (if (eq system-type 'darwin)
-     (progn
-       (define-key global-map [(meta f2)]  'cscope-set-initial-directory)
-       (define-key global-map [(meta f3)]  'cscope-index-files)
-       (define-key global-map [(meta f4)]  'cscope-find-this-symbol)
-       (define-key global-map [(meta f5)]  'cscope-find-functions-calling-this-function)
-       (define-key global-map [(meta f7)]  'cscope-find-this-file)
-       (define-key global-map [(meta f8)] 'cscope-display-buffer-toggle)
-       )
-   (progn
-     (define-key global-map [(control f2)]  'cscope-set-initial-directory)
-     (define-key global-map [(control f3)]  'cscope-index-files)
-     (define-key global-map [(control f4)]  'cscope-find-this-symbol)
-     (define-key global-map [(control f5)]  'cscope-find-functions-calling-this-function)
-     (define-key global-map [(control f7)]  'cscope-display-buffer)
-     (define-key global-map [(control f8)] 'cscope-display-buffer-toggle)))
+ ;; (if (eq system-type 'darwin)
+ ;;     (progn
+ ;;       (define-key global-map [(meta f2)]  'cscope-set-initial-directory)
+ ;;       (define-key global-map [(meta f3)]  'cscope-index-files)
+ ;;       (define-key global-map [(meta f4)]  'cscope-find-this-symbol)
+ ;;       (define-key global-map [(meta f5)]  'cscope-find-functions-calling-this-function)
+ ;;       (define-key global-map [(meta f7)]  'cscope-find-this-file)
+ ;;       (define-key global-map [(meta f8)] 'cscope-display-buffer-toggle)
+ ;;       )
+ ;;   (progn
+ ;;     (define-key global-map [(control f2)]  'cscope-set-initial-directory)
+ ;;     (define-key global-map [(control f3)]  'cscope-index-files)
+ ;;     (define-key global-map [(control f4)]  'cscope-find-this-symbol)
+ ;;     (define-key global-map [(control f5)]  'cscope-find-functions-calling-this-function)
+ ;;     (define-key global-map [(control f7)]  'cscope-display-buffer)
+ ;;     (define-key global-map [(control f8)] 'cscope-display-buffer-toggle)))
 
 
 ;; C-x freq use comands
@@ -1325,6 +1333,7 @@
 (global-set-key (kbd "C-c h C-c w") 'helm-wikipedia-suggest)
 (global-set-key (kbd "C-c h x") 'helm-register)
 
+
 (define-key 'help-command (kbd "C-f") 'helm-apropos)
 (define-key 'help-command (kbd "r") 'helm-info-emacs)
 (define-key 'help-command (kbd "C-l") 'helm-locate-library)
@@ -1365,3 +1374,20 @@
 
 ;; popwin
 (global-set-key (kbd "C-z") popwin:keymap)
+
+;; move to previous / next lines
+(global-set-key (kbd "C-n")
+				(lambda () (interactive) (next-line 5)))
+
+(global-set-key (kbd "C-p")
+				(lambda () (interactive) (previous-line 5)))
+
+
+
+
+
+;; emacs
+(setq max-lisp-eval-depth 10000)
+
+;; buffer read only
+

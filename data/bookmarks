@@ -2,7 +2,22 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("github.com"
+(("emacs"
+ (filename . "~/Emacs/emacs")
+ (front-context-string . "\n(custom-set-var")
+ (rear-context-string)
+ (position . 1))
+("Code"
+ (filename . "~/Code/")
+ (front-context-string . "R\n  -rw-r--r--  ")
+ (rear-context-string . "70 Nov  5 10:51 ")
+ (position . 399))
+("hangyan.github.io"
+ (filename . "~/Documents/hangyan.github.io")
+ (front-context-string . ".git\n  -rw-r--r-")
+ (rear-context-string . "44 Dec  8 13:15 ")
+ (position . 233))
+("github.com"
  (filename . "~/Golang/src/github.com/")
  (front-context-string . "\n  drwxr-xr-x   ")
  (rear-context-string . "8 Dec  4 11:30 .")
@@ -17,11 +32,6 @@
  (front-context-string . ".dockerignore\n  ")
  (rear-context-string . "16 Dec  9 11:46 ")
  (position . 253))
-("emacs"
- (filename . "~/Emacs/emacs")
- (front-context-string . "\n(custom-set-var")
- (rear-context-string)
- (position . 1))
 ("DrownedGod"
  (filename . "~/Golang/src/github.com/hangyan/DrownedGod/")
  (front-context-string . ".gitignore\n  -rw")
@@ -42,9 +52,4 @@
  (front-context-string . ".git\n  -rw-r--r-")
  (rear-context-string . "10 Dec  5 09:26 ")
  (position . 253))
-("hangyan.github.io"
- (filename . "~/hangyan.github.io/")
- (front-context-string . ".git\n  -rw-r--r-")
- (rear-context-string . "44 Dec  8 13:15 ")
- (position . 233))
 )
