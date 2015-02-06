@@ -3,6 +3,8 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+		c-electric-semi&comma
+		dabbrev-expand
 		sp--cua-replace-region
 		sp--self-insert-command
 		suspend-frame
@@ -11,5 +13,6 @@
 
 (setq mc/cmds-to-run-once
       '(
+		c-electric-slash
 		mac-mwheel-scroll
 		))

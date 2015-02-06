@@ -44,6 +44,8 @@
  '(jde-jdk-doc-url "http://docs.oracle.com/javase/7/docs/api/")
  '(jde-which-full-class-name t)
  '(mark-even-if-inactive t)
+ '(mc/cycle-looping-behaviour (quote stop))
+ '(mc/edit-lines-empty-lines (quote ignore))
  '(midnight-delay 200)
  '(midnight-mode t nil (midnight))
  '(mu4e-attachment-dir "/Users/yayu/Mail/Files")
@@ -324,8 +326,8 @@
 (when (display-graphic-p)
   (add-to-list 'custom-theme-load-path (expand-gui-path "themes/"))
   (if (eq system-type 'darwin)
-    (load-theme 'noctilux t)
-  (load-theme 'ujelly t)))
+    (load-theme 'noctilux t)))
+(load-theme 'ujelly t)
 ;;------------------------------------------------------------------------------
 ;; UI :  Terminal settings
 (when (is-in-terminal)
@@ -1277,7 +1279,14 @@
  ;;     (define-key global-map [(control f4)]  'cscope-find-this-symbol)
  ;;     (define-key global-map [(control f5)]  'cscope-find-functions-calling-this-function)
  ;;     (define-key global-map [(control f7)]  'cscope-display-buffer)
- ;;     (define-key global-map [(control f8)] 'cscope-display-buffer-toggle)))
+;;     (define-key global-map [(control f8)] 'cscope-display-buffer-toggle)))
+
+;; cscope
+(global-set-key (kbd "C-c s s") 'cscope-find-this-symbol)
+(global-set-key (kbd "C-c s a") 'cscope-set-initial-directory)
+(global-set-key (kbd "C-c s I") 'cscope-index-files)
+(global-set-key (kbd "C-c s c") 'cscope-find-functions-calling-this-function)
+(global-set-key (kbd "C-c s C") 'cscope-find-called-functions)
 
 
 ;; C-x freq use comands
