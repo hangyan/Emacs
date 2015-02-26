@@ -1,0 +1,16 @@
+# -*- mode: snippet -*-
+# name: post-meta
+# key: pm
+# --
+---
+layout: post
+title: ${1:Title}
+category: ${2:category}
+tags: [${3:tags}]
+imagefeature:
+comments: true
+share: true
+description: "${4:desc}"
+---
+
+$0

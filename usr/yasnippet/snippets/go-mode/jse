@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: json-omit
+# key: jse
+# --
+\`json:"${1:name},omitempty"\`
+$0

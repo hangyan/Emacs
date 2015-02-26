@@ -277,7 +277,38 @@
 
 (setq require-final-newline t)
 
-(setq-default indent-tabs-mode t)
+;; default to no tabs, but to use tabs if that’s what a pre-existing file is primarily using for indentation
+(defun how-many-region (begin end regexp &optional interactive)
+  "Print number of non-trivial matches for REGEXP in region.                    
+Non-interactive arguments are Begin End Regexp"
+  (interactive "r\nsHow many matches for (regexp): \np")
+  (let ((count 0) opoint)
+    (save-excursion
+      (setq end (or end (point-max)))
+      (goto-char (or begin (point)))
+      (while (and (< (setq opoint (point)) end)
+                  (re-search-forward regexp end t))
+        (if (= opoint (point))
+            (forward-char 1)
+          (setq count (1+ count))))
+      (if interactive (message "%d occurrences" count))
+      count)))
+
+(defun infer-indentation-style ()
+  ;; if our source file uses tabs, we use tabs, if spaces spaces, and if        
+  ;; neither, we use the current indent-tabs-mode                               
+  (let ((space-count (how-many-region (point-min) (point-max) "^  "))
+        (tab-count (how-many-region (point-min) (point-max) "^\t")))
+    (if (> space-count tab-count) (setq indent-tabs-mode nil))
+    (if (> tab-count space-count) (setq indent-tabs-mode t))))
+
+
+
+(setq-default indent-tabs-mode nil)
+(infer-indentation-style)
+
+
+
 ;; BASE : Backup
 (setq auto-save-default nil)
 (setq-default make-backup-files nil)
@@ -738,6 +769,10 @@
 ;;   "Major Mode for editing pig files" t)
 ;; (add-to-list 'auto-mode-alist '("\\.pig\\'" . pig-mode))
 ;;-------------------------------------------------------------------------------
+;; qml
+(require 'qml-mode)
+(add-to-list 'auto-mode-alist '("\\.qml\\'" . qml-mode))
+
 ;;perl
 (add-to-list 'load-path (expand-lang-path "pde/lisp"))
 ;;(load "pde-load")
@@ -839,11 +874,11 @@
 (require 'golint)
 
   ; go flymake
-(setq goflymake-path "~/Golang/src/github.com/dougm/goflymake")
-(if (file-exists-p goflymake-path)
-	(progn 
-	  (add-to-list 'load-path goflymake-path)
-	  (require 'go-flymake)))
+;; (setq goflymake-path "~/Golang/src/github.com/dougm/goflymake")
+;; (if (file-exists-p goflymake-path)
+;; 	(progn 
+;; 	  (add-to-list 'load-path goflymake-path)
+;; 	  (require 'go-flymake)))
 
 
 (add-hook 'before-save-hook 'gofmt-before-save)
@@ -1295,7 +1330,14 @@
 (define-key global-map "\C-xp" 'package-install)
 ;; smart-compile
 (global-set-key (kbd "C-x j") 'smart-compile)
-(define-key yas-minor-mode-map (kbd "C-x y") 'yas-expand)
+
+(define-key yas-minor-mode-map (kbd "C-c d") 'yas-expand)
+
+
+;; whitespace mode
+
+(global-set-key (kbd "C-c w") 'whitespace-mode)
+
 
 ;; ac and yas
 (define-key ac-mode-map  (kbd "M-/") 'auto-complete)
@@ -1304,8 +1346,14 @@
 (define-key yas-minor-mode-map (kbd "TAB") nil)
 
 
-(ac-set-trigger-key "TAB")
-(ac-set-trigger-key "<tab>")
+;;(ac-set-trigger-key "TAB")
+;;(ac-set-trigger-key "<tab>")
+
+
+(define-key ac-mode-map (kbd "TAB") nil)
+(define-key ac-completing-map (kbd "TAB") nil)
+(define-key ac-completing-map [tab] nil)
+
 
 ;; url
 (global-set-key [S-mouse-2] 'browse-url-at-mouse)
@@ -1399,4 +1447,3 @@
 (setq max-lisp-eval-depth 10000)
 
 ;; buffer read only
-

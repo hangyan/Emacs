@@ -66,7 +66,7 @@
   ("\\.pl\\'"         . "perl -w %f")
   ("\\.gp\\'"	      . "gnuplot -p %f")
   ("\\.rb\\'"         . "ruby -cw %f")
-  ("\\.go\\'"         . "go clean && go build %f")
+  ("\\.go\\'"         . "go clean && go build")
   ("\\.sh\\'"	      . "bash %f")
   ("\\.scala\\'"      . "scala %f")
 )  "Alist of filename patterns vs corresponding format control strings.

@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: image-url
+# key: url
+# --
+[${1:10}]: http://yayua.github.io/images/posts/${2:path}.png "${3:name}"
+$0
