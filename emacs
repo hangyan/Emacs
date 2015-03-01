@@ -7,23 +7,34 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(abbrev-file-name "~/Emacs/data/abbrev_defs")
- '(ansi-color-names-vector [solarized-bg red green yellow blue magenta cyan solarized-fg])
+ '(ansi-color-names-vector
+   [solarized-bg red green yellow blue magenta cyan solarized-fg])
  '(auto-save-list-file-prefix "~/Emacs/data/auto-save-list/.saves-")
  '(bookmark-default-file "~/Emacs/data/bookmarks")
  '(browse-url-new-window-flag t)
  '(browse-url-text-browser "w3m")
  '(cider-lein-command "~/Software/bin/lein")
  '(clean-buffer-list-delay-special 60)
- '(clean-buffer-list-kill-buffer-names (quote ("*Compile-Log*" "*helm-mode-execute-extended-command*")))
+ '(clean-buffer-list-kill-buffer-names
+   (quote
+    ("*Compile-Log*" "*helm-mode-execute-extended-command*")))
  '(column-number-mode t)
  '(cua-enable-cua-keys nil)
  '(cua-mode t nil (cua-base))
  '(current-language-environment "Chinese-GBK")
- '(custom-safe-themes (quote ("b8714d3e17ae1b52e42ceb8ddeb41f49cd635cb38efc48ee05bf070c10a3268f" "3a727bdc09a7a141e58925258b6e873c65ccf393b2240c51553098ca93957723" "756597b162f1be60a12dbd52bab71d40d6a2845a3e3c2584c6573ee9c332a66e" "6a37be365d1d95fad2f4d185e51928c789ef7a4ccf17e7ca13ad63a8bf5b922f" "a81bc918eceaee124247648fc9682caddd713897d7fd1398856a5b61a592cb62" default)))
+ '(custom-safe-themes
+   (quote
+    ("b8714d3e17ae1b52e42ceb8ddeb41f49cd635cb38efc48ee05bf070c10a3268f" "3a727bdc09a7a141e58925258b6e873c65ccf393b2240c51553098ca93957723" "756597b162f1be60a12dbd52bab71d40d6a2845a3e3c2584c6573ee9c332a66e" "6a37be365d1d95fad2f4d185e51928c789ef7a4ccf17e7ca13ad63a8bf5b922f" "a81bc918eceaee124247648fc9682caddd713897d7fd1398856a5b61a592cb62" default)))
  '(delete-selection-mode nil)
  '(display-time-mode t)
  '(ecb-expand-methods-switch-off-auto-expand nil)
- '(ecb-layout-window-sizes (quote (("left8" (ecb-directories-buffer-name 0.24431818181818182 . 0.29411764705882354) (ecb-sources-buffer-name 0.24431818181818182 . 0.23529411764705882) (ecb-methods-buffer-name 0.24431818181818182 . 0.27450980392156865) (ecb-history-buffer-name 0.24431818181818182 . 0.17647058823529413)))))
+ '(ecb-layout-window-sizes
+   (quote
+    (("left8"
+      (ecb-directories-buffer-name 0.24431818181818182 . 0.29411764705882354)
+      (ecb-sources-buffer-name 0.24431818181818182 . 0.23529411764705882)
+      (ecb-methods-buffer-name 0.24431818181818182 . 0.27450980392156865)
+      (ecb-history-buffer-name 0.24431818181818182 . 0.17647058823529413)))))
  '(ecb-options-version "2.40")
  '(ecb-tip-of-the-day nil)
  '(ede-project-placeholder-cache-file "~/Emacs/data/ede-projects.el")
@@ -49,17 +60,24 @@
  '(midnight-delay 200)
  '(midnight-mode t nil (midnight))
  '(mu4e-attachment-dir "/Users/yayu/Mail/Files")
- '(mu4e-headers-fields (quote ((:human-date . 12) (:flags . 6) (:size . 7) (:from . 22) (:subject))))
+ '(mu4e-headers-fields
+   (quote
+    ((:human-date . 12)
+     (:flags . 6)
+     (:size . 7)
+     (:from . 22)
+     (:subject))))
  '(mu4e-html2text-command "/usr/local/bin/html2text")
  '(mu4e-update-interval 600)
  '(mu4e-use-fancy-chars t)
  '(mu4e-view-prefer-html nil)
  '(mu4e-view-show-images t)
  '(py-complete-function (quote py-shell-complete))
- '(quack-programs (quote ("mzscheme" "bigloo" "csi" "csi -hygienic" "gosh" "gracket" "gsi" "gsi ~~/syntax-case.scm -" "guile" "kawa" "mit-scheme" "racket" "racket -il typed/racket" "rs" "scheme" "scheme48" "scsh" "sisc" "stklos" "sxi")))
+ '(quack-programs
+   (quote
+    ("mzscheme" "bigloo" "csi" "csi -hygienic" "gosh" "gracket" "gsi" "gsi ~~/syntax-case.scm -" "guile" "kawa" "mit-scheme" "racket" "racket -il typed/racket" "rs" "scheme" "scheme48" "scsh" "sisc" "stklos" "sxi")))
  '(recentf-exclude (quote ("ede-projects.el" ".ido.last" "*javadoc-cache*")))
  '(save-abbrevs nil)
- '(scroll-bar-mode (quote right))
  '(semanticdb-default-save-directory "~/Emacs/data/semanticdb")
  '(show-paren-mode t)
  '(show-paren-style (quote mixed))
@@ -67,9 +85,13 @@
  '(sml/theme (quote powerline))
  '(sp-show-pair-delay 0)
  '(srecode-map-save-file "~/Emacs/data/srecode-map.el")
- '(tab-stop-list (quote (4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 72 76 80 84 88 92 96 100 104 108 112 116 120)))
+ '(tab-stop-list
+   (quote
+    (4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 72 76 80 84 88 92 96 100 104 108 112 116 120)))
  '(tempbuf-minimum-timeout 10)
  '(template-default-directories (quote ("~/Emacs/data/templates")))
+ '(tool-bar-mode nil)
+ '(transient-mark-mode (quote (only . t)))
  '(url-configuration-directory "~/Emacs/data/url")
  '(url-cookie-file "~/Emacs/data/url/cookies")
  '(vc-follow-symlinks t)
@@ -81,7 +103,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Consolas" :foundry "nil" :slant normal :weight normal :height 130 :width normal))))
+ '(default ((t (:family "Consolas" :foundry "microsoft" :slant normal :weight normal :height 113 :width normal))))
  '(ac-candidate-face ((t (:background "gray10" :foreground "DarkGoldenrod3"))))
  '(ac-selection-face ((t (:background "gray10" :foreground "white"))))
  '(cscope-file-face ((t (:foreground "blue"))))
@@ -559,8 +581,8 @@ Non-interactive arguments are Begin End Regexp"
 (add-to-list 'load-path (expand-utility-path "ecb/"))
 ;;(load-file (expand-utility-path "ecb/ecb.el"))
 ;; `make` first 
-;;(require 'ecb)
-(require 'ecb-autoloads)
+(require 'ecb)
+;;(require 'ecb-autoloads)
 ;;;-----------------------------------------------------------------------------
 ;; cmake  
 (require 'cmake-mode)
