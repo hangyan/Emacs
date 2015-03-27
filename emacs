@@ -24,7 +24,7 @@
  '(current-language-environment "Chinese-GBK")
  '(custom-safe-themes
    (quote
-    ("b8714d3e17ae1b52e42ceb8ddeb41f49cd635cb38efc48ee05bf070c10a3268f" "3a727bdc09a7a141e58925258b6e873c65ccf393b2240c51553098ca93957723" "756597b162f1be60a12dbd52bab71d40d6a2845a3e3c2584c6573ee9c332a66e" "6a37be365d1d95fad2f4d185e51928c789ef7a4ccf17e7ca13ad63a8bf5b922f" "a81bc918eceaee124247648fc9682caddd713897d7fd1398856a5b61a592cb62" default)))
+    ("a291bd0477bc7034b302b9b5460087870bfb47f1a3cdeef61b5ad7debb23d9e5" "b8714d3e17ae1b52e42ceb8ddeb41f49cd635cb38efc48ee05bf070c10a3268f" "3a727bdc09a7a141e58925258b6e873c65ccf393b2240c51553098ca93957723" "756597b162f1be60a12dbd52bab71d40d6a2845a3e3c2584c6573ee9c332a66e" "6a37be365d1d95fad2f4d185e51928c789ef7a4ccf17e7ca13ad63a8bf5b922f" "a81bc918eceaee124247648fc9682caddd713897d7fd1398856a5b61a592cb62" default)))
  '(delete-selection-mode nil)
  '(display-time-mode t)
  '(ecb-expand-methods-switch-off-auto-expand nil)
@@ -91,7 +91,6 @@
  '(tempbuf-minimum-timeout 10)
  '(template-default-directories (quote ("~/Emacs/data/templates")))
  '(tool-bar-mode nil)
- '(transient-mark-mode (quote (only . t)))
  '(url-configuration-directory "~/Emacs/data/url")
  '(url-cookie-file "~/Emacs/data/url/cookies")
  '(vc-follow-symlinks t)
@@ -103,7 +102,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Consolas" :foundry "microsoft" :slant normal :weight normal :height 113 :width normal))))
+ '(default ((t (:family "InputMonoNarrow" :foundry "outline" :slant normal :weight normal :height 98 :width normal))))
  '(ac-candidate-face ((t (:background "gray10" :foreground "DarkGoldenrod3"))))
  '(ac-selection-face ((t (:background "gray10" :foreground "white"))))
  '(cscope-file-face ((t (:foreground "blue"))))
@@ -799,15 +798,6 @@ Non-interactive arguments are Begin End Regexp"
 (add-to-list 'load-path (expand-lang-path "pde/lisp"))
 ;;(load "pde-load")
 ;;-------------------------------------------------------------------------------
-;;haskell-mode
-;;Note: need `make` first
-(if (not (eq system-type 'windows-nt))
-    (progn
-	  (add-to-list 'load-path (expand-lang-path "haskell-mode/"))
-	  (require 'haskell-mode-autoloads)
-	  (add-to-list 'Info-default-directory-list (expand-lang-path "haskell-mode/"))
-	  (add-to-list 'ac-modes 'haskell-mode)
-	  (add-hook 'haskell-mode-hook (lambda () (local-set-key [(return)] 'newline-and-indent)))))
 	  
 
 ;;-------------------------------------------------------------------------------
@@ -869,17 +859,11 @@ Non-interactive arguments are Begin End Regexp"
 ;;==============================================================================
 ;;====================== LANGUAGE : golang =====================================
 
-(add-to-list 'load-path (expand-utility-path "deferred"))
+;; cygwin path
+;;(require 'cygwin-mount)
+;;(cygwin-mount-activate)
 
-(cond ((eq system-type 'darwin)
-	   (progn
-		 (setenv "GOPATH" "/Users/yayu/Golang")
-		 (setq exec-path (append '("/Users/yayu/Golang/bin") exec-path))))
-	  ((eq system-type 'windows-nt)
-	   (setenv "GOPATH" "/Golang"))   ;same with the setting of .bashrc
-	  (t (setenv "GOPATH" "/home/yuyan/Golang"))
-	  )
- 										;
+(add-to-list 'load-path (expand-utility-path "deferred"))
 (add-to-list 'load-path (expand-lang-path "go-mode"))
 
 
