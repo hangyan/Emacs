@@ -10,5 +10,4 @@ java_base.tag
 *.bak
 session.*
 
-*.elc
 *.swp
