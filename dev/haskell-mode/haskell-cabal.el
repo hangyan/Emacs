@@ -4,8 +4,6 @@
 
 ;; Author: Stefan Monnier <monnier@iro.umontreal.ca>
 
-;; This file is not part of GNU Emacs.
-
 ;; This file is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
 ;; the Free Software Foundation; either version 3, or (at your option)
@@ -33,7 +31,7 @@
 
 ;; (defun haskell-cabal-extract-fields-from-doc ()
 ;;   (require 'xml)
-;;   (with-no-warnings (require 'cl))
+;;   (require 'cl)
 ;;   (let ((section (completing-read
 ;;                   "Section: "
 ;;                   '("general-fields" "library" "executable" "buildinfo"))))
@@ -48,8 +46,7 @@
 ;;          (fields (mapcar (lambda (sym) (substring-no-properties sym 0 -1)) syms)))
 ;;     fields))
 
-(with-no-warnings (require 'cl))
-(require 'haskell-utils)
+(eval-when-compile (require 'cl))
 
 (defconst haskell-cabal-general-fields
   ;; Extracted with (haskell-cabal-extract-fields-from-doc "general-fields")
@@ -87,11 +84,9 @@
   '(("^[ \t]*--.*" . font-lock-comment-face)
     ("^ *\\([^ \t:]+\\):" (1 font-lock-keyword-face))
     ("^\\(Library\\)[ \t]*\\({\\|$\\)" (1 font-lock-keyword-face))
-    ("^\\(Executable\\|Test-Suite\\|Benchmark\\)[ \t]+\\([^\n \t]*\\)"
+    ("^\\(Executable\\)[ \t]+\\([^\n \t]*\\)"
      (1 font-lock-keyword-face) (2 font-lock-function-name-face))
     ("^\\(Flag\\)[ \t]+\\([^\n \t]*\\)"
-     (1 font-lock-keyword-face) (2 font-lock-constant-face))
-    ("^\\(Source-Repository\\)[ \t]+\\(head\\|this\\)"
      (1 font-lock-keyword-face) (2 font-lock-constant-face))
     ("^ *\\(if\\)[ \t]+.*\\({\\|$\\)" (1 font-lock-keyword-face))
     ("^ *\\(}[ \t]*\\)?\\(else\\)[ \t]*\\({\\|$\\)"
@@ -99,6 +94,37 @@
 
 (defvar haskell-cabal-buffers nil
   "List of Cabal buffers.")
+
+;; (defsubst* inferior-haskell-string-prefix-p (str1 str2)
+;;   "Return non-nil if STR1 is a prefix of STR2"
+;;   (eq t (compare-strings str2 nil (length str1) str1 nil nil)))
+
+(defun haskell-cabal-find-file ()
+  "Return a buffer visiting the cabal file of the current directory, or nil."
+  (catch 'found
+    ;; ;; First look for it in haskell-cabal-buffers.
+    ;; (dolist (buf haskell-cabal-buffers)
+    ;;   (if (inferior-haskell-string-prefix-p
+    ;;        (with-current-buffer buf default-directory) default-directory)
+    ;;       (throw 'found buf)))
+    ;; Then look up the directory hierarchy.
+    (let ((user (nth 2 (file-attributes default-directory)))
+          ;; Abbreviate, so as to stop when we cross ~/.
+          (root (abbreviate-file-name default-directory))
+          files)
+      (while (and root (equal user (nth 2 (file-attributes root))))
+        (if (setq files (directory-files root 'full "\\.cabal\\'"))
+            ;; Avoid the .cabal directory.
+            (dolist (file files (throw 'found nil))
+              (unless (file-directory-p file)
+                (throw 'found (find-file-noselect file))))
+          (if (equal root
+                     (setq root (file-name-directory
+                                 (directory-file-name root))))
+              (setq root nil))))
+      nil)))
+
+(autoload 'derived-mode-p "derived")	; Emacs 21
 
 (defun haskell-cabal-buffers-clean (&optional buffer)
   (let ((bufs ()))
@@ -125,8 +151,8 @@
   (set (make-local-variable 'comment-start) "-- ")
   (set (make-local-variable 'comment-start-skip) "\\(^[ \t]*\\)--[ \t]*")
   (set (make-local-variable 'comment-end) "")
-  (set (make-local-variable 'comment-end-skip) "[ \t]*\\(\\s>\\|\n\\)")
-  )
+  (set (make-local-variable 'comment-end-skip) "[ 	]*\\(\\s>\\|\n\\)")
+)
 
 (defun haskell-cabal-get-setting (name)
   (save-excursion
@@ -151,121 +177,7 @@
               (setq val (replace-match "" t t val))))
           val)))))
 
-;;;###autoload
-(defun haskell-cabal-get-dir ()
-  "Get the Cabal dir for a new project. Various ways of figuring this out,
-   and indeed just prompting the user. Do them all."
-  (let* ((file (haskell-cabal-find-file))
-         (dir (when file (file-name-directory file))))
-    (haskell-utils-read-directory-name
-     (format "Cabal dir%s: " (if file (format " (guessed from %s)" (file-relative-name file)) ""))
-     dir)))
-
-(defun haskell-cabal-compute-checksum (dir)
-  "Compute MD5 checksum of package description file in DIR.
-Return nil if no Cabal description file could be located via
-`haskell-cabal-find-pkg-desc'."
-  (let ((cabal-file (haskell-cabal-find-pkg-desc dir)))
-    (when cabal-file
-      (with-temp-buffer
-        (insert-file-contents cabal-file)
-        (md5 (buffer-string))))))
-
-(defun haskell-cabal-find-file (&optional dir)
-  "Search for package description file upwards starting from DIR.
-If DIR is nil, `default-directory' is used as starting point for
-directory traversal.  Upward traversal is aborted if file owner
-changes.  Uses`haskell-cabal-find-pkg-desc' internally."
-  (catch 'found
-    (let ((user (nth 2 (file-attributes (or dir default-directory))))
-          ;; Abbreviate, so as to stop when we cross ~/.
-          (root (abbreviate-file-name (or dir default-directory))))
-      ;; traverse current dir up to root as long as file owner doesn't change
-      (while (and root (equal user (nth 2 (file-attributes root))))
-        (let ((cabal-file (haskell-cabal-find-pkg-desc root)))
-          (when cabal-file
-            (throw 'found cabal-file)))
-
-        (let ((proot (file-name-directory (directory-file-name root))))
-          (if (equal proot root) ;; fix-point reached?
-              (throw 'found nil)
-            (setq root proot))))
-      nil)))
-
-(defun haskell-cabal-find-pkg-desc (dir &optional allow-multiple)
-  "Find a package description file in the directory DIR.
-Returns nil if none or multiple \".cabal\" files were found.  If
-ALLOW-MULTIPLE is non nil, in case of multiple \".cabal\" files,
-a list is returned instead of failing with a nil result."
-  ;; This is basically a port of Cabal's
-  ;; Distribution.Simple.Utils.findPackageDesc function
-  ;;  http://hackage.haskell.org/packages/archive/Cabal/1.16.0.3/doc/html/Distribution-Simple-Utils.html
-  ;; but without the exception throwing.
-  (let* ((cabal-files
-          (remove-if 'file-directory-p
-                     (remove-if-not 'file-exists-p
-                                    (directory-files dir t ".\\.cabal\\'")))))
-    (cond
-     ((= (length cabal-files) 1) (car cabal-files)) ;; exactly one candidate found
-     (allow-multiple cabal-files) ;; pass-thru multiple candidates
-     (t nil))))
-
-(defun haskell-cabal-find-dir (&optional dir)
-  "Like `haskell-cabal-find-file' but returns directory instead.
-See `haskell-cabal-find-file' for meaning of DIR argument."
-  (let ((cabal-file (haskell-cabal-find-file dir)))
-    (when cabal-file
-      (file-name-directory cabal-file))))
-
-;;;###autoload
-(defun haskell-cabal-visit-file (other-window)
-  "Locate and visit package description file for file visited by current buffer.
-This uses `haskell-cabal-find-file' to locate the closest
-\".cabal\" file and open it.  This command assumes a common Cabal
-project structure where the \".cabal\" file is in the top-folder
-of the project, and all files related to the project are in or
-below the top-folder.  If called with non-nil prefix argument
-OTHER-WINDOW use `find-file-other-window'."
-  (interactive "P")
-  ;; Note: We aren't allowed to rely on haskell-session here (which,
-  ;; in pathological cases, can have a different .cabal file
-  ;; associated with the current buffer)
-  (if buffer-file-name
-    (let ((cabal-file (haskell-cabal-find-file (file-name-directory buffer-file-name))))
-      (if cabal-file
-          (if other-window
-              (find-file-other-window cabal-file)
-            (find-file cabal-file))
-        (error "Could not locate \".cabal\" file for %S" buffer-file-name)))
-    (error "Cannot locate \".cabal\" file for buffers not visiting any file")))
-
-(defvar haskell-cabal-commands
-  '("install"
-    "update"
-    "list"
-    "info"
-    "upgrade"
-    "fetch"
-    "unpack"
-    "check"
-    "sdist"
-    "upload"
-    "report"
-    "init"
-    "configure"
-    "build"
-    "copy"
-    "haddock"
-    "clean"
-    "hscolour"
-    "register"
-    "test"
-    "help"))
-
 (provide 'haskell-cabal)
 
-;; Local Variables:
-;; byte-compile-warnings: (not cl-functions)
-;; End:
-
+;; arch-tag: d455f920-5e4d-42b6-a2c7-4a7e84a05c29
 ;;; haskell-cabal.el ends here
