@@ -77,6 +77,7 @@
    (quote
     ("mzscheme" "bigloo" "csi" "csi -hygienic" "gosh" "gracket" "gsi" "gsi ~~/syntax-case.scm -" "guile" "kawa" "mit-scheme" "racket" "racket -il typed/racket" "rs" "scheme" "scheme48" "scsh" "sisc" "stklos" "sxi")))
  '(recentf-exclude (quote ("ede-projects.el" ".ido.last" "*javadoc-cache*")))
+ '(recentf-save-file "~/Emacs/data/recentf")
  '(save-abbrevs nil)
  '(scroll-bar-mode (quote right))
  '(semanticdb-default-save-directory "~/Emacs/data/semanticdb")
@@ -111,21 +112,15 @@
  '(minimap-active-region-background ((t (:background "dark slate gray"))) t)
  '(tabbar-selected ((t (:inherit tabbar-default :foreground "black" :box (:line-width 1 :color "white" :style pressed-button)))) t))
 
-;;; Settings need to be load first
 
 
-
-
-;;==============================================================================
-;;=========================== GLOBAL SETTINGS ==================================
-
-;; FUNCTION : base paths and functions.
+;;; ==================== VARIOUS PATHS =========================================
 ;;------------------------------------------------------------------------------
 (setq meta-path "~/Emacs/usr/")
-(setq utility-path "~/Emacs/opt/")
+(setq util-path "~/Emacs/opt/")
 (setq lang-path "~/Emacs/dev/")
-(setq gui-path "~/Emacs/gui/")
-
+(setq gui-path  "~/Emacs/gui/")
+;;------------------------------------------------------------------------------
 (defun expand-gui-path (sub)
   (concat gui-path sub))
 
@@ -135,57 +130,18 @@
 (defun expand-lang-path (sub)
   (concat lang-path sub))
 
-(defun expand-utility-path (sub)
-  (concat utility-path sub))
-
+(defun expand-util-path (sub)
+  (concat util-path sub))
+;;------------------------------------------------------------------------------
 (add-to-list 'load-path (expand-lang-path "misc"))
-(add-to-list 'load-path (expand-utility-path "misc"))
+(add-to-list 'load-path (expand-util-path "misc"))
+(add-to-list 'load-path (expand-gui-path  "misc"))
+;;------------------------------------------------------------------------------
 
-;;------------------------------------------------------------------------------
-;; ENV : windows bash
-(if (eq system-type 'windows-nt)
-    (progn
-      (setq explicit-shell-file-name "bash.exe") 
-      ;; For subprocesses invoked via the shell 
-      ;; (e.g., "shell -c command") 
-      (setq shell-file-name explicit-shell-file-name) 
-      ))
+(require 'yayu)
 
-;;------------------------------------------------------------------------------
-;; VAR : disable large file promt
-(setq large-file-warning-threshold nil)
-;;------------------------------------------------------------------------------
-;; FUNCTION : terminal or gui
-(defun is-in-terminal()
-  (not (display-graphic-p)))
-;;------------------------------------------------------------------------------
-(defun rename-file-and-buffer (new-name)
-  "Renames both current buffer and file it's visiting to NEW-NAME."
-  (interactive
-   (progn
-     (if (not (buffer-file-name))
-         (error "Buffer '%s' is not visiting a file!" (buffer-name)))
-     (list (read-file-name (format "Rename %s to: " (file-name-nondirectory
-                                                     (buffer-file-name)))))))
-  (if (equal new-name "")
-      (error "Aborted rename"))
-  (setq new-name (if (file-directory-p new-name)
-                     (expand-file-name (file-name-nondirectory
-                                        (buffer-file-name))
-                                       new-name)
-                   (expand-file-name new-name)))
-  ;; If the file isn't saved yet, skip the file rename, but still update the
-  ;; buffer name and visited file.
-  (if (file-exists-p (buffer-file-name))
-      (rename-file (buffer-file-name) new-name 1))
-  (let ((was-modified (buffer-modified-p)))
-    ;; This also renames the buffer, and works with uniquify
-    (set-visited-file-name new-name)
-    (if was-modified
-        (save-buffer)
-      ;; Clear buffer-modified flag caused by set-visited-file-name
-      (set-buffer-modified-p nil))
-    (message "Renamed to %s." new-name)))
+
+;;; ==================== GLOBAL SETTINGS =======================================
 ;;------------------------------------------------------------------------------
 ;; LIB : dash
 (eval-after-load "dash" '(dash-enable-font-lock))
@@ -197,21 +153,6 @@
 (add-to-list 'package-archives 
              '("marmalade" . "http://marmalade-repo.org/packages/"))
 (package-initialize) ; 0.1 sec
-;;------------------------------------------------------------------------------
-(defun my-find-file-check-make-large-file-read-only-hook ()
-  "If a file is over a given size, make the buffer read only."
-  (when (> (buffer-size) (* 1024 1024))
-    (setq buffer-read-only t)
-    (buffer-disable-undo)))
-
-(add-hook 'find-file-hooks 'my-find-file-check-make-large-file-read-only-hook)
-;;------------------------------------------------------------------------------
-
-;; UI : Imenu
-(setq imenu-auto-rescan t)
-(defun try-to-add-imenu ()
-  (condition-case nil (imenu-add-to-menubar "Imenu") (error nil)))
-(add-hook 'font-lock-mode-hook 'try-to-add-imenu)
 ;;------------------------------------------------------------------------------
 ;; LIB : yasnippet
 (add-to-list 'load-path (expand-meta-path "yasnippet"))
@@ -226,132 +167,73 @@
 (setq exec-path (append '("~/Emacs/bin")
                         exec-path))
 (add-to-list 'exec-path "~/Software/bin")
-
-;;==============================================================================
-
+;;------------------------------------------------------------------------------
 
 
 
-
-
-
-;;==============================================================================
-;;========================= AUTO COMPLETE ======================================
-(add-to-list 'load-path (expand-meta-path "auto-complete"))
-(require 'auto-complete)
-(require 'auto-complete-config)
-(ac-config-default)
-(global-auto-complete-mode t)
-(add-to-list 'ac-dictionary-directories (expand-meta-path "auto-complete/ac-dict"))
-(add-to-list 'ac-modes 'cmake-mode)
-(add-to-list 'ac-modes 'jde-mode)
-(setq ac-source-yasnippet nil)
-
-
-(add-to-list 'load-path (expand-lang-path "cpp/ac-c-headers"))
-(defun my-ac-cc-mode-setup ()
-  (require 'auto-complete-c-headers)
-  (add-to-list 'ac-sources 'ac-source-c-headers))
-(add-hook 'c-mode-common-hook 'my-ac-cc-mode-setup)
-(add-hook 'c++-mode-hook 'my-ac-cc-mode-setup)
-
-
-(add-to-list 'ac-sources 'ac-source-files-in-current-dir)
-(add-to-list 'ac-sources 'ac-source-words-in-same-mode-buffers)
-
-;;==============================================================================
-
-
-
-;;==============================================================================
-;;======================= GUI SETTINGS =========================================
-
-;; VAR : gui paths
-(add-to-list 'load-path (expand-gui-path "misc"))
-(add-to-list 'load-path (expand-gui-path "smartparens"))
-
+;;; ===================== UI SETTINGS ==========================================
+;;------------------------------------------------------------------------------
+;;  Imenu
+(setq imenu-auto-rescan t)
+(defun try-to-add-imenu ()
+  (condition-case nil (imenu-add-to-menubar "Imenu") (error nil)))
+(add-hook 'font-lock-mode-hook 'try-to-add-imenu)
+;;------------------------------------------------------------------------------
+;; VAR: misc configs
 (transient-mark-mode t)
 
-;; UI : remove startup info
+(if window-system
+    (tool-bar-mode 0))
+
+(fset 'yes-or-no-p 'y-or-n-p)
+
+(setq-default cursor-type 'bar)
+
+;; remove startup info
 (setq initial-scratch-message nil)
 (setq inhibit-splash-message t)
 (setq inhibit-startup-message t)
 
-;; UI : toobar menubar
-(if window-system
-    (tool-bar-mode 0))
-
-
-;; UI : replace yes-or-no
-(fset 'yes-or-no-p 'y-or-n-p)
-
-;; UI : scroll bar 
+;; scroll bar
 (if window-system
     (scroll-bar-mode 0))
 (customize-set-variable 'scroll-bar-mode 'right)
 
-;; UI : Cursor
-(setq-default cursor-type 'bar)
-
-;; UI : Indent tab
+;; indent tab
 (setq-default tab-width 4)
 (setq indent-line-funtion 'insert-tab)
-
 (setq require-final-newline t)
-
-;; default to no tabs, but to use tabs if that’s what a pre-existing file is primarily using for indentation
-(defun how-many-region (begin end regexp &optional interactive)
-  "Print number of non-trivial matches for REGEXP in region.                    
-Non-interactive arguments are Begin End Regexp"
-  (interactive "r\nsHow many matches for (regexp): \np")
-  (let ((count 0) opoint)
-    (save-excursion
-      (setq end (or end (point-max)))
-      (goto-char (or begin (point)))
-      (while (and (< (setq opoint (point)) end)
-                  (re-search-forward regexp end t))
-        (if (= opoint (point))
-            (forward-char 1)
-          (setq count (1+ count))))
-      (if interactive (message "%d occurrences" count))
-      count)))
-
-(defun infer-indentation-style ()
-  ;; if our source file uses tabs, we use tabs, if spaces spaces, and if        
-  ;; neither, we use the current indent-tabs-mode                               
-  (let ((space-count (how-many-region (point-min) (point-max) "^  "))
-        (tab-count (how-many-region (point-min) (point-max) "^\t")))
-    (if (> space-count tab-count) (setq indent-tabs-mode nil))
-    (if (> tab-count space-count) (setq indent-tabs-mode t))))
-
-
 
 (setq-default indent-tabs-mode nil)
 (infer-indentation-style)
 
-
-
-;; BASE : Backup
+;; backup
 (setq auto-save-default nil)
 (setq-default make-backup-files nil)
-
-;; LIB : smart-mode-line
+;;------------------------------------------------------------------------------
+;;  smart-mode-line
 (add-to-list 'load-path (expand-gui-path "smart-mode-line"))
 (require 'smart-mode-line)
 (setq powerline-arrow-shape 'curve)
 (setq powerline-default-separator-dir '(right . left))
 (sml/setup)
 (sml/apply-theme 'powerline)
-
-;; LIB : Parentheses 
+;;------------------------------------------------------------------------------
+;;  Parentheses 
 (require 'paren)
 (show-paren-mode t)
 (setq show-paren-style 'parenthesis)
 
-;; LIB : hightlight-parenteses
+;;  hightlight-parenteses
 (require 'highlight-parentheses)
+
+;;  smartparens
+(add-to-list 'load-path (expand-gui-path "smartparens"))
+(require 'smartparens-config)
+(show-smartparens-global-mode t)
+(smartparens-global-mode 1)
 ;;------------------------------------------------------------------------------
-;; UI : global-hightlight-mode
+;;  global-hightlight-mode
 (define-globalized-minor-mode global-highlight-parentheses-mode
   highlight-parentheses-mode
   (lambda ()
@@ -360,36 +242,29 @@ Non-interactive arguments are Begin End Regexp"
 
 (global-hl-line-mode t)
 ;;------------------------------------------------------------------------------
-;; LIB : smartparens
-(require 'smartparens-config)
-(show-smartparens-global-mode t)
-(smartparens-global-mode 1)
-
-;;------------------------------------------------------------------------------
-;; UI : Line/column number
+;;  Line/column number
 (when (display-graphic-p)
   (require 'linum)
   (global-linum-mode t))
 
 (setq column-number-mode t)
 ;;------------------------------------------------------------------------------
-;; UI : THEME
+;;  THEME
 ;;(add-to-list 'custom-theme-load-path (expand-gui-path "themes/solarized"))
 ;;(load-theme 'solarized-light t)
 (when (display-graphic-p)
   (add-to-list 'custom-theme-load-path (expand-gui-path "themes/"))
   (if (eq system-type 'darwin)
-    (load-theme 'noctilux t)))
-;;(load-theme 'ujelly t)
+      (load-theme 'noctilux t)))
 ;;------------------------------------------------------------------------------
-;; UI :  Terminal settings
+;; Terminal settings
 (when (is-in-terminal)
   (require 'lacarte)
   (global-set-key [?\e ?\M-x] 'lacarte-execute-command)
   (global-set-key [?\M-`] 'lacarte-execute-command)
   (setq global-hl-line-mode nil))
 ;;------------------------------------------------------------------------------
-;; UI : Right margin
+;; Right margin
 (require 'fill-column-indicator)
 (setq-default fci-rule-column 80)
 (setq fci-rule-color "blue")
@@ -398,35 +273,24 @@ Non-interactive arguments are Begin End Regexp"
 (setq fci-rule-color "red")
 (add-hook 'after-change-major-mode-hook 'fci-mode)
 ;;------------------------------------------------------------------------------
-;; UI :  Indent guide
+;;  Indent guide
 (require 'indent-guide)
 (indent-guide-global-mode)
 ;;(set-face-background 'indent-guide-face "dimgray")
 (setq indent-guide-char "|")
 ;;------------------------------------------------------------------------------
-;; BASE : Buffers
-
+;; Buffers
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'reverse)
 (setq inhibit-default-init t)
 (setq-default frame-title-format "%b (%f)")
 ;;------------------------------------------------------------------------------
-;; LIB : Recent files
+;; Recent files
 (require 'recentf)
 (recentf-mode 1)
 (setq recentf-max-menu-items 25)
-
 ;;------------------------------------------------------------------------------
-;; LIB :  Neotree
-(require 'neotree)
-
-;;------------------------------------------------------------------------------
-;; LIB : Nav
-(add-to-list 'load-path (expand-gui-path "nav"))
-(require 'nav)
-(nav-disable-overeager-window-splitting)
-;;------------------------------------------------------------------------------
-;; BASE : modes
+;; modes
 (setq enable-recursive-minibuffers t) ;; allow recursive editing in minibuffer
 (follow-mode t)                       ;; follow-mode allows easier editing of long files
 
@@ -436,15 +300,46 @@ Non-interactive arguments are Begin End Regexp"
              (turn-on-auto-fill)
              (set-fill-column 80)))
 ;;------------------------------------------------------------------------------
+;; Neotree
+(require 'neotree)
+;;------------------------------------------------------------------------------
+;; Nav
+(add-to-list 'load-path (expand-gui-path "nav"))
+(require 'nav)
+(nav-disable-overeager-window-splitting)
+;;------------------------------------------------------------------------------
 
 
-;;==============================================================================
 
 
+;;; ==================== AUTO COMPLETE =========================================
+;;------------------------------------------------------------------------------
+(add-to-list 'load-path (expand-meta-path "auto-complete"))
+(require 'auto-complete)
+(require 'auto-complete-config)
+(ac-config-default)
+(global-auto-complete-mode t)
+(add-to-list 'ac-dictionary-directories
+             (expand-meta-path "auto-complete/ac-dict"))
+(add-to-list 'ac-modes 'cmake-mode)
+(add-to-list 'ac-modes 'jde-mode)
+(setq ac-source-yasnippet nil)
+
+(add-to-list 'ac-sources 'ac-source-files-in-current-dir)
+(add-to-list 'ac-sources 'ac-source-words-in-same-mode-buffers)
+;;------------------------------------------------------------------------------
+;; ac-c-headerss
+(add-to-list 'load-path (expand-lang-path "cpp/ac-c-headers"))
+(defun my-ac-cc-mode-setup ()
+  (require 'auto-complete-c-headers)
+  (add-to-list 'ac-sources 'ac-source-c-headers))
+(add-hook 'c-mode-common-hook 'my-ac-cc-mode-setup)
+(add-hook 'c++-mode-hook 'my-ac-cc-mode-setup)
+;;------------------------------------------------------------------------------
 
 
-;;==============================================================================
-;;===========================HELM ==============================================
+;;; ========================= HELM =============================================
+;;------------------------------------------------------------------------------
 (add-to-list 'load-path (expand-meta-path "helm"))
 (require 'helm)
 ;; must set before helm-config,  otherwise helm use default
@@ -498,14 +393,14 @@ Non-interactive arguments are Begin End Regexp"
 (helm-mode)
 
 (provide 'my-helm)
-;;==============================================================================
+;;------------------------------------------------------------------------------
 
 
 
 
-;;==============================================================================
-;; ================   LANGUAGE : CPP ===========================================
 
+;;; ================   LANGUAGE : CPP ==========================================
+;;------------------------------------------------------------------------------
 (add-to-list 'load-path (expand-lang-path "cpp"))
 
 
@@ -586,8 +481,8 @@ Non-interactive arguments are Begin End Regexp"
 ;;;-----------------------------------------------------------------------------
 ;;;-----------------------------------------------------------------------------
 ;; ecb 
-(add-to-list 'load-path (expand-utility-path "ecb/"))
-;;(load-file (expand-utility-path "ecb/ecb.el"))
+(add-to-list 'load-path (expand-util-path "ecb/"))
+;;(load-file (expand-util-path "ecb/ecb.el"))
 ;; `make` first 
 (require 'ecb)
 ;;(require 'ecb-autoloads)
@@ -605,7 +500,7 @@ Non-interactive arguments are Begin End Regexp"
 (require 'toml-mode)
 ;;;-----------------------------------------------------------------------------
 ;;multi cursor
-(add-to-list 'load-path (expand-utility-path "multiple-cursors"))
+(add-to-list 'load-path (expand-util-path "multiple-cursors"))
 (require 'multiple-cursors)
 ;;;-----------------------------------------------------------------------------
 ;; RSS
@@ -661,27 +556,6 @@ Non-interactive arguments are Begin End Regexp"
 ;;------------------------------------------------------------------------------
 ;; eshell
 (setq eshell-aliases-file "~/Emacs/data/eshell/alias")
-;; promt
-(defmacro with-face (str &rest properties)
-  `(propertize ,str 'face (list ,@properties)))
-
-(defun shk-eshell-prompt ()
-  (let ((header-bg "#fff"))
-    (concat
-     (with-face (concat (eshell/pwd) " ") :background header-bg :foreground "golden")
-     (with-face (format-time-string "(%Y-%m-%d %H:%M) " (current-time)) :background header-bg :foreground "#888")
-     (with-face
-      (or (ignore-errors (format "(%s)" (vc-responsible-backend default-directory))) "")
-      :background header-bg
-	  :foreground "green")
-     (with-face "\n" :background header-bg)
-     (with-face user-login-name :foreground "blue")
-     "@"
-     (with-face "localhost" :foreground "green")
-     (if (= (user-uid) 0)
-         (with-face " #" :foreground "red")
-       " $")
-     " ")))
 (setq eshell-prompt-function 'shk-eshell-prompt)
 (setq eshell-highlight-prompt nil)
 ;; alias
@@ -689,7 +563,7 @@ Non-interactive arguments are Begin End Regexp"
 (defalias 'openo 'find-file-other-window)
 ;;------------------------------------------------------------------------------
 ;; emacs w3m
-(add-to-list 'load-path (expand-utility-path "emacs-w3m"))
+(add-to-list 'load-path (expand-util-path "emacs-w3m"))
 (setq browse-url-browser-function 'w3m-browse-url)
 (autoload 'w3m-browse-url "w3m" "Ask a WWW browser to show a URL." t)
 ;; optional keyboard short-cut
@@ -740,7 +614,7 @@ Non-interactive arguments are Begin End Regexp"
     (start-process (concat "open " url) nil "open" url)))
 
 ;; stack exchange
-;;(add-to-list 'load-path (expand-utility-path "sx"))
+;;(add-to-list 'load-path (expand-util-path "sx"))
 ;;(require 'sx-load)
 ;;------------------------------------------------------------------------------
 ;; indent
@@ -813,9 +687,11 @@ Non-interactive arguments are Begin End Regexp"
 (load "~/Emacs/dev/haskell-mode/haskell-site-file")
 (add-to-list 'ac-modes 'haskell-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+;;(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 ;;-------------------------------------------------------------------------------
-
+;; Dockerfile
+(require 'dockerfile-mode)
+(add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
 ;;-------------------------------------------------------------------------------
 ;;erlang
 ;; Note : erlang-base package provide `escript` when compile el files.''
@@ -873,7 +749,7 @@ Non-interactive arguments are Begin End Regexp"
 ;;==============================================================================
 ;;====================== LANGUAGE : golang =====================================
 
-(add-to-list 'load-path (expand-utility-path "deferred"))
+(add-to-list 'load-path (expand-util-path "deferred"))
 
 (cond ((eq system-type 'darwin)
 	   (progn
