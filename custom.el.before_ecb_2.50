@@ -1,0 +1,195 @@
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(abbrev-file-name "~/Emacs/data/abbrev_defs")
+ '(ac-modes
+   (quote
+	(go-mode rust-mode jde-mode cmake-mode emacs-lisp-mode lisp-interaction-mode java-mode clojure-mode scala-mode scheme-mode lisp-mode markdown-mode ocaml-mode tuareg-mode shell-script-mode perl-mode cperl-mode python-mode ruby-mode ecmascript-mode javascript-mode js-mode js2-mode php-mode css-mode makefile-mode sh-mode fortran-mode f90-mode ada-mode xml-mode sgml-mode)))
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
+ '(ansi-color-names-vector
+   [solarized-bg red green yellow blue magenta cyan solarized-fg])
+ '(auto-save-list-file-prefix "~/Emacs/data/auto-save-list/.saves-")
+ '(background-color "#202020")
+ '(background-mode dark)
+ '(bookmark-default-file "~/Emacs/data/bookmarks")
+ '(browse-url-new-window-flag t)
+ '(browse-url-text-browser "w3m")
+ '(cider-lein-command "~/Software/bin/lein")
+ '(clean-buffer-list-delay-special 60)
+ '(clean-buffer-list-kill-buffer-names
+   (quote
+	("*Compile-Log*" "*helm-mode-execute-extended-command*")))
+ '(column-number-mode t)
+ '(compilation-message-face (quote default))
+ '(cua-enable-cua-keys nil)
+ '(cua-global-mark-cursor-color "#2aa198")
+ '(cua-mode t nil (cua-base))
+ '(cua-normal-cursor-color "#657b83")
+ '(cua-overwrite-cursor-color "#b58900")
+ '(cua-read-only-cursor-color "#859900")
+ '(current-language-environment "UTF-8")
+ '(cursor-color "#cccccc")
+ '(custom-enabled-themes (quote (dracula)))
+ '(custom-safe-themes
+   (quote
+	("fad38808e844f1423c68a1888db75adf6586390f5295a03823fa1f4959046f81" "272df4c755fa7ca5b89ec97641407d478a8950622b3dec2c63e76fb66a931379" "5cbfbbc76f64d4035c2d1647f2fac8d89080e3d9f9d0f3b57a1ac886d246276e" "d24e10524bb50385f7631400950ba488fa45560afcadd21e6e03c2f5d0fad194" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
+ '(delete-selection-mode nil)
+ '(display-time-mode t)
+ '(ecb-expand-methods-switch-off-auto-expand nil)
+ '(ecb-layout-window-sizes
+   (quote
+	(("left8"
+	  (ecb-directories-buffer-name 0.24431818181818182 . 0.29411764705882354)
+	  (ecb-sources-buffer-name 0.24431818181818182 . 0.23529411764705882)
+	  (ecb-methods-buffer-name 0.24431818181818182 . 0.27450980392156865)
+	  (ecb-history-buffer-name 0.24431818181818182 . 0.17647058823529413)))))
+ '(eshell-directory-name "~/Emacs/data/eshell")
+ '(exec-path-from-shell-arguments (quote ("-l")))
+ '(fci-rule-color "#eee8d5")
+ '(foreground-color "#cccccc")
+ '(global-auto-highlight-symbol-mode t)
+ '(global-hi-lock-mode t)
+ '(global-hl-line-mode nil)
+ '(global-srecode-minor-mode nil)
+ '(helm-bookmark-show-location t)
+ '(hi2-show-indentations nil)
+ '(highlight-changes-colors (quote ("#d33682" "#6c71c4")))
+ '(highlight-symbol-colors
+   (--map
+	(solarized-color-blend it "#fdf6e3" 0.25)
+	(quote
+	 ("#b58900" "#2aa198" "#dc322f" "#6c71c4" "#859900" "#cb4b16" "#268bd2"))))
+ '(highlight-symbol-foreground-color "#586e75")
+ '(highlight-tail-colors
+   (quote
+	(("#eee8d5" . 0)
+	 ("#B4C342" . 20)
+	 ("#69CABF" . 30)
+	 ("#69B7F0" . 50)
+	 ("#DEB542" . 60)
+	 ("#F2804F" . 70)
+	 ("#F771AC" . 85)
+	 ("#eee8d5" . 100))))
+ '(hl-bg-colors
+   (quote
+	("#DEB542" "#F2804F" "#FF6E64" "#F771AC" "#9EA0E5" "#69B7F0" "#69CABF" "#B4C342")))
+ '(hl-fg-colors
+   (quote
+	("#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3")))
+ '(initial-frame-alist (quote ((fullscreen . maximized))))
+ '(javadoc-lookup-cache-dir "~/Emacs/data/java/javadoc-cache")
+ '(jde-check-version-flag nil)
+ '(jde-jdk-doc-url "http://docs.oracle.com/javase/7/docs/api/")
+ '(jde-which-full-class-name t)
+ '(jedi:environment-virtualenv nil)
+ '(magit-diff-use-overlays nil)
+ '(mark-even-if-inactive t)
+ '(mc/cycle-looping-behaviour (quote stop))
+ '(mc/edit-lines-empty-lines (quote ignore))
+ '(midnight-delay 200)
+ '(midnight-mode t nil (midnight))
+ '(mu4e-attachment-dir "/Users/yayu/Mail/Files")
+ '(mu4e-headers-fields
+   (quote
+	((:human-date . 12)
+	 (:flags . 6)
+	 (:size . 7)
+	 (:from . 22)
+	 (:subject))))
+ '(mu4e-html2text-command "/usr/local/bin/html2text")
+ '(mu4e-update-interval 600)
+ '(mu4e-use-fancy-chars t)
+ '(mu4e-view-prefer-html nil)
+ '(mu4e-view-show-images t)
+ '(nav-width 15)
+ '(nrepl-message-colors
+   (quote
+	("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
+ '(package-selected-packages
+   (quote
+	(golint go-mode ecb smartparens py-autopep8 column-marker auto-highlight-symbol sr-speedbar wsd-mode markdown-mode+ markdown-mode smex expand-region dracula-theme exec-path-from-shell find-file-in-project popwin jedi dash-functional ws-butler volatile-highlights helm-swoop helm-company flycheck evil-iedit-state duplicate-thing dtrt-indent dired+ anzu)))
+ '(pos-tip-background-color "#eee8d5")
+ '(pos-tip-foreground-color "#586e75")
+ '(py-autopep8-options (quote ("--max-line-length=100" "-a" "--experimental")))
+ '(py-complete-function (quote py-shell-complete))
+ '(py-yapf-options (quote ("--style=pep8")))
+ '(python-check-command "flake8")
+ '(python-environment-directory "~/.env/")
+ '(quack-programs
+   (quote
+	("mzscheme" "bigloo" "csi" "csi -hygienic" "gosh" "gracket" "gsi" "gsi ~~/syntax-case.scm -" "guile" "kawa" "mit-scheme" "racket" "racket -il typed/racket" "rs" "scheme" "scheme48" "scsh" "sisc" "stklos" "sxi")))
+ '(recentf-exclude (quote ("ede-projects.el" ".ido.last" "*javadoc-cache*")))
+ '(recentf-save-file "~/Emacs/data/recentf")
+ '(save-abbrevs nil)
+ '(scroll-bar-mode (quote right))
+ '(semanticdb-default-save-directory "~/Emacs/data/semanticdb")
+ '(show-paren-mode t)
+ '(show-paren-style (quote mixed))
+ '(show-smartparens-global-mode t)
+ '(size-indication-mode t)
+ '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#eee8d5" 0.2))
+ '(sml/theme (quote powerline))
+ '(sp-show-pair-delay 0)
+ '(srecode-map-save-file "~/Emacs/data/srecode-map.el")
+ '(tab-stop-list
+   (quote
+	(4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 72 76 80 84 88 92 96 100 104 108 112 116 120)))
+ '(tempbuf-minimum-timeout 10)
+ '(template-default-directories (quote ("~/Emacs/data/templates")))
+ '(term-default-bg-color "#fdf6e3")
+ '(term-default-fg-color "#657b83")
+ '(tetris-buffer-height 30)
+ '(tool-bar-mode nil)
+ '(truncate-lines nil)
+ '(url-configuration-directory "~/Emacs/data/url")
+ '(url-cookie-file "~/Emacs/data/url/cookies")
+ '(vc-annotate-background nil)
+ '(vc-annotate-color-map
+   (quote
+	((20 . "#dc322f")
+	 (40 . "#c85d17")
+	 (60 . "#be730b")
+	 (80 . "#b58900")
+	 (100 . "#a58e00")
+	 (120 . "#9d9100")
+	 (140 . "#959300")
+	 (160 . "#8d9600")
+	 (180 . "#859900")
+	 (200 . "#669b32")
+	 (220 . "#579d4c")
+	 (240 . "#489e65")
+	 (260 . "#399f7e")
+	 (280 . "#2aa198")
+	 (300 . "#2898af")
+	 (320 . "#2793ba")
+	 (340 . "#268fc6")
+	 (360 . "#268bd2"))))
+ '(vc-annotate-very-old-color nil)
+ '(vc-follow-symlinks t)
+ '(w3m-confirm-leaving-secure-page nil)
+ '(w3m-use-title-buffer-name t)
+ '(weechat-color-list
+   (quote
+	(unspecified "#fdf6e3" "#eee8d5" "#990A1B" "#dc322f" "#546E00" "#859900" "#7B6000" "#b58900" "#00629D" "#268bd2" "#93115C" "#d33682" "#00736F" "#2aa198" "#657b83" "#839496")))
+ '(xterm-color-names
+   ["#eee8d5" "#dc322f" "#859900" "#b58900" "#268bd2" "#d33682" "#2aa198" "#073642"])
+ '(xterm-color-names-bright
+   ["#fdf6e3" "#cb4b16" "#93a1a1" "#839496" "#657b83" "#6c71c4" "#586e75" "#002b36"])
+ '(yas/trigger-key "C-x y"))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:family "Inconsolata" :foundry "nil" :slant normal :weight normal :height 140 :width extra-condensed))))
+ '(ac-candidate-face ((t (:background "gray10" :foreground "DarkGoldenrod3"))))
+ '(ac-selection-face ((t (:background "gray10" :foreground "white"))))
+ '(cscope-file-face ((t (:foreground "blue"))))
+ '(cscope-line-face ((t (:foreground "dark olive green"))))
+ '(minimap-active-region-background ((t (:background "dark slate gray"))) t)
+ '(mode-line ((t (:foreground "dim gray" :inverse-video t :box nil :underline nil :slant normal :weight normal))))
+ '(mode-line-highlight ((t (:box (:line-width 2 :color "dark orange" :style released-button)))))
+ '(tabbar-selected ((t (:inherit tabbar-default :foreground "black" :box (:line-width 1 :color "white" :style pressed-button)))) t))
